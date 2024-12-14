@@ -1,2 +1,9 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script>
+
+</script>
+
+<div class="w-full justify-center items-center flex h-full bg-stone-200">
+	<div class="bg-red-500 h-full">
+		etst
+	</div>
+</div>
