@@ -31,6 +31,6 @@ export function parseFrontMatter(content) {
       return [key.trim(), value.join(':').trim()];
     })
   );
-  console.log(body)
   return { metadata, content: body };
 }
+
