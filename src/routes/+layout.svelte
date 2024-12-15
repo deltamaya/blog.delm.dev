@@ -10,7 +10,7 @@
 
 <ParaglideJS {i18n}>
 	<Header/>
-	<div class="font-IBMPlexSansSC min-h-[calc(100vh-6.5rem)] w-full bg-stone-200">
+	<div class="font-IBMPlexSansSC min-h-[calc(100vh-6.5rem)] w-full flex bg-stone-200">
 		{@render children()}
 	</div>
 </ParaglideJS>
