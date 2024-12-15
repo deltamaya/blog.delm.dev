@@ -1,15 +1,38 @@
+<script lang="ts">
+	import type { AvailableLanguageTag } from '$lib/paraglide/runtime';
+	import { i18n } from '$lib/i18n';
+	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
+	import * as m from '$lib/paraglide/messages.js';
 
+	function switchToLanguage(newLanguage: AvailableLanguageTag) {
+		const canonicalPath = i18n.route($page.url.pathname);
+		const localisedPath = i18n.resolveRoute(canonicalPath, newLanguage);
+		goto(localisedPath);
+	}
+</script>
 <header class="w-full min-h-16 flex font-IBMPlexSansSC bg-stone-200">
 	<div class="w-2/3 mx-auto flex items-center justify-between p-4 flex-wrap max-w-[1024px]">
 		<div class="flex items-center space-x-3">
 			<img src="/logo-dark.png" alt="Logo" class="h-6 mb-1">
 			<span class="text-2xl font-bold">DELM</span>
+			<div class="w-0.5 h-5 bg-gray-900">
+			</div>
+			<button onclick={()=>switchToLanguage('en')} class="hover:underline">
+				EN
+			</button>
+			<button onclick={()=>switchToLanguage('zh-cn')} class="hover:underline">
+				ZH-CN
+			</button>
+			<button onclick={()=>switchToLanguage('zh-tw')} class="hover:underline">
+				ZH-TW
+			</button>
 		</div>
 
 		<nav class="space-x-6 flex font-bold">
-			<a href="/archive" class="hover:underline">Archive</a>
-			<a href="/search" class="hover:underline">Search</a>
-			<a href="/tags" class="hover:underline">Tags</a>
+			<a href="/archive" class="hover:underline">{m.Archive()}</a>
+			<a href="/search" class="hover:underline">{m.Search()}</a>
+			<a href="/tags" class="hover:underline">{m.Tags()}</a>
 			<div class="flex"><a href="https://delm.dev" class="hover:underline flex">
 				delm.dev
 				<svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
