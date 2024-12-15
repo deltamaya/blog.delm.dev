@@ -12,10 +12,10 @@
 	}
 </script>
 <header class="w-full min-h-16 flex font-IBMPlexSansSC bg-stone-200">
-	<div class="w-2/3 mx-auto flex items-center justify-between p-4 flex-wrap max-w-[1024px]">
-		<div class="flex items-center space-x-3">
-			<img src="/logo-dark.png" alt="Logo" class="h-6 mb-1">
+	<div class="w-full mx-auto flex items-center justify-between p-4 flex-wrap max-w-[1024px] gap-5">
+		<div class="flex items-center space-x-3 mr-6">
 			<span class="text-2xl font-bold">DELM</span>
+			<img src="/logo-dark.png" alt="Logo" class="h-6 mb-1">
 			<div class="w-0.5 h-5 bg-gray-900">
 			</div>
 			<button onclick={()=>switchToLanguage('en')} class="hover:underline">
@@ -29,7 +29,7 @@
 			</button>
 		</div>
 
-		<nav class="space-x-6 flex font-bold">
+		<nav class="space-x-6 flex font-bold justify-center items-center">
 			<a href="/archive" class="hover:underline">{m.Archive()}</a>
 			<a href="/search" class="hover:underline">{m.Search()}</a>
 			<a href="/tags" class="hover:underline">{m.Tags()}</a>
