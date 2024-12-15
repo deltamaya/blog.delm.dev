@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { AvailableLanguageTag } from '$lib/paraglide/runtime';
+	import { languageTag } from '$lib/paraglide/runtime';
 	import { i18n } from '$lib/i18n';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
@@ -8,8 +9,10 @@
 	function switchToLanguage(newLanguage: AvailableLanguageTag) {
 		const canonicalPath = i18n.route($page.url.pathname);
 		const localisedPath = i18n.resolveRoute(canonicalPath, newLanguage);
+		console.log(languageTag());
 		goto(localisedPath);
 	}
+
 </script>
 <header class="w-full min-h-16 flex font-IBMPlexSansSC bg-stone-200">
 	<div class="w-full mx-auto flex items-center justify-between p-4 flex-wrap max-w-[1024px] gap-5">
@@ -18,13 +21,13 @@
 			<img src="/logo-dark.png" alt="Logo" class="h-6 mb-1">
 			<div class="w-0.5 h-5 bg-gray-900">
 			</div>
-			<button onclick={()=>switchToLanguage('en')} class="hover:underline">
+			<button onclick={()=>switchToLanguage('en')} class="hover:underline" class:active={languageTag()==='en'}>
 				EN
 			</button>
-			<button onclick={()=>switchToLanguage('zh-cn')} class="hover:underline">
+			<button onclick={()=>switchToLanguage('zh-cn')} class="hover:underline" class:active={languageTag()==='zh-cn'}>
 				ZH-CN
 			</button>
-			<button onclick={()=>switchToLanguage('zh-tw')} class="hover:underline">
+			<button onclick={()=>switchToLanguage('zh-tw')} class="hover:underline" class:active={languageTag()==='zh-tw'}>
 				ZH-TW
 			</button>
 		</div>
@@ -47,3 +50,9 @@
 
 	</div>
 </header>
+
+<style>
+	.active{
+			@apply font-bold text-red-600 italic;
+	}
+</style>
