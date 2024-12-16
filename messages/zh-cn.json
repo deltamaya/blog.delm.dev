@@ -4,5 +4,10 @@
 	"Archive": "归档",
 	"Search": "搜索",
 	"Tags": "标签",
-	"Welcome": "欢迎来到我的博客！"
+	"Welcome": "欢迎来到我的博客！",
+	"Latest": "最新的",
+	"Copy": "复制",
+	"Copied": "已复制",
+	"AITranslated": "本文由AI翻译，可能存在不准确之处或与原文有差异，敬请谅解。",
+	"AuthoredBy": "作者： {authors}"
 }

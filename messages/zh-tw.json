@@ -4,5 +4,10 @@
   "Archive": "歸檔",
   "Search": "搜尋",
   "Tags": "標籤",
-  "Welcome": "歡迎來到我的部落格！"
+  "Welcome": "歡迎來到我的部落格！",
+  "Latest": "最新的",
+  "Copy": "複製",
+  "Copied": "已複製",
+  "AITranslated": "本文由AI翻譯。請注意，原文可能存在不準確或差異。",
+  "AuthoredBy": "作者： {authors}"
 }

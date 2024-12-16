@@ -2,6 +2,7 @@
   let {data}=$props()
 </script>
 
+<div class="flex flex-col">
 <h1>我的博客</h1>
 <ul>
   {#each data.posts as post}
@@ -10,3 +11,5 @@
     </li>
   {/each}
 </ul>
+</div>
+

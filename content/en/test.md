@@ -1,6 +1,9 @@
 ---
 title: This is title
 date: 2024-01-01
+authors: ['Maya','Delta']
+tags: ['test','hello','asdf','d','asdfasdfasdfasdf','eeeeeeeeeeeeeee']
+ai: True
 ---
 
 # Header1

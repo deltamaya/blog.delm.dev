@@ -64,11 +64,29 @@
 			}
 		});
 	});
+	''.toUpperCase()
 </script>
 
 <div class="flex-grow flex justify-center items-center p-4">
 	<div class="h-full w-full max-w-[48rem]">
-		<article class="prose prose-stone lg:prose-lg prose-base prose-p:!my-2 ">
+		<h1 class="text-5xl font-bold">
+			{data.metadata.title}
+		</h1>
+		<div class="text-base text-gray-500">
+			{data.metadata.date}
+			· {m.AuthoredBy(data.metadata.authors.join(', '))}
+		</div>
+		<div  class="text-lg text-red-500 font-bold flex flex-wrap">
+			{#each data.metadata.tags as tag}
+				<a href="tags/{tag.toLowerCase()}" class="mr-5 ">#{tag.toUpperCase()}</a>
+				{/each}
+		</div>
+		{#if data.metadata.ai}
+			<div class="flex flex-col bg-stone-300 rounded-xl p-5 mt-3">
+				{m.AITranslated()}
+			</div>
+			{/if}
+		<article class="prose prose-stone lg:prose-lg prose-base prose-p:!my-2 mt-10 flex-wrap">
 			{@html marked(data.content)}
 		</article>
 	</div>

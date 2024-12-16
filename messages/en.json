@@ -5,7 +5,9 @@
 	"Search": "Search",
 	"Tags": "Tags",
 	"Welcome": "Welcome to my blog!",
-	"Latest":"Latest",
-	"Copy":"Copy",
-	"Copied":"Copied"
+	"Latest": "Latest",
+	"Copy": "Copy",
+	"Copied": "Copied",
+	"AITranslated": "This article is translated by AI. Please note that there may be inaccuracies or differences from the original text.",
+	"AuthoredBy": "Authored by: {authors}"
 }
