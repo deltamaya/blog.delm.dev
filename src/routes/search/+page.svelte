@@ -1,3 +1,0 @@
-<div>
-	search page
-</div>

@@ -53,6 +53,6 @@
 
 <style>
 	.active{
-			@apply font-bold text-red-600 italic;
+			@apply font-bold text-red-600 underline;
 	}
 </style>
