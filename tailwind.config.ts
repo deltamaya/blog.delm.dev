@@ -38,11 +38,8 @@ export default {
 						},
 						blockquote:{
 							borderLeftWidth: '5px',
-							borderLeftColor: theme('colors.stone.300'),
+							borderLeftColor: theme('colors.stone.800'),
 							padding:'0.25rem 1rem',
-						},
-						'blockquote p':{
-							color:  theme('colors.stone.700'),
 						},
 						hr:{
 							height: '3px',
