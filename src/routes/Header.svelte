@@ -9,16 +9,22 @@
 	function switchToLanguage(newLanguage: AvailableLanguageTag) {
 		const canonicalPath = i18n.route($page.url.pathname);
 		const localisedPath = i18n.resolveRoute(canonicalPath, newLanguage);
-		console.log(languageTag());
 		goto(localisedPath);
 	}
 
+	function gotoHome() {
+		const localisedHome = i18n.resolveRoute('/', languageTag());
+		goto(localisedHome);
+	}
+
 </script>
-<header class="w-full min-h-16 flex font-IBMPlexSansSC bg-stone-200">
-	<div class="w-full mx-auto flex items-center justify-between p-4 flex-wrap max-w-[1024px] gap-5">
-		<div class="flex items-center space-x-3 mr-6">
-			<span class="text-2xl font-bold">DELM</span>
-			<img src="/logo-dark.png" alt="Logo" class="h-6 mb-1">
+<header class="w-full min-h-16 flex font-IBMPlexSansSC bg-stone-200 justify-center items-center">
+	<div class="w-full flex items-center justify-between p-4 flex-wrap max-w-[1024px] gap-5">
+		<div class="flex items-center space-x-3">
+			<button class="flex items-center space-x-3" onclick={()=>gotoHome()}>
+				<span class="text-2xl font-bold">DELM</span>
+				<img src="/logo-dark.png" alt="Logo" class="h-6 mb-1">
+			</button>
 			<div class="w-0.5 h-5 bg-gray-900">
 			</div>
 			<button onclick={()=>switchToLanguage('en')} class="hover:underline" class:active={languageTag()==='en'}>
@@ -52,7 +58,7 @@
 </header>
 
 <style>
-	.active{
-			@apply font-bold text-red-600 underline;
-	}
+    .active {
+        @apply font-bold text-red-600 underline;
+    }
 </style>

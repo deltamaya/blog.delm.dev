@@ -14,7 +14,7 @@ export default {
 					css: {
 						p: {
 							color: theme('colors.stone.900'),
-							lineHeight: '1.25',
+							lineHeight: '1.5',
 						},
 						li:{
 							color:  theme('colors.stone.900'),
@@ -28,6 +28,7 @@ export default {
 							}
 						},
 						code: {
+							padding: '0 !important',
 							color:  theme('colors.red.500'),
 							fontFamily:"JetBrains Mono, monospace",
 							fontWeight:theme('fontWeight.bold'),

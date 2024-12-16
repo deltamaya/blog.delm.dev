@@ -1,6 +1,6 @@
 import type { Tokens } from 'marked';
 import  { marked} from 'marked';
-export function tipBlock(quote:Tokens.Blockquote){
+function tipBlock(quote:Tokens.Blockquote){
 	const inner= marked.Parser.parse(quote.tokens)
 	const text=inner.replace('[!TIP]', '')
 	return `<div class="info-block border-l-[5px] border-green-700 px-[1rem] py-[0.25rem] my-5">
@@ -16,7 +16,7 @@ ${text}
 }
 
 
-export function noteBlock(quote:Tokens.Blockquote){
+function noteBlock(quote:Tokens.Blockquote){
 	const inner= marked.Parser.parse(quote.tokens)
 	const text=inner.replace('[!NOTE]', '')
 	return `<div class="info-block border-l-[5px] border-blue-700 px-[1rem] py-[0.25rem] my-5">
@@ -32,7 +32,7 @@ ${text}
 </div>`
 }
 
-export function importantBlock(quote:Tokens.Blockquote){
+function importantBlock(quote:Tokens.Blockquote){
 	const inner= marked.Parser.parse(quote.tokens)
 	const text=inner.replace('[!IMPORTANT]', '')
 	return `<div class="info-block border-l-[5px] border-purple-700 px-[1rem] py-[0.25rem] my-5  font-bold">
@@ -45,7 +45,7 @@ Important
 ${text}
 </div>`
 }
-export function warningBlock(quote:Tokens.Blockquote){
+function warningBlock(quote:Tokens.Blockquote){
 	const inner= marked.Parser.parse(quote.tokens)
 	const text=inner.replace('[!WARNING]', '')
 	return `<div class="info-block border-l-[5px] border-yellow-600 px-[1rem] py-[0.25rem] my-5  font-bold">
@@ -59,7 +59,7 @@ ${text}
 </div>`
 }
 
-export function criticalBlock(quote:Tokens.Blockquote){
+function criticalBlock(quote:Tokens.Blockquote){
 	const inner= marked.Parser.parse(quote.tokens)
 	const text=inner.replace('[!CRITICAL]', '')
 	return `<div class="info-block border-l-[5px] border-red-600 px-[1rem] py-[0.25rem] my-5 font-bold">
@@ -71,4 +71,24 @@ Critical
 </div>
 ${text}
 </div>`
+}
+
+
+export function blockquoteHandler(quote:Tokens.Blockquote){
+	if (quote.text.startsWith('[!TIP]')) {
+			return tipBlock(quote);
+		}
+		if (quote.text.startsWith('[!NOTE]')) {
+			return noteBlock(quote);
+		}
+		if (quote.text.startsWith('[!IMPORTANT]')) {
+			return importantBlock(quote);
+		}
+		if (quote.text.startsWith('[!WARNING]')) {
+			return warningBlock(quote);
+		}
+		if (quote.text.startsWith('[!CRITICAL]')) {
+			return criticalBlock(quote);
+		}
+		return `<blockquote>${marked.Parser.parse(quote.tokens)}</blockquote>`;
 }
