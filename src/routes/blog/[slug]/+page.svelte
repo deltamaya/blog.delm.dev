@@ -4,7 +4,7 @@
 
 	let { data } = $props();
 	import { marked } from 'marked';
-	import { cautionBlock, importantBlock, noteBlock, tipBlock, warningBlock } from '$lib/blockquote';
+	import { criticalBlock, importantBlock, noteBlock, tipBlock, warningBlock } from '$lib/blockquote';
 
 	function handleCopy(event) {
 		const button = event.target;
@@ -47,8 +47,8 @@
 		if (quote.text.startsWith('[!WARNING]')) {
 			return warningBlock(quote);
 		}
-		if (quote.text.startsWith('[!CAUTION]')) {
-			return cautionBlock(quote);
+		if (quote.text.startsWith('[!CRITICAL]')) {
+			return criticalBlock(quote);
 		}
 		return `<blockquote>${marked.Parser.parse(quote.tokens)}</blockquote>`;
 	};

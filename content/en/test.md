@@ -39,7 +39,7 @@ this is a [hyperlink](https://delm.dev)
 > [!WARNING]
 > can you do it?
 
-> [!CAUTION]
+> [!CRITICAL]
 > can you do it?
 
 ![img](https://gravatar.com/avatar/1a7b31cac6c2bbac137446c8a5da03a0?size=256)
