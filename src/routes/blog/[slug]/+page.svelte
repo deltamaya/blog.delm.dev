@@ -44,10 +44,7 @@
 		const buttons = document.querySelectorAll('.copy-button');
 		buttons.forEach(button => {
 			button.textContent = m.Copy();
-			if (!button.dataset.bound) {
-				button.addEventListener('click', handleCopy);
-				button.dataset.bound = true;
-			}
+			button.addEventListener('click', handleCopy);
 		});
 
 		return () => {
@@ -68,13 +65,14 @@
 		</div>
 		<div class="text-lg text-red-500 font-bold flex flex-wrap">
 			{#each data.metadata.tags as tag}
-				<a href="/tags/{tag.toLowerCase()}" class="mr-5 ">#{tag.toUpperCase()}</a>
+				<a href="/tags/{tag.toLowerCase()}" class="mr-5 hover:underline">#{tag.toUpperCase()}</a>
 			{/each}
 		</div>
 		{#if data.metadata.ai}
 			<AINotice/>
 		{/if}
-		<article class="prose prose-neutral lg:prose-lg prose-base mt-10">
+		<hr class="my-10 h-[2px] bg-neutral-100"/>
+		<article class="prose prose-neutral lg:prose-lg prose-base">
 			{@html data.content}
 		</article>
 		{#if showHeadingMap}

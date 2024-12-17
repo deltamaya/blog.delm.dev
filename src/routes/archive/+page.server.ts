@@ -1,12 +1,9 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
 import { languageTag } from '$lib/paraglide/runtime.js';
-import { getAllPosts } from '$lib/posts';
+import {  getAllBlogsMeta } from '$lib/blogs';
 
 export function load() {
 
-	const posts=getAllPosts();
+	const posts=getAllBlogsMeta();
 
 	const groupedPosts = new Map();
 

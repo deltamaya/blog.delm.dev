@@ -28,7 +28,7 @@
 
 					<div class="text-sm text-red-500 font-bold flex flex-wrap">
 						{#each post.tags as tag}
-							<a href="/tags/{tag.toLowerCase()}" class="mr-3">#{tag.toUpperCase()}</a>
+							<a href="/tags/{tag.toLowerCase()}" class="mr-3 hover:underline">#{tag.toUpperCase()}</a>
 						{/each}
 					</div>
 				</div>

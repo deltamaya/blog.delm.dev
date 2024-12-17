@@ -20,6 +20,7 @@ export default {
 							}
 						},
 						'pre code': {
+							backgroundColor: theme('colors.neutral.800'),
 							padding: '0px !important',
 						},
 						code: {
