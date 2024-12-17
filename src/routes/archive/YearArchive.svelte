@@ -15,6 +15,6 @@
 		</div>
 	</div>
 	{#each months as kv,index}
-		<MonthArchive month={kv[0]} posts={kv[1]}/>
+		<MonthArchive month={kv[0]} blogs={kv[1]}/>
 	{/each}
 </div>

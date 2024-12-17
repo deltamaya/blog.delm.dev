@@ -1,6 +1,8 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages.js';
+	import BlogCard from './BlogCard.svelte';
 
+	let { data } = $props();
 </script>
 
 <div class="flex-grow flex justify-center items-center py-4">
@@ -10,6 +12,11 @@
 		</div>
 		<div class="text-4xl font-bold py-6">
 			{m.Latest()}
+		</div>
+		<div class="flex flex-col">
+			{#each data.blogs as blog}
+				<BlogCard {blog} />
+			{/each}
 		</div>
 	</div>
 </div>

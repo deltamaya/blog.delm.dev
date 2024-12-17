@@ -1,8 +1,8 @@
 <script>
-	import { languageTag } from '$lib/paraglide/runtime.js';
+	import BlogCard from '../BlogCard.svelte';
 
-	let { posts, month } = $props();
-	const total = posts.length;
+	let { blogs, month } = $props();
+	const total = blogs.length;
 </script>
 
 <div class="flex flex-wrap">
@@ -15,24 +15,8 @@
 		</div>
 	</div>
 	<div class="flex flex-col">
-		{#each posts as post,index}
-			<div class="flex my-3 ml-5">
-				<div class="flex flex-col">
-
-					<a class="text-xl font-bold" href={`/blog/${post.slug}`}>
-						{post.title}
-						<div class="text-sm text-neutral-500 flex flex-wrap font-medium">
-							{post.date.toLocaleDateString(languageTag())}
-						</div>
-					</a>
-
-					<div class="text-sm text-red-500 font-bold flex flex-wrap">
-						{#each post.tags as tag}
-							<a href="/tags/{tag.toLowerCase()}" class="mr-3 hover:underline">#{tag.toUpperCase()}</a>
-						{/each}
-					</div>
-				</div>
-			</div>
+		{#each blogs as blog,index}
+			<BlogCard {blog}/>
 		{/each}
 	</div>
 

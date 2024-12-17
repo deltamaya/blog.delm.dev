@@ -5,9 +5,11 @@
 	"Search": "搜索",
 	"Tags": "标签",
 	"Welcome": "欢迎来到我的博客！",
-	"Latest": "最新的",
+	"Latest": "最新",
 	"Copy": "复制",
 	"Copied": "已复制",
 	"AITranslated": "本文已由 AI 翻译，以方便您阅读。请注意，可能存在不准确之处或与原文有差异。",
-	"AuthoredBy": "作者： {authors}"
+	"AuthoredBy": "作者： {authors}",
+	"SearchHere": "在此搜索",
+	"Blogs": "博客"
 }

@@ -19,7 +19,6 @@ export function load({ params }) {
 	renderer.code = ({ text, lang }) => {
 		const validLang = lang && hljs.getLanguage(lang);
 		const highlighted = validLang ? hljs.highlight(text, { language: lang }).value : text;
-		console.log(highlighted)
 		return `<div class="relative group">
 				<pre><code class="hljs ${lang ? `language-${lang}` : ''} !bg-neutral-800">${highlighted}</code></pre>
 				<button class="copy-button hidden absolute group-hover:block top-2 right-2 bg-neutral-500 text-white text-sm px-2 py-1 rounded">Copy</button>
