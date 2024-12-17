@@ -5,9 +5,10 @@
 
 	import Headings from '../Headings.svelte';
 	import ReturnTopButton from '../ReturnTopButton.svelte';
+	import AINotice from '../AINotice.svelte';
 
-	const ReturnButtonThreshold=300
-	const HeadingMapThreshold=1420
+	const ReturnButtonThreshold = 300;
+	const HeadingMapThreshold = 1420;
 	let showReturnButton = $state(false);
 	let showHeadingMap = $state(true);
 
@@ -30,15 +31,13 @@
 	}
 
 	function handleScroll() {
-		showReturnButton=window.scrollY>=ReturnButtonThreshold
+		showReturnButton = window.scrollY >= ReturnButtonThreshold;
 	}
 
 
-
-
 	$effect(() => {
-		handleResize()
-		handleScroll()
+		handleResize();
+		handleScroll();
 		window.addEventListener('resize', handleResize);
 		window.addEventListener('scroll', handleScroll);
 		const buttons = document.querySelectorAll('.copy-button');
@@ -58,11 +57,11 @@
 </script>
 
 <div class="flex flex-col items-center w-full">
-	<div class="h-full max-w-[48rem] p-4">
+	<div class="h-full max-w-[48rem] p-4 flex flex-col">
 		<h1 class="text-5xl font-bold">
 			{data.metadata.title}
 		</h1>
-		<div class="text-base text-gray-500">
+		<div class="text-base text-gray-500 my-1">
 			{data.metadata.date}
 			· {m.AuthoredBy({ authors: data.metadata.authors.join(', ') })}
 		</div>
@@ -72,17 +71,16 @@
 			{/each}
 		</div>
 		{#if data.metadata.ai}
-			<div class="bg-stone-300 rounded-xl p-5 mt-3">
-				{m.AITranslated()}
-			</div>
+			<AINotice/>
 		{/if}
-		<article class="prose prose-stone lg:prose-lg prose-base prose-p:!my-2 mt-10 flex-wrap">
+		<article class="prose prose-neutral lg:prose-lg prose-base mt-10">
 			{@html data.content}
 		</article>
+		{#if showHeadingMap}
+			<Headings headings={data.headings}/>
+		{/if}
 	</div>
-	{#if showHeadingMap}
-		<Headings headings={data.headings}/>
-	{/if}
+
 	{#if showReturnButton}
 		<ReturnTopButton />
 	{/if}

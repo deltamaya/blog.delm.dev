@@ -18,7 +18,7 @@
 	}
 
 </script>
-<header class="w-full min-h-16 flex font-IBMPlexSansSC bg-stone-200 justify-center items-center">
+<header class="w-full min-h-16 flex font-IBMPlexSansSC bg-neutral-50 justify-center items-center">
 	<div class="w-full flex items-center justify-between p-4 flex-wrap max-w-[1024px] gap-5">
 		<div class="flex items-center space-x-3">
 			<button class="flex items-center space-x-3" onclick={()=>gotoHome()}>

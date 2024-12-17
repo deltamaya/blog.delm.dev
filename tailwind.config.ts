@@ -7,19 +7,11 @@ export default {
 		extend: {
 			fontFamily: {
 				IBMPlexSansSC: ['IBM Plex Sans SC', 'sans-serif'],
-				JetBrainsMono: ['JetBrains Mono', 'sans-serif'],
+				JetBrainsMono: ['JetBrains Mono', 'sans-serif']
 			},
-			typography: ({theme})=>({
+			typography: ({ theme }) => ({
 				DEFAULT: {
 					css: {
-						p: {
-							color: theme('colors.stone.900'),
-							lineHeight: '1.5',
-						},
-						li:{
-							color:  theme('colors.stone.900'),
-							lineHeight: '1.25' ,
-						},
 						a: {
 							color: theme('colors.red.500'),
 							textDecoration: theme('textDecoration.underline'),
@@ -29,22 +21,28 @@ export default {
 						},
 						code: {
 							padding: '0 !important',
-							color:  theme('colors.red.500'),
-							fontFamily:"JetBrains Mono, monospace",
-							fontWeight:theme('fontWeight.bold'),
+							color: theme('colors.red.500'),
+							fontFamily: 'JetBrains Mono, monospace',
+							fontWeight: theme('fontWeight.bold'),
+							whiteSpace: 'pre-wrap' /* 确保 code 也自动换行 */,
+							wordBreak: 'break-word'
 						},
-						pre:{
-							fontWeight:theme('fontWeight.bold'),
-							fontFamily:"JetBrains Mono, monospace",
+						pre: {
+							fontWeight: theme('fontWeight.bold'),
+							fontFamily: 'JetBrains Mono, monospace',
+							whiteSpace: 'pre-wrap' /* 自动换行 */,
+							wordBreak: 'break-word' /* 单词换行 */
 						},
-						blockquote:{
+						'.info-block p': {
+							margin: '0 !important'
+						},
+						blockquote: {
 							borderLeftWidth: '5px',
-							borderLeftColor: theme('colors.stone.800'),
-							padding:'0.25rem 1rem',
+							padding: '0.25rem 1rem'
 						},
-						hr:{
+						hr: {
 							height: '3px',
-							backgroundColor: theme('colors.stone.300')
+							backgroundColor: theme('colors.neutral.200')
 						}
 					}
 				}
