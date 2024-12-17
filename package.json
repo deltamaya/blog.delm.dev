@@ -1,7 +1,7 @@
 {
 	"name": "blog-site",
 	"private": true,
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
@@ -40,6 +40,7 @@
 		"fuse.js": "^7.0.0",
 		"gray-matter": "^4.0.3",
 		"highlight.js": "^11.11.0",
+		"katex": "^0.16.15",
 		"marked": "^15.0.4"
 	}
 }

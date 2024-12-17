@@ -6,6 +6,7 @@ import hljs from 'highlight.js';
 import { blockquoteHandler } from '$lib/blockquote.js';
 import { headingHandler } from '$lib/heading.js';
 import { marked } from 'marked';
+import { katexBlockHandler, katexHandler } from '$lib/katex';
 
 export function load({ params }) {
 	const { slug } = params;
@@ -24,8 +25,10 @@ export function load({ params }) {
 				<button class="copy-button hidden absolute group-hover:block top-2 right-2 bg-neutral-500 text-white text-sm px-2 py-1 rounded">Copy</button>
 				</div>`;
 	};
-	renderer.blockquote = (quote) => blockquoteHandler(quote);
+	renderer.blockquote =blockquoteHandler;
 	renderer.heading = (heading) => headingHandler(heading, headings);
+  renderer.text = katexHandler
+
 	marked.setOptions({ renderer: renderer});
 	const innerHtml = marked(data.content);
 	return {

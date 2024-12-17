@@ -7,6 +7,7 @@
 	import ReturnTopButton from '../ReturnTopButton.svelte';
 	import AINotice from '../AINotice.svelte';
 	import { languageTag } from '$lib/paraglide/runtime';
+import "katex/dist/katex.min.css";
 
 	const ReturnButtonThreshold = 300;
 	const HeadingMapThreshold = 1420;
@@ -84,3 +85,14 @@
 		<ReturnTopButton />
 	{/if}
 </div>
+
+
+<style>
+  :global(.katex) {
+			padding: 5px;
+    font-size: 1.2em;
+  }
+  :global(.katex-display) {
+    font-size: 1.2em;
+  }
+</style>
