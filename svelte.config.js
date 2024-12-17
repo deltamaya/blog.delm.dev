@@ -1,4 +1,3 @@
-import { mdsvex } from 'mdsvex';
 import adapter from '@sveltejs/adapter-netlify';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
@@ -6,7 +5,7 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 const config = {
 	// Consult https://svelte.dev/docs/kit/integrations
 	// for more information about preprocessors
-	preprocess: [vitePreprocess(), mdsvex({ extensions: ['.md', '.svx'] })],
+	preprocess: [vitePreprocess()],
 
 	kit: {
 		// default options are shown
@@ -20,8 +19,8 @@ const config = {
 			// if `edge` is true, this option cannot be used
 			split: false
 		})
-	}
-	extensions: ['.svelte', '.svx', '.md']
+	},
+	extensions: ['.svelte']
 };
 
 export default config;
