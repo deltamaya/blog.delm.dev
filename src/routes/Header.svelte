@@ -18,12 +18,12 @@
 	}
 
 </script>
-<header class="w-full min-h-16 flex font-IBMPlexSansSC bg-neutral-50 justify-center items-center">
+<header class="w-full min-h-16 flex font-IBMPlexSansSC bg-neutral-50 justify-center items-center text-neutral-900">
 	<div class="w-full flex items-center justify-between p-4 flex-wrap max-w-[1024px] gap-5">
 		<div class="flex items-center space-x-3">
 			<button class="flex items-center space-x-3" onclick={()=>gotoHome()}>
 				<span class="text-2xl font-bold">DELM</span>
-				<img src="/logo-dark.png" alt="Logo" class="h-6 mb-1">
+				<img src="/logo-dark.png" alt="Logo" class="h-[27px] w-[50px] mb-1">
 			</button>
 			<div class="w-0.5 h-5 bg-gray-900">
 			</div>

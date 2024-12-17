@@ -19,19 +19,24 @@ export default {
 								color: theme('colors.red.700')
 							}
 						},
+						'pre code': {
+							padding: '0px !important',
+						},
 						code: {
-							padding: '0 !important',
+							padding: '3px !important',
+							backgroundColor: theme('colors.neutral.100'),
+							borderRadius: '3px',
 							color: theme('colors.red.500'),
 							fontFamily: 'JetBrains Mono, monospace',
 							fontWeight: theme('fontWeight.bold'),
-							whiteSpace: 'pre-wrap' /* 确保 code 也自动换行 */,
+							whiteSpace: 'pre-wrap',
 							wordBreak: 'break-word'
 						},
 						pre: {
 							fontWeight: theme('fontWeight.bold'),
 							fontFamily: 'JetBrains Mono, monospace',
-							whiteSpace: 'pre-wrap' /* 自动换行 */,
-							wordBreak: 'break-word' /* 单词换行 */
+							whiteSpace: 'pre-wrap',
+							wordBreak: 'break-word'
 						},
 						'.info-block p': {
 							margin: '0 !important'
