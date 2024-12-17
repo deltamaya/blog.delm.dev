@@ -6,6 +6,7 @@
 	import Headings from '../Headings.svelte';
 	import ReturnTopButton from '../ReturnTopButton.svelte';
 	import AINotice from '../AINotice.svelte';
+	import { languageTag } from '$lib/paraglide/runtime';
 
 	const ReturnButtonThreshold = 300;
 	const HeadingMapThreshold = 1420;
@@ -62,7 +63,7 @@
 			{data.metadata.title}
 		</h1>
 		<div class="text-base text-gray-500 my-1">
-			{data.metadata.date}
+			{data.metadata.date.toLocaleDateString(languageTag())}
 			· {m.AuthoredBy({ authors: data.metadata.authors.join(', ') })}
 		</div>
 		<div class="text-lg text-red-500 font-bold flex flex-wrap">

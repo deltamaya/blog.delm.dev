@@ -1,4 +1,6 @@
 <script>
+	import { languageTag } from '$lib/paraglide/runtime.js';
+
 	let { posts, month } = $props();
 	const total = posts.length;
 </script>
@@ -23,6 +25,9 @@
 						{#each post.tags as tag}
 							<a href="/tags/{tag.toLowerCase()}" class="mr-3">#{tag.toUpperCase()}</a>
 						{/each}
+					</div>
+					<div class="text-sm text-neutral-500 flex flex-wrap">
+						{post.date.toLocaleDateString(languageTag())}
 					</div>
 				</div>
 			</div>
