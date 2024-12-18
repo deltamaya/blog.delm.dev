@@ -7,12 +7,8 @@ ai: false
 ---
 # RGB Color Model
 The RGB (Red, Green, Blue) color model is based on the **additive color theory**, where colors are created by combining different intensities of **Red, Green, and Blue** light.
-<div style={{display:'flex',alignItems:'center',flexWrap:'wrap'}}>
-    <img src={'https://upload.wikimedia.org/wikipedia/commons/9/91/Venn_diagram_rgb.svg'} style={{marginRight: '20px',width:'10rem',height:'10rem',}} alt="rgb"/>
-    <p style={{flex:'1 1 0',minWidth:'200px'}}>
-        RGB is a **device-dependent** color model: different devices detect or reproduce a given RGB value differently, since the color elements and their response to the individual red, green, and blue levels vary from manufacturer to manufacturer, or even in the same device over time. Thus an RGB value **does not** define the same color across devices without some kind color management.
-    </p>
-</div>
+
+RGB is a **device-dependent** color model: different devices detect or reproduce a given RGB value differently, since the color elements and their response to the individual red, green, and blue levels vary from manufacturer to manufacturer, or even in the same device over time. Thus an RGB value **does not** define the same color across devices without some kind color management.
 
 However, there is another color model derived from RGB named **RGBA** color model.
 

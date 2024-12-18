@@ -7,12 +7,8 @@ ai: true
 ---
 # RGB颜色模型
 RGB（红、绿、蓝）颜色模型基于**加法颜色理论**，颜色通过组合不同强度的**红、绿和蓝**光来产生。
-<div style={{display:'flex',alignItems:'center',flexWrap:'wrap'}}>
-    <img src={'https://upload.wikimedia.org/wikipedia/commons/9/91/Venn_diagram_rgb.svg'} style={{marginRight: '20px',width:'10rem',height:'10rem',}} alt="rgb"/>
-    <p style={{flex:'1 1 0',minWidth:'200px'}}>
-        RGB是一个**设备相关**的颜色模型：不同的设备对给定的RGB值有不同的检测或重现效果，因为色彩元素及其对个别红、绿和蓝色级别的响应因制造商而异，甚至在同一设备上随着时间的推移而变化。因此，RGB值**并不**在不同设备间定义同一种颜色，而需要某种颜色管理。
-    </p>
-</div>
+
+RGB是一个**设备相关**的颜色模型：不同的设备对给定的RGB值有不同的检测或重现效果，因为色彩元素及其对个别红、绿和蓝色级别的响应因制造商而异，甚至在同一设备上随着时间的推移而变化。因此，RGB值**并不**在不同设备间定义同一种颜色，而需要某种颜色管理。
 
 然而，还有一个基于RGB派生的颜色模型，称为**RGBA**颜色模型。
 
