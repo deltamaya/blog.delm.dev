@@ -66,6 +66,7 @@ Based on the rules, let’s create a payoff matrix:
 |---------------|------------|------------|
 | **A Heads**   | (-1, +1)   | (+1, -1)   |
 | **A Tails**   | (+1, -1)   | (-1, +1)   |
+
 We find that in this game, there is no pair of strategies where $S$ and $T$ are mutual best responses, meaning no Nash Equilibrium exists.
 At this point, we need to introduce a bit of luck, which is where **mixed strategies** come into play. This involves predicting the probability of the opponent choosing different strategies to formulate your own strategy.
 
