@@ -13,42 +13,12 @@ A rational individual is one who chooses the option that maximizes their own pay
 
 ## Introduction
 Let’s introduce Game Theory through a well-known and simple example:
-<table>
-    <tbody>
-    <tr>
-        <th>
-        </th>
-        <th>
-            B Silent (Cooperate)
-        </th>
-        <th>
-            B Confesses (Betray)
-        </th>
-    </tr>
-    <tr>
-        <th>
-            A Silent (Cooperate)
-        </th>
-        <td>
-            Both serve 6 months
-        </td>
-        <td>
-            A serves 10 years; B is released immediately
-        </td>
-    </tr>
-    <tr>
-        <th>
-            A Confesses (Betray)
-        </th>
-        <td>
-            A is released immediately; B serves 10 years
-        </td>
-        <td>
-            Both serve 5 years
-        </td>
-    </tr>
-    </tbody>
-</table>
+
+|                          | B Silent (Cooperate)                         | B Confesses (Betray)                         |
+|--------------------------|----------------------------------------------|----------------------------------------------|
+| **A Silent (Cooperate)** | Both serve 6 months                          | A serves 10 years; B is released immediately |
+| **A Confesses (Betray)** | A is released immediately; B serves 10 years | Both serve 5 years                           |
+
 The police have arrested two suspects, A and B, but lack sufficient evidence to convict them. Therefore, they separate the suspects, meeting with each individually, offering both the same options:
 
 - If one confesses and testifies against the other (this action is referred to as "betraying" the other) while the other remains silent, the confessor will be released immediately, and the silent one will serve 10 years.
@@ -57,42 +27,14 @@ The police have arrested two suspects, A and B, but lack sufficient evidence to 
 
 If you were A or B, how would you choose?
 To analyze this problem rigorously, let’s enumerate the different choices and then create a **Payoff Matrix** based on the outcomes:
-<table>
-    <tbody>
-    <tr>
-        <th>
-        </th>
-        <th>
-            B Silent (Cooperate)
-        </th>
-        <th>
-            B Confesses (Betray)
-        </th>
-    </tr>
-    <tr>
-        <th>
-            A Silent (Cooperate)
-        </th>
-        <td>
-            (-0.5, -0.5)
-        </td>
-        <td>
-            (-10, 0)
-        </td>
-    </tr>
-    <tr>
-        <th>
-            A Confesses (Betray)
-        </th>
-        <td>
-            (0, -10)
-        </td>
-        <td>
-            (-5, -5)
-        </td>
-    </tr>
-    </tbody>
-</table>
+
+|                          | B Silent (Cooperate) | B Confesses (Betray) |
+|--------------------------|----------------------|----------------------|
+| **A Silent (Cooperate)** | (-0.5, -0.5)         | (-10, 0)             |
+| **A Confesses (Betray)** | (0, -10)             | (-5, -5)             |
+
+
+
 This is the payoff matrix, which provides an intuitive representation of the game's outcomes. It is an important tool for analyzing the gaming process.
 
 By examining the matrix, we find that for A, when he chooses to confess, he consistently incurs a smaller cost than if he chose to remain silent, regardless of B's choice (-0.5 < 0, -10 < -5).
@@ -119,42 +61,11 @@ When multiple Nash Equilibria exist, further predictions based on the game model
 What if there’s a game in which no Nash Equilibrium, as mentioned earlier, exists? For instance, if we play a game where each person shows a coin each time, and if the faces are the same, I gain your coin, and if not, you gain mine.
 
 Based on the rules, let’s create a payoff matrix:
-<table>
-    <tbody>
-    <tr>
-        <th>
-        </th>
-        <th>
-            B Heads
-        </th>
-        <th>
-            B Tails
-        </th>
-    </tr>
-    <tr>
-        <th>
-            A Heads
-        </th>
-        <td>
-            (-1, +1)
-        </td>
-        <td>
-            (+1, -1)
-        </td>
-    </tr>
-    <tr>
-        <th>
-            A Tails
-        </th>
-        <td>
-            (+1, -1)
-        </td>
-        <td>
-            (-1, +1)
-        </td>
-    </tr>
-    </tbody>
-</table>
+
+|               | B Heads    | B Tails    |
+|---------------|------------|------------|
+| **A Heads**   | (-1, +1)   | (+1, -1)   |
+| **A Tails**   | (+1, -1)   | (-1, +1)   |
 We find that in this game, there is no pair of strategies where $S$ and $T$ are mutual best responses, meaning no Nash Equilibrium exists.
 At this point, we need to introduce a bit of luck, which is where **mixed strategies** come into play. This involves predicting the probability of the opponent choosing different strategies to formulate your own strategy.
 
