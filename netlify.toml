@@ -1,0 +1,3 @@
+[build]
+	command = "npm install &&npm i -D @sveltejs/adapter-netlify&& npm run build"
+	publish = "build"
