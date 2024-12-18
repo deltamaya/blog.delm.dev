@@ -30,6 +30,7 @@ function loadAllBlogs() {
 			tags: data.tags
 		};
 	});
+blogs.sort((a, b) => b.date.getTime() - a.date.getTime());
 	blogs.forEach((blog) => {
 		blog.tags.forEach((tag) => {
 			if (!tagToBlogs.has(tag)) {
