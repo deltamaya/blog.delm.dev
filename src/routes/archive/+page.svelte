@@ -1,6 +1,7 @@
 <script>
 	import * as m from '$lib/paraglide/messages.js';
 	import YearArchive from './YearArchive.svelte';
+	import BlogCard from '../BlogCard.svelte';
 
 	let { data } = $props();
 </script>
@@ -16,6 +17,15 @@
 				{#if index !== data.groupedPosts.size - 1}
 					<hr />
 				{/if}
+			{/each}
+		</div>
+		<hr/>
+		<div>
+			divide
+		</div>
+				<div class="flex flex-col">
+			{#each data.groupedPosts as kv,index}
+				{kv[0]}
 			{/each}
 		</div>
 	</div>

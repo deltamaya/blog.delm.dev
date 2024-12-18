@@ -5,8 +5,8 @@
 	let { data } = $props();
 </script>
 
-<div class="flex-grow flex justify-center items-center p-4">
-	<div class="h-full w-full max-w-[48rem]">
+<div class="flex-grow flex flex-col justify-center items-center">
+	<div class="h-full w-full max-w-[48rem] p-4">
 		<div class="text-2xl font-bold py-6">
 			{m.Welcome()}
 		</div>

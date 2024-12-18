@@ -5,7 +5,6 @@
 
 <div class="flex my-3 ml-5">
 	<div class="flex flex-col">
-
 		<a class="text-xl font-bold" href={`/blog/${blog.slug}`}>
 			{blog.title}
 			<div class="text-sm text-neutral-500 flex flex-wrap font-medium">
