@@ -19,15 +19,6 @@
 				{/if}
 			{/each}
 		</div>
-		<hr/>
-		<div>
-			divide
-		</div>
-				<div class="flex flex-col">
-			{#each data.groupedPosts as kv,index}
-				{kv[0]}
-			{/each}
-		</div>
 	</div>
 </div>
 

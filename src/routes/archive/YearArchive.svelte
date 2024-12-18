@@ -2,7 +2,7 @@
 	import MonthArchive from './MonthArchive.svelte';
 
 	let { months, year }:{months:Map<string,Array<any>>,year:number}= $props();
-	const total= months.entries().reduce((sum,entry)=>sum+entry[1].length,0)
+	const total= [...months.entries()].reduce((sum,entry)=>sum+entry[1].length,0)
 </script>
 
 <div class="flex flex-col">
