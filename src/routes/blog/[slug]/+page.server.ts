@@ -6,7 +6,7 @@ import hljs from 'highlight.js';
 import { blockquoteHandler } from '$lib/blockquote.js';
 import { headingHandler } from '$lib/heading.js';
 import { marked } from 'marked';
-import { katexBlockHandler, katexHandler } from '$lib/katex';
+import { katexHandler } from '$lib/katex';
 
 export function load({ params }) {
 	const { slug } = params;
