@@ -40,7 +40,7 @@ function blockKatex(options: KatexOptions): marked.TokenizerAndRendererExtension
 			return src.indexOf('$$');
 		},
 		tokenizer(src: string, _tokens) {
-			const match = src.match(/^\$\$+\n([^$]+?)\n\$\$/);
+			const match = src.match(/^\$\$([^$]+?)\$\$/);
 			if (match) {
 				return {
 					type: 'blockKatex',
