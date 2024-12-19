@@ -51,7 +51,7 @@ function blockKatex(options: KatexOptions): marked.TokenizerAndRendererExtension
 		},
 		renderer(token) {
 			options.displayMode = true;
-			return `${katex.renderToString(token.text, options)}`;
+			return katex.renderToString(token.text, options);
 		}
 	};
 }
