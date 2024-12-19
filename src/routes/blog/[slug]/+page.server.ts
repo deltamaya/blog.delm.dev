@@ -6,9 +6,9 @@ import hljs from 'highlight.js';
 import { blockquoteHandler } from '$lib/blockquote.js';
 import { headingHandler } from '$lib/heading.js';
 import { marked } from 'marked';
-import { katexHandler } from '$lib/katex';
+import KatexExtension from '$lib/katex_extension'
 
-export function load({ params }) {
+export async function load({ params }) {
 	const { slug } = params;
 	const filePath = path.resolve(`content/${languageTag()}/${slug}.md`);
 	const content = fs.readFileSync(filePath, 'utf-8');
@@ -16,7 +16,7 @@ export function load({ params }) {
 	const headings: { depth: number; text: string; id: string }[] = [];
 
 	const renderer = new marked.Renderer();
-
+	marked.use(KatexExtension({}))
 	renderer.code = ({ text, lang }) => {
 		const validLang = lang && hljs.getLanguage(lang);
 		const highlighted = validLang ? hljs.highlight(text, { language: lang }).value : text;
@@ -27,10 +27,9 @@ export function load({ params }) {
 	};
 	renderer.blockquote =blockquoteHandler;
 	renderer.heading = (heading) => headingHandler(heading, headings);
-  renderer.text = katexHandler
-
 	marked.setOptions({ renderer: renderer});
 	const innerHtml = marked(data.content);
+
 	return {
 		content: innerHtml,
 		metadata: data.data,

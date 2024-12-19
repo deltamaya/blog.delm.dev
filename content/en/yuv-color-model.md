@@ -71,7 +71,10 @@ Among them, **taking the average** is more reliable, and FFmpeg's code also util
 
 ## Conversion Between RGB and YUV
 
-The conversion between the RGB Color Model and the YUV Color Model is feasible, governed by the formulas found in the **BT.2020 Standard—Ultra High Definition Television (UHDTV)** standard:
+
+The conversion between the RGB Color Model and the YUV Color Model is feasible, governed by the formulas found in the
+**BT.2020 Standard—Ultra High Definition Television (UHDTV)** standard:
+
 $$
 \begin{bmatrix}
 R \\
@@ -92,7 +95,7 @@ C_R
 $$
 ## Hands-on Practice
 I will first use the following commands to convert the same image into YUV444, YUV422, and YUV420 formats:
-```
+```bash
 ffmpeg -i .\275386.jpg -s 3200*1800 -pix_fmt yuv444p out444.yuv
 ffmpeg -i .\275386.jpg -s 3200*1800 -pix_fmt yuv422p out422.yuv
 ffmpeg -i .\275386.jpg -s 3200*1800 -pix_fmt yuv420p out420.yuv
@@ -118,4 +121,8 @@ Since most video encoding utilizes YUV420, when we refer to video resolution, we
 
 Files in YUV format can be more accurately described as raw data files compared to BMP files because they do not even store the image's width and height, faithfully recording only the pixel information. Therefore, if you do not know a YUV image's width, height, and sampling format, you cannot properly open the image.
 
-Thus, aside from the raw pixel data, a YUV image file contains no additional information. Since 4:4:4 uses the same structure as RGB24, with each pixel occupying 3 bytes, for an image with dimensions $3200*1800$, the size of this YUV image is calculated as follows: $$size=height*width*3$$ Therefore, the `out444.yuv` image has a total size of $3200*1800*3=16875Kb~=16.47Mb$.
+Thus, aside from the raw pixel data, a YUV image file contains no additional information. Since 4:4:4 uses the same structure as RGB24, with each pixel occupying 3 bytes, for an image with dimensions $3200*1800$, the size of this YUV image is calculated as follows: 
+$$
+size=height*width*3
+$$
+Therefore, the `out444.yuv` image has a total size of $3200*1800*3=16875Kb~=16.47Mb$.
