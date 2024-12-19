@@ -1,9 +1,8 @@
 import { languageTag } from '$lib/paraglide/runtime.js';
-import {  getAllBlogsMeta } from '$lib/blogs';
+import { getAllBlogsMeta } from '$lib/blogs';
 
 export function load() {
-
-	const posts=getAllBlogsMeta();
+	const posts = getAllBlogsMeta();
 
 	const groupedPosts = new Map();
 
@@ -24,5 +23,5 @@ export function load() {
 		monthsMap.get(month).push(post);
 	});
 
-	return {groupedPosts}
+	return { groupedPosts };
 }

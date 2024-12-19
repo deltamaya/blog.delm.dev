@@ -1,7 +1,7 @@
 ---
 title: ArcVP DevLog#2
 date: 2024-09-27
-tags: ['graphics','devlog','opengl','ffmpeg','media-processing','arcvp']
+tags: ['graphics', 'devlog', 'opengl', 'ffmpeg', 'media-processing', 'arcvp']
 authors: ['Maya']
 ai: true
 ---
@@ -12,8 +12,7 @@ ai: true
 在這個階段，播放器已經可以處理視頻的暫停和調整大小（儘管調整大小可能仍需要一些改進）。
 
 這裡是我遇到的一個視頻調整大小的問題。
-![不正確的視頻調整大小](
-/devlog/incorrect-resize.png)
+![不正確的視頻調整大小](/devlog/incorrect-resize.png)
 
 此外，我已經從使用 `GLFW` 切換為 `SDL2` 來管理介面。
 這個變化是必要的，因為 Apple 已經不再支持某些 OpenGL 函數，迫使用戶
@@ -33,18 +32,19 @@ ai: true
 ### PTS（顯示時間戳）
 
 PTS 表示這一幀應該顯示的時間戳。
-需要注意的是，PTS 和 DTS 的時間單位 **不是** 
+需要注意的是，PTS 和 DTS 的時間單位 **不是**
 現實世界的秒或毫秒。相反，它使用一種叫做
 `TimeScale`，也就是 `Tick`，這在不同的視頻中可以有所不同。
 
 不過，我們可以使用以下公式始終獲得一個 tick 的長度：
 
- $\frac{1}{timebase}$。
+$\frac{1}{timebase}$。
 
 這裡，`timebase` 是一個 `AVRational` 對象，定義了每秒有多少個 ticks。
 這讓我們能夠確定視頻的 `TimeScale`。`timebase` 可以從 `AVStream` 對象中獲得。
 
 ### DTS（解碼時間戳）
+
 DTS 表示幀被解碼的時間戳。
 
 ## 取樣和音頻播放
@@ -106,6 +106,7 @@ void audioCallback(void *userdata, Uint8 *stream, int len) {
 # 杂项
 
 ## 錯誤
+
 此時，程序感覺像是一個巨大的錯誤。當它按預期工作時，效果非常好，但功能仍然遠未完美。
 
 此外，還有一個內存泄漏問題，每秒約 0.4MB 的內存泄漏。我懷疑可能是我錯過了未釋放某些數據包或幀，但我仍在調查中……

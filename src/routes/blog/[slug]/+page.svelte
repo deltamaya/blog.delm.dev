@@ -7,7 +7,7 @@
 	import ReturnTopButton from '../ReturnTopButton.svelte';
 	import AINotice from '../AINotice.svelte';
 	import { languageTag } from '$lib/paraglide/runtime';
-import "katex/dist/katex.min.css";
+	import 'katex/dist/katex.min.css';
 
 	const ReturnButtonThreshold = 300;
 	const HeadingMapThreshold = 1420;
@@ -36,14 +36,13 @@ import "katex/dist/katex.min.css";
 		showReturnButton = window.scrollY >= ReturnButtonThreshold;
 	}
 
-
 	$effect(() => {
 		handleResize();
 		handleScroll();
 		window.addEventListener('resize', handleResize);
 		window.addEventListener('scroll', handleScroll);
 		const buttons = document.querySelectorAll('.copy-button');
-		buttons.forEach(button => {
+		buttons.forEach((button) => {
 			button.textContent = m.Copy();
 			button.addEventListener('click', handleCopy);
 		});
@@ -55,29 +54,29 @@ import "katex/dist/katex.min.css";
 	});
 </script>
 
-<div class="flex flex-col items-center w-full">
-	<div class="h-full max-w-[48rem] p-4 flex flex-col">
+<div class="flex w-full flex-col items-center">
+	<div class="flex h-full max-w-[48rem] flex-col p-4">
 		<h1 class="text-5xl font-bold">
 			{data.metadata.title}
 		</h1>
-		<div class="text-base text-gray-500 my-1">
+		<div class="my-1 text-base text-gray-500">
 			{data.metadata.date.toLocaleDateString(languageTag())}
 			· {m.AuthoredBy({ authors: data.metadata.authors.join(', ') })}
 		</div>
-		<div class="text-lg text-red-500 font-bold flex flex-wrap">
+		<div class="flex flex-wrap text-lg font-bold text-red-500">
 			{#each data.metadata.tags as tag}
 				<a href="/tags/{tag.toLowerCase()}" class="mr-5 hover:underline">#{tag.toUpperCase()}</a>
 			{/each}
 		</div>
 		{#if data.metadata.ai}
-			<AINotice/>
+			<AINotice />
 		{/if}
-		<hr class="my-10 h-[2px] bg-neutral-100"/>
-		<article class="prose prose-neutral lg:prose-lg prose-base">
+		<hr class="my-10 h-[2px] bg-neutral-100" />
+		<article class="prose prose-base prose-neutral lg:prose-lg">
 			{@html data.content}
 		</article>
 		{#if showHeadingMap}
-			<Headings headings={data.headings}/>
+			<Headings headings={data.headings} />
 		{/if}
 	</div>
 
@@ -86,13 +85,12 @@ import "katex/dist/katex.min.css";
 	{/if}
 </div>
 
-
 <style>
-  :global(.katex) {
-			padding: 5px;
-    font-size: 1.2em;
-  }
-  :global(.katex-display) {
-    font-size: 1.2em;
-  }
+	:global(.katex) {
+		padding: 5px;
+		font-size: 1.2em;
+	}
+	:global(.katex-display) {
+		font-size: 1.2em;
+	}
 </style>

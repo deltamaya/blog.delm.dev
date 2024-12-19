@@ -1,7 +1,7 @@
 ---
 title: ArcVP DevLog#2
 date: 2024-09-27
-tags: ['graphics','devlog','opengl','ffmpeg','media-processing','arcvp']
+tags: ['graphics', 'devlog', 'opengl', 'ffmpeg', 'media-processing', 'arcvp']
 authors: ['Maya']
 ai: true
 ---
@@ -12,8 +12,7 @@ ai: true
 在这个阶段，播放器现在可以处理视频的暂停和调整大小（尽管调整大小可能仍需要一些工作）。
 
 这是我遇到的视频调整大小问题。
-![视频调整大小不正确](
-/devlog/incorrect-resize.png)
+![视频调整大小不正确](/devlog/incorrect-resize.png)
 
 此外，我已将界面管理从 `GLFW` 切换到 `SDL2`。
 这个变化是必要的，因为苹果已经弃用了某些 OpenGL 函数，迫使用户
@@ -38,17 +37,18 @@ PTS 表示这帧应该显示的时间戳。
 
 但是我们总是可以使用以下公式得到一个 Tick 的长度：
 
- $\frac{1}{timebase}$。
+$\frac{1}{timebase}$。
 
 在这里，`timebase` 是一个 `AVRational` 对象，用于定义一秒钟内有多少个 Tick。
 这使我们能够确定视频的 `TimeScale`。`timebase` 可以从 `AVStream` 对象中获得。
 
 ### DTS（解码时间戳）
+
 DTS 表示帧被解码时的时间戳。
 
 ## 采样和音频播放
 
-与视频一样，媒体中的音频也被编码。通常， 
+与视频一样，媒体中的音频也被编码。通常，
 它使用 `AAC` 编码器进行压缩，这可以将音频文件
 大小减少到 10 倍。
 
@@ -105,6 +105,7 @@ void audioCallback(void *userdata, Uint8 *stream, int len) {
 # 其他
 
 ## Bugs
+
 在这一点上，程序感觉就像一个巨大的漏洞。当它按预期工作时，真的很酷，但功能仍然远非完美。
 
 此外，还有一个内存泄漏问题，每秒大约泄漏 0.4MB 的内存。我怀疑我可能遗漏了一些未释放的包或帧，但我还在调查中……

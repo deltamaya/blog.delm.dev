@@ -6,7 +6,7 @@ import hljs from 'highlight.js';
 import { blockquoteHandler } from '$lib/blockquote.js';
 import { headingHandler } from '$lib/heading.js';
 import { marked } from 'marked';
-import KatexExtension from '$lib/katex_extension'
+import KatexExtension from '$lib/katex_extension';
 
 export async function load({ params }) {
 	const { slug } = params;
@@ -16,7 +16,7 @@ export async function load({ params }) {
 	const headings: { depth: number; text: string; id: string }[] = [];
 
 	const renderer = new marked.Renderer();
-	marked.use(KatexExtension({}))
+	marked.use(KatexExtension({}));
 	renderer.code = ({ text, lang }) => {
 		const validLang = lang && hljs.getLanguage(lang);
 		const highlighted = validLang ? hljs.highlight(text, { language: lang }).value : text;
@@ -25,9 +25,9 @@ export async function load({ params }) {
 				<button class="copy-button hidden absolute group-hover:block top-2 right-2 bg-neutral-500 text-white text-sm px-2 py-1 rounded">Copy</button>
 				</div>`;
 	};
-	renderer.blockquote =blockquoteHandler;
+	renderer.blockquote = blockquoteHandler;
 	renderer.heading = (heading) => headingHandler(heading, headings);
-	marked.setOptions({ renderer: renderer});
+	marked.setOptions({ renderer: renderer });
 	const innerHtml = marked(data.content);
 
 	return {

@@ -1,10 +1,11 @@
 ---
 title: ArcVP DevLog#3
 date: 2024-10-08
-tags: ['graphics','devlog','opengl','ffmpeg','media-processing','arcvp']
+tags: ['graphics', 'devlog', 'opengl', 'ffmpeg', 'media-processing', 'arcvp']
 authors: ['Maya']
 ai: true
 ---
+
 # 进展
 
 在休假一周后，我重新开始了这个项目的工作。然而，我意识到使用 `FFmpeg` 构建一个完整的视频编辑器比我最初预想的要复杂得多。鉴于这些挑战，我决定简化目标，专注于创建一个视频播放器，而不是视频编辑器。
@@ -24,7 +25,7 @@ FFmpeg 提供了一个非常方便的 API，叫做 `av_seek_frame`，它允许�
 我遇到的第一个问题与跳帧标志有关。在调用 `av_seek_frame` 后，如果没有提供标志（或使用空标志）并尝试向前跳帧时，什么都不会发生。另一方面，如果你提供 `AVSEEK_BACKWARD` 标志，它将跳转到指定时间之前的最近 **关键帧**，也就是说，跳帧将稍微早于目标位置。使用 `AVSEEK_ANY` 可以跳到准确的位置，但这会引入一些复杂性。为了简化问题，我决定暂时只使用关键帧跳转。
 
 # SDL + ImGui
+
 我最初尝试了几种将 Dear ImGui 与 SDL 集成的方法，但在将 ImGui 窗口渲染到视频纹理之上时遇到了一些问题。在网上查找解决方案时，我发现了一个非常适合我需求的小型库：[imgui_sdl](https://github.com/Tyyppi77/imgui_sdl)。通过这个库，我成功实现了一个基本的视频播放控制面板。不幸的是，仍然有一些错误需要解决。
 
-![demo](
-/devlog/devlog3-demostrate.png)
+![demo](/devlog/devlog3-demostrate.png)

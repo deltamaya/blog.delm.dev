@@ -7,18 +7,21 @@
 	let { children } = $props();
 </script>
 
-
 <ParaglideJS {i18n}>
-	<Header/>
-	<div class="font-IBMPlexSansSC min-h-[calc(100vh-6.5rem)] w-full bg-white text-neutral-900">
+	<Header />
+	<div class="min-h-[calc(100vh-6.5rem)] w-full bg-white font-IBMPlexSansSC text-neutral-900">
 		{@render children()}
 	</div>
 </ParaglideJS>
 
-<footer class="text-neutral-500 py-4 flex justify-center items-center font-inter h-10 z-40 font-IBMPlexSansSC bg-white">
-	<div class="text-sm text-center flex flex-wrap justify-center items-center z-40">
+<footer
+	class="font-inter z-40 flex h-10 items-center justify-center bg-white py-4 font-IBMPlexSansSC text-neutral-500"
+>
+	<div class="z-40 flex flex-wrap items-center justify-center text-center text-sm">
 		<span class="inline-block">©&nbsp;</span>
-		<span>2024 <a href="https://www.delm.dev" class="hover:underline">Maya</a>. All works <a
-			href="https://www.gnu.org/copyleft/" class="hover:underline">Copyleft</a>.</span>
+		<span
+			>2024 <a href="https://www.delm.dev" class="hover:underline">Maya</a>. All works
+			<a href="https://www.gnu.org/copyleft/" class="hover:underline">Copyleft</a>.</span
+		>
 	</div>
 </footer>

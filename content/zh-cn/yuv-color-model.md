@@ -1,7 +1,7 @@
 ---
 title: The YUV Color Model
 date: 2024-09-21
-tags: ['graphics','media-processing']
+tags: ['graphics', 'media-processing']
 authors: ['Maya']
 ai: false
 ---
@@ -16,15 +16,16 @@ ai: false
 
 由于人眼对**色度变化没有对亮度变化敏感**，在图像质量损失忽略不计的前提下，可以降低Cb、Cr通道的采样率，从而有效压缩Cb、Cr通道的数据量，使图像数据占用较少的空间。
 常见的YCbCr采样频率格式包括
+
 - 4: 4: 0，平均每像素3字节
 - 4: 2: 2，平均每像素2字节
 - 4: 2: 0，平均每像素1.5字节
-![yuv-intro](/media-processing/yuv-intro.png)
+  ![yuv-intro](/media-processing/yuv-intro.png)
+
 ### YUV444
 
 YUV4:4:4在存储格式上和RGB图像的存储方法一致，Y、U、V三个分量连续存放，如下图所示。
 ![yuv-layout](/media-processing/yuv-layout.png)
-
 
 ---
 
@@ -44,7 +45,6 @@ yuv 图片的像素存储顺序 是从 左上角 到 右下角的。所以如果
 
 ---
 
-
 YUV 转 RGB 的时候，肯定需要 知道 Y ，U 跟 V 的值，现在 UV 少了一半，怎么分？
 
 是这样分的，第一个像素跟第二个像素 共享一个UV。这里要提及一下 422 格式里面的 U 值是新值，是由第一个像素跟第二个像素的 U 值加起来除以 2 得到的，所以 422 格式的 UV 值 其实是平均值。
@@ -58,7 +58,9 @@ YUV 转 RGB 的时候，肯定需要 知道 Y ，U 跟 V 的值，现在 UV 少�
 上图中的空白格代表不占空间，画出来只是为了方便理解，图中的存储顺序不是 planar 格式，也是为了方便理解。
 
 大家可以数一下 上面 两张图片的格子（不包含空格子），会发现 YUV422 确实 比 YUV444 少了 三分之一 的格子。
+
 ### YUV420
+
 数据量最少的 YUV420 格式，这个格式也是应用最广泛的的，视频会议，数字电视，DVD，都用的 YUV420 格式。请看下图：
 
 ![](https://ffmpeg.xianwaizhiyin.net/base-knowledge/raw-yuv-data/raw-yuv-data-1-10.png)
@@ -76,7 +78,6 @@ YUV 转 RGB 的时候，肯定需要 知道 Y ，U 跟 V 的值，现在 UV 少�
 3，直接丢弃 第二，第三，第四个像素的 U值，取 第一个 像素的 U 值。V值同理。
 
 其中**取平均值**比较靠谱，FFmpeg 的代码也有这个算法，具体是求平均还是加权
-
 
 ## RGB与YUV的转化
 
@@ -100,8 +101,11 @@ C_B \\
 C_R
 \end{bmatrix}
 $$
+
 ## 动手操作
+
 首先我先通过如下的命令来将同一张照片分别转码为YUV444,YUV422和YUV420格式
+
 ```
 ffmpeg -i .\275386.jpg -s 3200*1800 -pix_fmt yuv444p out444.yuv
 ffmpeg -i .\275386.jpg -s 3200*1800 -pix_fmt yuv422p out422.yuv
@@ -110,17 +114,24 @@ ffmpeg -i .\275386.jpg -s 3200*1800 -pix_fmt yuv420p out420.yuv
 
 将一张3200\*1800的jpg图片转为了以下的三张yuv图片，让我们来对比一下
 首先是大小：
+
 ### YUV422 文件信息
+
 ![yuv422-info](/media-processing/yuv422-info.png)
+
 ### YUV444 文件信息
 
 ![yuv444-info](/media-processing/yuv444-info.png)
 
 显然，420比444编码小了一半
 然后比较一下清晰度：
+
 ### YUV422 图片
+
 ![yuv422-demo](/media-processing/yuv422-demo.png)
+
 ### YUV444 图片
+
 ![yuv444-demo](/media-processing/yuv444-demo.png)
 
 通过观察，我们发现这两张照片并没有明显的差距，换句话说，就是YUV420 比 YUV444 少了一半数据，视觉体验几乎没有变化。
@@ -136,4 +147,3 @@ size=height∗width∗3
 $$
 
 所以这个 `out444.yuv` 图片一共是 $3200*1800*3=16875Kb~=16.47Mb$ 大小。
-

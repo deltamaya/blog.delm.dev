@@ -1,10 +1,9 @@
-
-import {getTaggedBlogsMeta} from '$lib/blogs'
+import { getTaggedBlogsMeta } from '$lib/blogs';
 
 export function load({ params }) {
 	const { slug } = params;
 	return {
-		blogs:getTaggedBlogsMeta(slug),
-		tag:slug
+		blogs: getTaggedBlogsMeta(slug),
+		tag: slug
 	};
 }

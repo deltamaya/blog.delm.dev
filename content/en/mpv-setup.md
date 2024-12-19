@@ -1,7 +1,7 @@
 ---
 title: MPV Player Setup
 date: 2024-11-18
-tags: ['media-processing','anime','setup']
+tags: ['media-processing', 'anime', 'setup']
 authors: ['Maya']
 ai: false
 ---
@@ -31,8 +31,10 @@ It's useful to remember a few shortcuts, which provides a faster access than GUI
 Here is a quick reference to MPV shortcuts: [link](https://mpv.io/manual/master/#interactive-control)
 
 ## Configuration
+
 Here is the most important part, you could fully control MPV player's behavior using a config file.
 Go to the installation folder of MPV and create a folder called `portable_config`, and then create a `mpv.conf` inside.
+
 > [!TIP]
 > If you didn't specify the installation path, it should locate at `C:/Users/{username}/AppData/Roaming/mpv/` or `C:/Program Files/mpv.net`.
 >
@@ -41,6 +43,7 @@ Go to the installation folder of MPV and create a folder called `portable_config
 > Right Click Folder -> Properties -> Security -> Edit -> Apply
 
 Here is some basic configuration settings:
+
 ```ini
 # use high quality render settings
 profile=gpu-hq
@@ -65,6 +68,7 @@ save-position-on-quit=yes
 screenshot-format=png
 sub-auto=fuzzy
 ```
+
 You could just copy-and-paste, or search the Internet and customize your own `mpv.conf` based your own computer setup.
 
 Oh, by the way you could customize shortcuts using the `input.conf` in the same path.
@@ -77,6 +81,7 @@ In my circumstance, I'm going to use [Anime4K](https://github.com/bloc97/Anime4K
 and move those `something.glsl` or `something.hook` into your config folder.
 
 And if you are using Anime4K, add those into `input.conf` will enable the keyboard control of shaders:
+
 ```
 # Optimized shaders for higher-end GPU
 CTRL+1 no-osd change-list glsl-shaders set "~~/shaders/Anime4K_Clamp_Highlights.glsl;~~/shaders/Anime4K_Restore_CNN_VL.glsl;~~/shaders/Anime4K_Upscale_CNN_x2_VL.glsl;~~/shaders/Anime4K_AutoDownscalePre_x2.glsl;~~/shaders/Anime4K_AutoDownscalePre_x4.glsl;~~/shaders/Anime4K_Upscale_CNN_x2_M.glsl"; show-text "Anime4K: Mode A (HQ)"
@@ -85,11 +90,13 @@ CTRL+3 no-osd change-list glsl-shaders set "~~/shaders/Anime4K_Deblur_DoG.glsl;~
 
 CTRL+0 no-osd change-list glsl-shaders clr ""; show-text "GLSL shaders cleared"
 ```
+
 If this doesn't fit for you, go check whether those filenames match your shader files in the config folder.
 
 After that, you could toggle shader while playing video!
 
 ## VapourSynth
+
 VS is an open source non-linear processing video frame service plug-in that uses Python as the scripting language.
 MPV supports VS being inserted into the video playback process in the form of filters.
 
@@ -114,6 +121,7 @@ The latest version of VapourSynth needs you to download the package from `pip`, 
 embedded version of Python does not contain `pip`, which means you can not use `pip install`.
 
 You could get `pip` with the following operations:
+
 1. Go to the embedded python installation folder
 2. Edit the `python312.__pth` file, uncomment the line `import site`.
 3. Download `get-pip.py` via this link: [get-pip](https://bootstrap.pypa.io/get-pip.py) to this folder.
@@ -122,6 +130,7 @@ You could get `pip` with the following operations:
 When you finish these steps, you could use `./Scripts/pip install VapourSynth` to install the package.
 
 ### mvtools
+
 After you installed VapourSynth, you could framing video with mvtools.
 Acquire mvtools via this link: [mvtools](https://github.com/dubhater/vapoursynth-mvtools/releases),
 then extract the `libmvtools.dll` into the `{installation path}/vs-plugins`.
@@ -132,18 +141,20 @@ The last step is to get the python script which calls the mvtools:
 Download the file and put it to the config path(`portable_config`).
 
 ## Modify Input
+
 You have already setup all plugins, all you need to do is to call it.
 Add this line to your `input.conf`:
+
 ```
 CTRL+v vf toggle vapoursynth="~~/{filename}.vpy"
 ```
+
 Then just press `Ctrl+v` to enjoy a 60-fps and hyper-resolution anime experience!
 
 ## References
+
 [mpv 播放器的使用【入门】](https://hooke007.github.io/mpv-lazy/mpv.html)
 
 [跨平台播放器mpv 配置入门](https://vcb-s.com/archives/7594)
 
 [mpv播放器的使用引导](https://hooke007.github.io/unofficial/mpv_start.html)
-
-

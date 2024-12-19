@@ -7,7 +7,8 @@ ai: true
 ---
 
 # Teleology
-The first concept presented in the book is "teleology." Distinct from Freud's "causality," Adler posits that one's current problematic behaviors are not a result of past psychological trauma but are instead naturally developed to fulfill certain purposes. This does not mean the pain felt by individuals is not real; rather, it indicates that these pains are self-created, serving to achieve certain personal objectives. 
+
+The first concept presented in the book is "teleology." Distinct from Freud's "causality," Adler posits that one's current problematic behaviors are not a result of past psychological trauma but are instead naturally developed to fulfill certain purposes. This does not mean the pain felt by individuals is not real; rather, it indicates that these pains are self-created, serving to achieve certain personal objectives.
 This notion underlies all the viewpoints in the book, suggesting that our "unhappiness" is not solely determined by fate or the past, but rather by our own purposes.  
 **What matters is not what you have been given but how well you utilize what you have been given.**  
 If you choose, you can be happy.
@@ -25,6 +26,7 @@ First, we need to realize that life is not a competition with others. Each indiv
 Yet, Adler acknowledges the existence of feelings of inferiority and the human desire for superiority. However, this inferiority should not stem from comparisons with others but rather from comparing ourselves to our "ideal self." Our task is simply to walk our own path and continuously surpass our previous selves.
 
 ### Manifestations of Inferiority Complex
+
 The book also mentions that sometimes feelings of inferiority can develop into an "inferiority complex." This manifests in thoughts like, "I failed at B because of A," implying that if A had not happened, I would have surely succeeded at B. The true self is exceptional, yet one remains immersed in such fantasies, unwilling to forego the pleasures of the moment to make genuine efforts, lacking the courage to change oneself.
 
 It can even devolve into a "superiority complex," where the inability to change oneself leads to compensating for it by presenting oneself as superior, thus indulging in a false sense of superiority.
@@ -32,6 +34,7 @@ It can even devolve into a "superiority complex," where the inability to change 
 Another example is "boasting about misfortune," which serves as a compensatory mechanism for those unwilling to change their situation.
 
 ### Breaking Free from Competition
+
 If "competition" still exists in your interpersonal relationships, it becomes impossible to escape the troubles they bring, and thus, unhappiness cannot be avoided. This is because where there is competition, there are winners and losers. To avoid becoming a loser, you may unconsciously tighten yourself, regarding everyone around you as "enemies."
 
 People live in their subjective worlds. When you perceive those around you as a group of enemies who will exploit your every flaw to mock, ridicule, or even attack you, the world becomes a terrifying place. The horror of competition lies therein.
@@ -42,11 +45,14 @@ In terms of interpersonal dynamics, no matter how certain you are of your correc
 Additionally, one should recognize that admitting mistakes, apologizing, and stepping back from power struggles are not signs of "failure."
 
 ## Separation of Tasks
+
 ### Life Tasks
+
 When an individual wishes to exist as a social being, they will inevitably face interpersonal relationships, which constitutes the tasks of life.  
 The three main life tasks are: work tasks, friendship tasks, and love tasks.
 
 ### Life Lies
+
 To avoid facing certain situations or individuals, we often fabricate certain so-called "reasons," claiming that these reasons are why we cannot succeed in these tasks. However, this is simply a means to mask the courage to step forward or the laziness behind inaction.  
 Adler refers to these excuses used to evade the tasks of life as "**life lies**."
 
@@ -58,7 +64,7 @@ It is essential to distinguish your tasks from those of others. If after an even
 
 There is a saying: **You can lead a horse to water, but you cannot force it to drink.** It is crucial to maintain interpersonal relationships within reach, while not getting too close. **The separation of tasks is not the endpoint of relationships but rather the starting point.**
 
-## Freedom is Being Disliked 
+## Freedom is Being Disliked
 
 Your life is for you to live—not for the approval of others. If you do not live for yourself, who will live for you? Do not exist in others' expectations.  
 When those around you do not recognize you, **not recognizing you is their life task;** whether or not they affirm themselves is not an issue you need to interfere with.
@@ -96,17 +102,21 @@ The author cites the example of someone who feels they cannot defy their boss, s
 Previously mentioned was the concept of social interest — the feeling of having a meaningful presence in a community. Here we can introduce three essential components for establishing one’s social interest: self-acceptance, trust in others, and contribution to others.
 
 ### Self-Acceptance
+
 Different from self-recognition, self-acceptance leans towards “how to utilize what has been given” rather than “what has been given to oneself.” Accept your determined self and work on further improvement based on your shortcomings.
 
 ### Trust in Others
+
 The trust mentioned here is unconditional trust in others, not trust based on their credibility; you can still trust someone even if they have betrayed you in the past. When you trust someone, it indicates that person is a "partner" and not an "enemy." However, not everyone in the world is good. If you discover someone consistently betraying your trust, you may sever ties with them.
 
 ### Contribution to Others
+
 The book mentions that happiness stems from the feeling of being “useful to others,” which is about contributing to others. A person only feels their value when they realize, "I am useful to others." This contribution can also occur in invisible forms; as long as there is a subjective feeling of being "useful to others" — the sense of contribution, it suffices.
 
 However, this does not mean one should blindly pursue recognition from others. First, recognition from others is their task, and you should not interfere. Secondly, changing oneself and compromising for the sake of approval from others will lead to a loss of freedom, and freedom is the premise for pursuing happiness.
 
 ### The Courage to Be Ordinary
+
 "Ordinary" does not signify "incompetency." We do not need to showcase our superiority.
 
 ## Dancing Through Life
@@ -136,6 +146,7 @@ In truth, the decisive factors are neither the past nor the future, but the "her
 Also, remember this: life always exists in a "closed state." Whether a life concludes at 20 or 90, it is completed; both can be fulfilling lives.
 
 ### The Meaning of Life
+
 **There is no universal meaning of life.** It is precisely because of this that you can attribute your own meaning to life, and only you have the power to impart meaning to your existence. Your powers are immense; the world changes not because of others but because of your actions.
 
 If you feel lost in your current life, it is because you seek to choose freedom. In the pursuit of freedom, it is indeed possible to lose one's way. Thus, Adler proposes a "guiding star" for life, akin to the North Star. Just as we need our "guiding star," so too we need "contribution to others"; as long as we do not lose sight of this pointer and move in that direction, we can attain happiness.

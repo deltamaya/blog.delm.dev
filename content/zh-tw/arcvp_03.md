@@ -1,7 +1,7 @@
 ---
 title: ArcVP DevLog#3
 date: 2024-10-08
-tags: ['graphics','devlog','opengl','ffmpeg','media-processing','arcvp']
+tags: ['graphics', 'devlog', 'opengl', 'ffmpeg', 'media-processing', 'arcvp']
 authors: ['Maya']
 ai: true
 ---
@@ -25,6 +25,7 @@ FFmpeg 提供了一個方便的 API，稱為 `av_seek_frame`，它允許你指�
 我遇到的第一個問題與搜尋標誌有關。在呼叫 `av_seek_frame` 後，如果你沒有提供標誌（或使用空的標誌）並嘗試向前搜尋，則什麼也不會發生。另一方面，如果你提供了 `AVSEEK_BACKWARD` 標誌，播放器會跳轉到指定時間之前的最近 **關鍵幀**，這意味著搜尋會略微落後於預期位置。使用 `AVSEEK_ANY` 可以搜尋到確切位置，但會引入一些複雜性。為了簡單起見，我決定暫時專注於關鍵幀搜尋。
 
 # SDL + ImGui
+
 最初，我嘗試了幾種將 Dear ImGui 與 SDL 整合的方法，但在渲染器上將 ImGui 視窗顯示在影片材質（texture）之上時遇到了困難。在網上搜尋解決方案後，我發現了一個非常符合需求的小型函式庫：[imgui_sdl](https://github.com/Tyyppi77/imgui_sdl)。有了這個庫，我成功實現了一個基本的影片播放控制面板。不過，仍然存在一些錯誤需要修正。
 
 ![demo](/devlog/devlog3-demostrate.png)

@@ -1,7 +1,7 @@
 ---
 title: ArcVP DevLog#2
 date: 2024-09-27
-tags: ['graphics','devlog','opengl','ffmpeg','media-processing','arcvp']
+tags: ['graphics', 'devlog', 'opengl', 'ffmpeg', 'media-processing', 'arcvp']
 authors: ['Maya']
 ai: false
 ---
@@ -13,7 +13,6 @@ At this stage, the player now could handle video pausing and resizing(though res
 
 Here is a video resizing issue I encountered.
 ![Incorrectly Video Resizing](/devlog/incorrect-resize.png)
-
 
 Additionally, I've switched from using `GLFW` to `SDL2` for managing interface.
 This change is necessary, because Apple has deprecated some OpenGL functions, forcing user
@@ -33,25 +32,24 @@ introduce to two key concepts: the `PTS` and `DTS`.
 ### PTS(Presentation Timestamp)
 
 PTS represents the timestamp when this single frame should be displayed.
-It is important to note that the time unit of PTS and DTS is **NOT** 
+It is important to note that the time unit of PTS and DTS is **NOT**
 in real-world seconds or milliseconds. Instead, it uses the time unit called
 `TimeScale`, aka `Tick`, which can vary between videos.
 
 But we can alway get a tick's length by using this formula:
 
- $\frac{1}{timebase}$.
-
+$\frac{1}{timebase}$.
 
 Here, `timebase` is a `AVRational` object which defines how many ticks are there in a second.
 This allows us to determine the `TimeScale` for a video. The `timebase` can be obtained from the `AVStream` object.
 
 ### DTS(Decode Timestamp)
-DTS indicates the timestamp when the frame was decoded. 
 
+DTS indicates the timestamp when the frame was decoded.
 
 ## Sampling and Audio Playback
 
-Just like video, audio in the media is also encoded. Typically, 
+Just like video, audio in the media is also encoded. Typically,
 it is compressed using an `AAC` encoder, which can reduce the audio file
 size up to 10 times.
 
@@ -108,8 +106,7 @@ void audioCallback(void *userdata, Uint8 *stream, int len) {
 # Miscellaneous
 
 ## Bugs
+
 At this point, the program feels like one giant bug. When it works as expected, it's pretty cool, but the functionality is still far from perfect.
 
-
 On top of that, there's a memory leak issue, where about 0.4MB of memory is leaked per second. I suspect I may have missed unref some packets or frames, but I'm still investigating…
-

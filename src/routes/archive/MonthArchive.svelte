@@ -6,18 +6,17 @@
 </script>
 
 <div class="flex flex-wrap">
-	<div class="w-32 flex mt-3">
-		<div class="font-bold text-lg">
+	<div class="mt-3 flex w-32">
+		<div class="text-lg font-bold">
 			{month}
 		</div>
-		<div class="font-bold text-sm text-neutral-500 ml-1">
+		<div class="ml-1 text-sm font-bold text-neutral-500">
 			{total}
 		</div>
 	</div>
 	<div class="flex flex-col">
-		{#each blogs as blog,index}
-			<BlogCard {blog}/>
+		{#each blogs as blog, index}
+			<BlogCard {blog} />
 		{/each}
 	</div>
-
 </div>

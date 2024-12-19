@@ -15,7 +15,7 @@ let blogs: BlogMeta[] = []; // 存储所有博客
 const tagToBlogs: Map<string, BlogMeta[]> = new Map(); // tag -> blogs 的映射
 
 function loadAllBlogs() {
-	console.log('loading all posts')
+	console.log('loading all posts');
 	const postsDirectory = path.resolve(`content/${languageTag()}`);
 	const files = fs.readdirSync(postsDirectory);
 
@@ -30,7 +30,7 @@ function loadAllBlogs() {
 			tags: data.tags
 		};
 	});
-blogs.sort((a, b) => b.date.getTime() - a.date.getTime());
+	blogs.sort((a, b) => b.date.getTime() - a.date.getTime());
 	blogs.forEach((blog) => {
 		blog.tags.forEach((tag) => {
 			if (!tagToBlogs.has(tag)) {
@@ -43,10 +43,10 @@ blogs.sort((a, b) => b.date.getTime() - a.date.getTime());
 
 loadAllBlogs();
 
-export function getAllBlogsMeta(){
-	return blogs
+export function getAllBlogsMeta() {
+	return blogs;
 }
 
-export function getTaggedBlogsMeta(tag:string){
-	return tagToBlogs.get(tag)
+export function getTaggedBlogsMeta(tag: string) {
+	return tagToBlogs.get(tag);
 }
