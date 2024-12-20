@@ -56,13 +56,12 @@
 
 <div class="flex w-full flex-col items-center flex-wrap overflow-hidden">
 	<div class="flex h-full max-w-[48rem] flex-col p-4">
-		<h1 class="lg:text-5xl  text-4xl  font-bold">
+		<div class="flex">
+					<h1 class="lg:text-5xl  text-4xl  font-bold">
 			{data.metadata.title}
+
 		</h1>
-		<div class="my-1 text-base text-gray-500 flex">
-			{data.metadata.date.toLocaleDateString(languageTag())}
-			· {m.AuthoredBy({ authors: data.metadata.authors.join(', ') })}
-			· <a href="https://github.com/deltamaya/blog_site/pulls" class="flex hover:underline hover:text-red-500">{m.SuggestChanges()}
+			<a href="https://github.com/deltamaya/blog_site/pulls" class="lg:text-base text-sm flex hover:underline hover:text-red-500 text-gray-500">{m.SuggestChanges()}
 			<svg
 						fill="none"
 						shape-rendering="geometricPrecision"
@@ -78,6 +77,11 @@
 						<path d="M15 3h6v6"></path>
 						<path d="M10 14L21 3"></path>
 					</svg></a>
+		</div>
+
+		<div class="my-1 text-base text-gray-500 flex">
+			{data.metadata.date.toLocaleDateString(languageTag())}
+			· {m.AuthoredBy({ authors: data.metadata.authors.join(', ') })}
 		</div>
 		<div class="flex flex-wrap text-lg font-bold text-red-500">
 			{#each data.metadata.tags as tag}

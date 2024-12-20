@@ -9,9 +9,9 @@
 	"Copy": "複製",
 	"Copied": "已複製",
 	"AITranslated": "為了您的方便，本文已由 AI 翻譯。請注意，原文可能存在不準確或差異。",
-	"AuthoredBy": "作者： {authors}",
+	"AuthoredBy": "作者 {authors}",
 	"SearchHere": "在這裡搜尋",
 	"Blogs": "部落格",
 	"SuggestChanges": "建議更改",
-	"Notice": "注意："
+	"Notice": "注意"
 }
