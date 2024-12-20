@@ -34,7 +34,7 @@ MPV 不僅僅是一個普通的視頻播放器，它是一個播放器庫，就�
 這是最關鍵的部分，通過配置檔案可以完全掌控 MPV 播放器的行為。  
 前往 MPV 的安裝目錄，創建名為 `portable_config` 的文件夾，然後在其中創建一個 `mpv.conf` 文件。
 
-> ![TIP]
+> [!TIP]
 > 如果您未指定安裝路徑，默認位置可能為：
 > `C:/Users/{username}/AppData/Roaming/mpv/` 或 `C:/Program Files/mpv.net`。
 >
@@ -101,7 +101,7 @@ MPV 支持通過 VapourSynth 作為濾鏡插入來處理視頻播放。
 1. 下載 VapourSynth 的最新壓縮包：[VapourSynth](https://github.com/vapoursynth/vapoursynth/releases) 並解壓到 MPV 的安裝目錄。
 2. 安裝 Python：[Python](https://www.python.org/downloads/)
 
-> ![TIP]
+> [!TIP]
 > 根據 VapourSynth 版本可能需要 `Python 3.12.x` 或 `Python 3.8.x`。請選擇對應版本。
 >
 > 若已有 Python，可選擇嵌入版本，直接解壓到 MPV 安裝目錄。
