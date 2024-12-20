@@ -8,16 +8,16 @@ ai: false
 
 # Progress
 
-Currently I'm building the basic video player to practice media processing.
-At this stage, the player now could handle video pausing and resizing(though resizing may still needs some work).
+Currently, I'm building the basic video player to practice media processing.
+At this stage, the player now could handle video pausing and resizing (though resizing may still need some work).
 
 Here is a video resizing issue I encountered.
 ![Incorrectly Video Resizing](/devlog/incorrect-resize.png)
 
 Additionally, I've switched from using `GLFW` to `SDL2` for managing interface.
-This change is necessary, because Apple has deprecated some OpenGL functions, forcing user
+This change is necessary because Apple has deprecated some OpenGL functions, forcing user
 to use the freking shader. Since I'm not ready to dive into that right now,
-I opted for `SDL2` to have a consistant develop experience on both Windows and MacOS.
+I opted for `SDL2` to have a consistent developer experience on both Windows and macOS.
 
 Here's what I've learned during this week's development:
 
@@ -25,9 +25,9 @@ Here's what I've learned during this week's development:
 
 ## PTS, DTS, and AVRational
 
-If you don't control the decode and display speed in your code, the playback will be extremly fast,
+If you don't control the decoding and display speed in your code, the playback will be extremely fast,
 which is undesirable. To solve this, we need to
-introduce to two key concepts: the `PTS` and `DTS`.
+introduce it to two key concepts: the `PTS` and `DTS`.
 
 ### PTS(Presentation Timestamp)
 
@@ -36,9 +36,9 @@ It is important to note that the time unit of PTS and DTS is **NOT**
 in real-world seconds or milliseconds. Instead, it uses the time unit called
 `TimeScale`, aka `Tick`, which can vary between videos.
 
-But we can alway get a tick's length by using this formula:
+But we can always get a tick's length by using this formula:
 
-$\frac{1}{timebase}$.
+$$\frac{1}{timebase}$$
 
 Here, `timebase` is a `AVRational` object which defines how many ticks are there in a second.
 This allows us to determine the `TimeScale` for a video. The `timebase` can be obtained from the `AVStream` object.
@@ -55,9 +55,9 @@ size up to 10 times.
 
 ### Sampling
 
-When recoding audio, we divide 1 seconds into many ticks, and we capture the audio data
+When recoding audio, we divide 1 second into many ticks, and we capture the audio data
 at specific time points. The number of times we capture data per second is called **Sample Rate**.
-For example, an audio file with a sample rate of 44.1kHz means it captures 44,100 distinct sound samples per second.
+For example, an audio file with a sample rate of 44.1 kHz means it captures 44,100 distinct sound samples per second.
 
 Besides, the audio data can be stored in different formats, like `float32` and `int16`,
 this is called **Format**.

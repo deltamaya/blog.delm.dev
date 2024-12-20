@@ -8,7 +8,10 @@ ai: false
 
 # Progress
 
-After taking a week off for vacation, I'm back to working on this project. However, I've realized that building a full-fledged video editor using `FFmpeg` is more complex than I initially anticipated. Given the challenges, I've decided to simplify the scope and focus on creating a video player instead of a video editor.
+After taking a week off for vacation, I'm back to working on this project.
+However,
+I've realized that building a full-fledged video editor using `FFmpeg` is more complex than I initially expected.
+Given the challenges, I've decided to simplify the scope and focus on creating a video player instead of a video editor.
 
 At the current stage, I've implemented the seek functionality, allowing the player to jump to the nearest keyframe using the `AVSEEK_BACKWARD` flag. Additionally, I've added a control panel to make video playback easier and more intuitive for users.
 

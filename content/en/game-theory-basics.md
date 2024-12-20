@@ -1,5 +1,5 @@
 ---
-title: Fundamentals of Game Theory
+title: Basics of Game Theory
 date: 2024-09-11
 tags: ['DSA', 'NCM', 'game-theory']
 authors: ['Maya']
@@ -8,77 +8,89 @@ ai: true
 
 # Introduction
 
-Game Theory is the theory that studies the choices made by multiple rational individuals when they cannot negotiate with each other.
+Game Theory is the study of the decisions made by multiple rational individuals when they cannot coordinate or negotiate with each other.
 
-A rational individual is one who chooses the option that maximizes their own payoff. The absence of negotiation means that participants cannot communicate or make agreements with each other.
+A rational individual is one who always chooses the option that maximizes their own payoff. The lack of negotiation means that participants cannot communicate, make agreements, or coordinate their actions.
 
-## Introduction
+## Introduction Through an Example
 
-Let’s introduce Game Theory through a well-known and simple example:
+Let’s begin with a well-known and simple example to introduce Game Theory:
 
-|                          | B Silent (Cooperate)                         | B Confesses (Betray)                         |
-| ------------------------ | -------------------------------------------- | -------------------------------------------- |
-| **A Silent (Cooperate)** | Both serve 6 months                          | A serves 10 years; B is released immediately |
-| **A Confesses (Betray)** | A is released immediately; B serves 10 years | Both serve 5 years                           |
+|         | B remains silent (cooperates) | B confesses (betrays)  |
+|---------|-------------------------------|-------------------------|
+| A remains silent (cooperates) | Both serve six months | A serves 10 years; B is released immediately |
+| A confesses (betrays)          | A is released immediately; B serves 10 years | Both serve five years |
 
-The police have arrested two suspects, A and B, but lack sufficient evidence to convict them. Therefore, they separate the suspects, meeting with each individually, offering both the same options:
+The police arrest two suspects, A and B, but lack sufficient evidence to convict them. The suspects are interrogated separately and offered the same choices:
 
-- If one confesses and testifies against the other (this action is referred to as "betraying" the other) while the other remains silent, the confessor will be released immediately, and the silent one will serve 10 years.
-- If both remain silent (referred to as cooperating), both will serve 6 months.
-- If both betray each other, they will each serve 5 years.
+- If one confesses and testifies against the other (termed "betrayal"), the confessor is released immediately, while the silent suspect receives a 10-year sentence.
+- If both remain silent (termed "cooperation"), each will serve six months.
+- If both confess (mutual "betrayal"), each will serve five years.
 
-If you were A or B, how would you choose?
-To analyze this problem rigorously, let’s enumerate the different choices and then create a **Payoff Matrix** based on the outcomes:
+If you were A or B, what would you choose? 
 
-|                          | B Silent (Cooperate) | B Confesses (Betray) |
-| ------------------------ | -------------------- | -------------------- |
-| **A Silent (Cooperate)** | (-0.5, -0.5)         | (-10, 0)             |
-| **A Confesses (Betray)** | (0, -10)             | (-5, -5)             |
+To analyze this systematically, we enumerate the choices for both players and their outcomes, then construct a **payoff matrix** based on these outcomes:
 
-This is the payoff matrix, which provides an intuitive representation of the game's outcomes. It is an important tool for analyzing the gaming process.
+|         | B remains silent (cooperates) | B confesses (betrays) |
+|---------|-------------------------------|-----------------------|
+| A remains silent (cooperates) | (-0.5, -0.5)                 | (-10, 0)            |
+| A confesses (betrays)          | (0, -10)                    | (-5, -5)           |
 
-By examining the matrix, we find that for A, when he chooses to confess, he consistently incurs a smaller cost than if he chose to remain silent, regardless of B's choice (-0.5 < 0, -10 < -5).
-This kind of choice is known as a **strictly dominant strategy**.
+This payoff matrix clearly and succinctly represents the outcomes of the game. It is a key tool for analyzing strategic interactions.
 
-To be precise, if a strategy $S$ for A maximizes A's payoff under strategy $T$ of B, then $S$ is the **Best Response** to $T$. If $S$ is the best response for every strategy of B, we refer to it as a **strictly dominant strategy**. If a participant has a strictly dominant strategy, rational individuals will choose it, leading other participants to choose their best response to that strategy.
+By observing the matrix, we notice that for A, choosing to confess always results in a smaller cost, regardless of B's choice ($-0.5 > -10$, $-5 > -0.5$). This is called a **strictly dominant strategy**.
 
-_Strictly dominant strategies must yield strictly greater payoffs than other strategies, while dominant strategies can equal or exceed other strategies—similar for Best Response and Strict Best Response._
+Formally, if a strategy $S$ for player A yields the highest payoff for A in response to any strategy $T$ of player B, then $S$ is the **best response** to $T$. If $S$ is the best response to all of B's strategies, it is called a **strictly dominant strategy**. If a player has a strictly dominant strategy, a rational individual will always choose it, and the other players will adapt accordingly by choosing the best response to this strategy.
 
-Thus, we can conclude that in the scenario outlined, both A and B will ultimately choose to confess, reaching a suboptimal result.
+_Strictly dominant strategies require strictly higher payoffs than other strategies, while dominant strategies allow for payoffs that are merely greater or equal. The same distinction applies to best responses versus strictly best responses._
 
-So what can we do to change this situation? The best method would be to directly **alter the payoff matrix**. For example, if A and B are part of the same criminal organization, and the organization retaliates against members who confess, setting their payoff at -10, this change would lead both A and B to choose silence.
+Thus, we conclude that both A and B will eventually choose to confess, leading to an outcome that is not optimal for either player.
+
+### Changing the Outcome
+
+How can we change this outcome? The best approach is to **alter the payoff matrix**. For example, suppose A and B belong to the same criminal gang, and the gang imposes retribution on members who confess, reducing their payoff by an additional -10. In this modified matrix, both A and B would then choose to remain silent.
 
 # Nash Equilibrium
 
-Suppose A's strategy is $S$, and B's strategy is $T$. If $S$ is the best response to $T$, and $T$ is the best response to $S$, then the strategy pair ($S$, $T$) is referred to as a **Nash Equilibrium**. In equilibrium, no participant has sufficient incentive to change their current strategy.
+If A chooses strategy $S$ and B chooses strategy $T$, and $S$ is the best response to $T$ while $T$ is the best response to $S$, the strategy pair $(S, T)$ is called a **Nash equilibrium**. In this state, no participant has enough incentive to unilaterally change their strategy.
 
-Strictly dominant strategies do not always exist; what should we do if they don't?
-Now we need to introduce **dominated strategies**, which are essentially the opposite of dominant strategies. Participants will not choose dominated strategies in decision-making. After eliminating dominated strategies, new dominated strategies may emerge, and iteratively removing them until one remains yields the result of the game. This outcome can be considered a representation of Nash equilibrium.
+Strictly dominant strategies do not always exist. What happens when they don’t? 
 
-In a game, there can be multiple Nash Equilibrium points, and the payoffs at different equilibrium points can vary. A game that can reach a Nash Equilibrium point when everyone chooses the same strategy is called a coordination game, where individuals can reach a better Nash equilibrium through negotiation.
+In such cases, we introduce **dominated strategies**, which are the opposite of dominant strategies. Participants never choose dominated strategies. By iteratively eliminating dominated strategies, we may arrive at the outcome of the game. This outcome can be considered as representing the Nash equilibrium.
 
-When multiple Nash Equilibria exist, further predictions based on the game model become impossible, and judgments must be made based on other external factors.
+A game may have more than one Nash equilibrium, with differing payoffs at each equilibrium. Games where all participants achieve Nash equilibrium by choosing the same strategy are called coordination games. In coordination games, participants can negotiate to achieve a better Nash equilibrium.
+
+However, when there are multiple Nash equilibria, the game model can no longer predict the outcome, and external factors must be considered.
 
 ## Zero-Sum Games
 
-What if there’s a game in which no Nash Equilibrium, as mentioned earlier, exists? For instance, if we play a game where each person shows a coin each time, and if the faces are the same, I gain your coin, and if not, you gain mine.
+What if a game does not have a Nash equilibrium as described above? For instance, consider the following game: You and I each play by flipping a coin. If both coins show the same face, I win your coin. Otherwise, you win mine.
 
-Based on the rules, let’s create a payoff matrix:
+The payoff matrix for this game is:
 
-|             | B Heads  | B Tails  |
-| ----------- | -------- | -------- |
-| **A Heads** | (-1, +1) | (+1, -1) |
-| **A Tails** | (+1, -1) | (-1, +1) |
+|         | B heads  | B tails  |
+|---------|----------|----------|
+| **A heads** | (-1, +1) | (+1, -1) |
+| **A tails** | (+1, -1) | (-1, +1) |
 
-We find that in this game, there is no pair of strategies where $S$ and $T$ are mutual best responses, meaning no Nash Equilibrium exists.
-At this point, we need to introduce a bit of luck, which is where **mixed strategies** come into play. This involves predicting the probability of the opponent choosing different strategies to formulate your own strategy.
+In this game, no strategy pair $(S, T)$ makes $S$ and $T$ mutual best responses, meaning there is no Nash equilibrium. 
 
-For example, if you predict I (B) have a 70% chance of showing heads, you would obviously choose to show tails to maximize expected payoff. However, you aren't certain if I will definitely show heads—what if I show tails 100% of the time? Hence, the probabilities associated with my choice are also uncertain for you. Intuitively, the best way would be to adopt equal probability strategies, showing either side with a 50%-50% likelihood.
+To address this, we introduce **mixed strategies**, where players predict the probabilities of their opponent’s choices and adjust their strategies accordingly.
 
-More rigorously, let A show strategy $H$ with a probability of $p$, and $T$ with a probability of $1-p$, while B shows strategy $H$ with a probability of $q$, and $T$ with a probability of $1-q$. The payoff for the strategy pair ($S, T$) is denoted as $P(S, T)$. When B chooses $H$, the expected payoff is $p*P_B(H, H)+(1-p)*P_B(T, H)$, and when choosing $T$, the expected payoff is $p*P_B(H, T)+(1-p)*P_B(T, T)$. A pair of mixed strategies constitutes best responses if they yield equal expected payoffs for the opponent in pure strategy. An effective probability strategy makes it so that the opponent cannot ascertain which probability strategy is optimal; this occurs when the above two expected payoffs are **equal**, resulting in the **solution of the equation as the equilibrium strategy**.
+For example, if you predict that I (B) will choose heads 70% of the time, your best response is to choose tails, as this maximizes your expected payoff. However, you cannot be certain of my actual probabilities. To avoid being exploited, the best approach is to choose each action with equal probability, 50%-50%.
 
-Introducing mixed strategies leads to the concept of Nash Equilibrium in mixed strategies, termed **Mixed Nash Equilibrium**. Thus, for any **finite** number of participants and **finite** strategies, a Nash Equilibrium **must exist**.
+Formally, suppose A chooses strategy $H$ with probability $p$ and strategy $T$ with probability $1-p$, while B chooses strategy $H$ with probability $q$ and strategy $T$ with probability $1-q$. Define the payoff of strategy pair $(S, T)$ as $P(S, T)$. The expected payoff for B when choosing $H$ is:
 
-# Conclusion
+$$p \cdot P_B(H, H) + (1-p) \cdot P_B(T, H)$$
 
-Having learned about simple games, when encountering game-related problems in reality, one should first analyze the scenario, create a payoff matrix based on the rules, and then seek strictly dominant strategies, eliminate dominated strategies, and identify Nash Equilibrium.
+The expected payoff for B when choosing $T$ is:
+
+$$p \cdot P_B(H, T) + (1-p) \cdot P_B(T, T)$$
+
+A pair of mixed strategies is mutually best responding when they make the opponent’s payoff for pure strategies equal. The **solution to this equation represents the equilibrium strategy**.
+
+When mixed strategies are included, the resulting Nash equilibrium is called a **mixed Nash equilibrium**, and any game with a **finite** number of participants and **finite** strategies is guaranteed to have a Nash equilibrium.
+
+# Summary
+
+Having learned the basics of game theory, when faced with a real-world strategic problem, begin by analyzing the scenario. Use the rules to construct a payoff matrix, then look for strictly dominant strategies, eliminate dominated strategies, and identify Nash equilibria.

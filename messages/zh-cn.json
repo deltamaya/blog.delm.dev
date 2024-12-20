@@ -11,5 +11,7 @@
 	"AITranslated": "本文已由 AI 翻译，以方便您阅读。请注意，可能存在不准确之处或与原文有差异。",
 	"AuthoredBy": "作者： {authors}",
 	"SearchHere": "在此搜索",
-	"Blogs": "博客"
+	"Blogs": "博客",
+		"SuggestChanges":"建议更改",
+		"Notice":"注意："
 }

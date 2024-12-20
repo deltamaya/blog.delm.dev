@@ -20,7 +20,7 @@ I recently resolved a bug where the program would stop responding after a short 
 
 At first, I suspected a deadlock issue, specifically related to `mutexWindow`. I added logging to track when it was being locked and unlocked, but that didn’t reveal any issues. After a lot of logs were generated, I noticed that the problem occurred when the `mutexVideoPacketQueue` was locked while waiting on the `videoPacketQueueCanConsume` condition variable—it simply wasn’t waking up again, indicating that the `videoPacketQueue` was empty.
 
-## Analysis the Bug
+## Analysis of the Bug
 
 The question became: why was the `videoPacketQueue` empty? The decoding thread should have been working correctly. I added logs to track the size of `videoPacketQueue` and found that the decoding thread wasn’t waking from its wait on `videoPacketQueueCanProduce`. However, I had already called the notify method when popping packets from the queue. Upon further investigation, I realized that the queue size was stuck at 523—exactly half of its limit. Even when I removed the limit, the size stayed at 523. This explained why the thread was stuck: it wasn’t waiting for `videoPacketQueueCanProduce`, it was actually waiting on `audioPacketQueueCanProduce`.
 

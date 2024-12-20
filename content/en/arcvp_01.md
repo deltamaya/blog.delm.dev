@@ -8,7 +8,7 @@ ai: false
 
 # What is OpenGL?
 
-First of all, OpenGL is **not** a library or framework. It's a graphics API specification, meaning it doesn't contain actual code like C++. Each GPU manufacturer provides its own implementation of OpenGL, which explains why a game may look slightly different on an NVIDIA GPU compared to an AMD GPU. Despite its name, it's not truly "open," as GPU manufacturers do not open-source the code for their drivers.
+First, OpenGL is **not** a library or framework. It's a graphics API specification, meaning it doesn't contain actual code like C++. Each GPU manufacturer provides its own implementation of OpenGL, which explains why a game may look slightly different on an NVIDIA GPU compared to an AMD GPU. Despite its name, it's not truly "open," as GPU manufacturers do not open-source the code for their drivers.
 
 ## How Do I 'Download' OpenGL?
 
@@ -24,7 +24,7 @@ You might come across several terms related to OpenGL, such as `OpenGL ES`, `Web
 
 ### WebGL
 
-**WebGL** is Javascript API based on the OpenGL ES 2.0. Which provides hardware-acceleration
+**WebGL** is JavaScript API based on the OpenGL ES 2.0. Which provides hardware-acceleration
 3D graphics to web browsers.
 
 ### Vulkan
@@ -36,12 +36,12 @@ enabling faster code execution, but it's also more complex to implement.
 
 ## Other Graphics API
 
-OpenGL is a cross-platform graphics API and there are also a lot of
+OpenGL is a cross-platform graphics API, and there are also a lot of
 platform-exclusive APIs like Metal and DirectX.
 
 ### Metal
 
-**Metal** is a **Apple**'s exclusive graphics API, highly optimized for Apple silicon, which
+**Metal** is an **Apple**'s exclusive graphics API, highly optimized for Apple Silicon, which
 provides low-level control and better performance on Mac. Metal has replaced OpenGL
 on macOS and iOS, as Apple has deprecated support for OpenGL.
 
@@ -80,10 +80,10 @@ SDL supports multiple graphics APIs, including OpenGL, Metal, and Direct3D.
 
 # What is FFmpeg?
 
-**FFmpeg** is a open-source library consisting programs to process videos, audios,
+**FFmpeg** is an open-source library consisting of programs to process videos, audios,
 multimedia files and streams.
 
-# OpenGL Usage & Explaination
+# OpenGL Usage & Explanation
 
 ## Sample Code
 
@@ -137,7 +137,7 @@ glfwTerminate();
 ## Context
 
 An OpenGL context represents many things.
-A context stores all of the state associated with this instance of OpenGL.
+A context stores all the states associated with this instance of OpenGL.
 It represents the (potentially visible) default framebuffer that rendering
 commands will draw to when not drawing to a framebuffer object.
 Think of a context as an object that holds all of OpenGL;
@@ -152,10 +152,10 @@ like a window in an application.
 ## Texture
 
 A texture is a 2D image (even 1D and 3D textures exist) used to add detail to an object.
-Because we can insert a lot of detail in a single image,
+Because we can insert a lot of details in a single image,
 we can give the illusion the object is extremely detailed without having
 to specify extra vertices.
-Texture coordinates range from 0 to 1 in the x and y axis
+Texture coordinates range from 0 to 1 in the x and y-axis
 (remember that we use 2D texture images).
 Retrieving the texture color using texture coordinates is called sampling.
 Texture coordinates **start at (0,0)** for the lower left corner of a texture
@@ -257,7 +257,7 @@ bool loadFrame(const char *filename, int *width, int *height,
 ## AVFormatContext
 
 The `AVFormatContext` object contains all the necessary data to process
-a media file, such as its duration, tracks, and more. Obtaining the context of a file,
+a media file, such as its duration, tracks, and more. Getting the context of a file
 is similar to `demuxing` the media.
 
 ## AVCodec
@@ -278,7 +278,7 @@ streams, such as the packet ID and other relevant data.
 A stream is made up of multiple **packets**, which the codec uses to process frames.
 It's important to note that the mapping from packets to frames is different, a packet **does not**
 always represent a single frame. Typically, in `FFmpeg`,
-a video packet contains exactly **single** frame and a audio packet contains
+a video packet contains exactly **single** frame and an audio packet contains
 **multiple** audio frame's data. This is why we use the following code to ensure that a frame has been
 decoded from the packets correctly.
 
@@ -290,8 +290,8 @@ if (response == AVERROR(EAGAIN) || response == AVERROR_EOF) {
 
 ### Reference Counting
 
-FFmpeg uses reference counting to manage `AVPacket` objects. Therefore be sure to
-call `av_packet_unref` to release the packet when you're doen with it.
+FFmpeg uses reference counting to manage `AVPacket` objects. Therefore, be sure to
+call `av_packet_unref` to release the packet when you're done with it.
 
 ## AVFrame
 

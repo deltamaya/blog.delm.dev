@@ -22,7 +22,7 @@ FFmpeg, which provides a wide support for video codec and container format.
 
 ## Shortcuts
 
-It's useful to remember a few shortcuts, which provides a faster access than GUI.
+It's useful to remember a few shortcuts, which provide faster access than GUI.
 
 - `s` to save screenshot
 - `t` or `i` to show stats
@@ -38,11 +38,12 @@ Go to the installation folder of MPV and create a folder called `portable_config
 > [!TIP]
 > If you didn't specify the installation path, it should locate at `C:/Users/{username}/AppData/Roaming/mpv/` or `C:/Program Files/mpv.net`.
 >
-> If your install path is in the system folder(like the latter one), you'll need to make sure that you enabled access from
+> If your installation path is in the system folder (like the latter one),
+> you'll need to make sure that you enabled access from
 > certain user and software:
-> Right Click Folder -> Properties -> Security -> Edit -> Apply
+> Right Click Folder → Properties → Security → Edit → Apply
 
-Here is some basic configuration settings:
+Here are some basic configuration settings:
 
 ```ini
 # use high quality render settings
@@ -69,15 +70,15 @@ screenshot-format=png
 sub-auto=fuzzy
 ```
 
-You could just copy-and-paste, or search the Internet and customize your own `mpv.conf` based your own computer setup.
+You could copy-and-paste, or search the Internet and customize your own `mpv.conf` based your own computer setup.
 
 Oh, by the way you could customize shortcuts using the `input.conf` in the same path.
 
 ## Shaders
 
-MPV supports third party shaders, which your prettify your video experience.
+MPV supports third party shaders, which could prettify your video experience.
 
-In my circumstance, I'm going to use [Anime4K](https://github.com/bloc97/Anime4K), just download it the latest release
+In my circumstance, I'm going to use [Anime4K](https://github.com/bloc97/Anime4K), download it the latest release
 and move those `something.glsl` or `something.hook` into your config folder.
 
 And if you are using Anime4K, add those into `input.conf` will enable the keyboard control of shaders:
@@ -111,14 +112,14 @@ Then you should download python as the plugin uses python to execute: [Python](h
 > Based on your VapourSynth version, you may need `Python 3.12.x` or `Python 3.8.x`, pick a version that matches your need.
 >
 > If your computer already has Python and you don't want to install another version of it, you could use the embedded version,
-> just download and decompress it into the MPV installation folder.
+> download and decompress it into the MPV installation folder.
 
 ### pip
 
-If you're using embedded version of python and the latest version of VapourSynth, please follow these operation.
+If you're using an embedded version of python and the latest version of VapourSynth, please follow these operations.
 
 The latest version of VapourSynth needs you to download the package from `pip`, but the
-embedded version of Python does not contain `pip`, which means you can not use `pip install`.
+embedded version of Python does not contain `pip`, which means you cannot use `pip install`.
 
 You could get `pip` with the following operations:
 
@@ -131,7 +132,7 @@ When you finish these steps, you could use `./Scripts/pip install VapourSynth` t
 
 ### mvtools
 
-After you installed VapourSynth, you could framing video with mvtools.
+After you installed VapourSynth, you could frame video with mvtools.
 Acquire mvtools via this link: [mvtools](https://github.com/dubhater/vapoursynth-mvtools/releases),
 then extract the `libmvtools.dll` into the `{installation path}/vs-plugins`.
 
@@ -142,7 +143,7 @@ Download the file and put it to the config path(`portable_config`).
 
 ## Modify Input
 
-You have already setup all plugins, all you need to do is to call it.
+You have already set up all plugins; all you need to do is to call it.
 Add this line to your `input.conf`:
 
 ```

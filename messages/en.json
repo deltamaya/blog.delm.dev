@@ -11,5 +11,7 @@
 	"AITranslated": "This article has been translated by AI for your convenience. Please note that there may be inaccuracies or differences from the original text.",
 	"AuthoredBy": "Authored by: {authors}",
 	"SearchHere": "Search Here",
-	"Blogs": "Blogs"
+	"Blogs": "Blogs",
+	"SuggestChanges":"SuggestChanges",
+	"Notice":"Notice:"
 }

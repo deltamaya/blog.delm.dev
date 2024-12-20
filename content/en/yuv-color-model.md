@@ -1,7 +1,7 @@
 ---
 title: The YUV Color Model
 date: 2024-09-21
-tags: ['graphics', 'media-processing']
+tags: ['graphics','media-processing']
 authors: ['Maya']
 ai: true
 ---
@@ -12,12 +12,10 @@ The **YCbCr color space**, often referred to as the **YUV color space**, is a co
 Here, **Cr reflects the difference between the red component of RGB and the Y brightness value**, while **Cb reflects the difference between the blue component and the brightness value**. In broadcast television, using YCbCr helps address the signal compatibility issue between black-and-white and color television.
 
 Since the human eye is **less sensitive to variations in chrominance compared to variations in brightness**, the sampling rate of the Cb and Cr channels can be reduced without significantly affecting image quality. This effectively compresses the data for Cb and Cr channels, allowing the image data to occupy less space. Common YCbCr sampling frequency formats include:
-
 - 4:4:0, averaging 3 bytes per pixel
 - 4:2:2, averaging 2 bytes per pixel
 - 4:2:0, averaging 1.5 bytes per pixel
-  ![yuv-intro](/media-processing/yuv-intro.png)
-
+![yuv-intro](/media-processing/yuv-intro.png)
 ### YUV444
 
 YUV 4:4:4 maintains the same storage format as RGB images, with the Y, U, and V components stored sequentially, as shown in the image below.
@@ -54,9 +52,7 @@ Thus, in the 422 format, the first and second pixels share one set of UV values,
 The blank squares in the above graphics denote non-occupying space; they are merely there for clarity. Also, the storage order depicted is not planar format but included for understanding.
 
 Counting the squares in the aforementioned images (excluding the blank ones), you'll find that YUV422 indeed has one-third fewer squares than YUV444.
-
 ### YUV420
-
 The YUV420 format requires the least amount of data, making it the most widely used format for applications like video conferencing, digital television, and DVDs. See the image below:
 
 ![](https://ffmpeg.xianwaizhiyin.net/base-knowledge/raw-yuv-data/raw-yuv-data-1-10.png)
@@ -74,6 +70,7 @@ There are actually several algorithms for obtaining UV values:
 Among them, **taking the average** is more reliable, and FFmpeg's code also utilizes this algorithm to determine whether to average or weight.
 
 ## Conversion Between RGB and YUV
+
 
 The conversion between the RGB Color Model and the YUV Color Model is feasible, governed by the formulas found in the
 **BT.2020 Standard—Ultra High Definition Television (UHDTV)** standard:
@@ -96,37 +93,26 @@ C_B \\
 C_R
 \end{bmatrix}
 $$
-
 ## Hands-on Practice
-
 I will first use the following commands to convert the same image into YUV444, YUV422, and YUV420 formats:
-
 ```bash
 ffmpeg -i .\275386.jpg -s 3200*1800 -pix_fmt yuv444p out444.yuv
 ffmpeg -i .\275386.jpg -s 3200*1800 -pix_fmt yuv422p out422.yuv
 ffmpeg -i .\275386.jpg -s 3200*1800 -pix_fmt yuv420p out420.yuv
 ```
 
-This converts a 3200\*1800 JPG image into three YUV images, and let's compare them.
+This converts a 3200*1800 JPG image into three YUV images, and let's compare them.
 First, let's look at their sizes:
-
 ### YUV422 File Information
-
 ![yuv422-info](/media-processing/yuv422-info.png)
-
 ### YUV444 File Information
-
 ![yuv444-info](/media-processing/yuv444-info.png)
 
 Evidently, the size of YUV420 is half that of YUV444.
 Next, let's compare the clarity:
-
 ### YUV422 Image
-
 ![yuv422-demo](/media-processing/yuv422-demo.png)
-
 ### YUV444 Image
-
 ![yuv444-demo](/media-processing/yuv444-demo.png)
 
 Upon observation, we can conclude that these two images do not show significant differences. In other words, YUV420 uses half the data of YUV444, yet the visual experience remains nearly unchanged.
@@ -135,10 +121,8 @@ Since most video encoding utilizes YUV420, when we refer to video resolution, we
 
 Files in YUV format can be more accurately described as raw data files compared to BMP files because they do not even store the image's width and height, faithfully recording only the pixel information. Therefore, if you do not know a YUV image's width, height, and sampling format, you cannot properly open the image.
 
-Thus, aside from the raw pixel data, a YUV image file contains no additional information. Since 4:4:4 uses the same structure as RGB24, with each pixel occupying 3 bytes, for an image with dimensions $3200*1800$, the size of this YUV image is calculated as follows:
-
+Thus, aside from the raw pixel data, a YUV image file contains no additional information. Since 4:4:4 uses the same structure as RGB24, with each pixel occupying 3 bytes, for an image with dimensions $3200*1800$, the size of this YUV image is calculated as follows: 
 $$
 size=height*width*3
 $$
-
 Therefore, the `out444.yuv` image has a total size of $3200*1800*3=16875Kb~=16.47Mb$.
