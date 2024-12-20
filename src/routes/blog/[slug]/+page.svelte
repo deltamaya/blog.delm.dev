@@ -54,7 +54,7 @@
 	});
 </script>
 
-<div class="flex w-full flex-col items-center flex-wrap overflow-hidden">
+<div class="flex w-full flex-col items-center flex-wrap">
 	<div class="flex h-full max-w-[48rem] flex-col p-4">
 		<div class="flex">
 					<h1 class="lg:text-5xl  text-4xl  font-bold">

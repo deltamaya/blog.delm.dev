@@ -21,16 +21,17 @@
 </script>
 
 <header
-	class="flex min-h-16 w-full items-center justify-center bg-neutral-50 font-Sans text-neutral-900"
+	class="flex min-h-16 w-full items-center justify-center bg-neutral-50 font-Sans text-neutral-900 font-bold"
 >
 	<div class="flex w-full max-w-[1024px] flex-wrap items-center justify-between gap-5 p-4">
 		<div class="flex items-center space-x-3">
 			<button class="flex items-center space-x-3" onclick={() => gotoHome()}>
-				<span class="text-2xl font-bold">DELM</span>
-				<img src="/logo-dark.png" alt="Logo" class="mb-1 h-[27px] w-[50px]" />
+				<span class="lg:text-2xl md:text-xl text-lg font-bold">DELM</span>
+				<img src="/logo-dark.png" alt="Logo" class="mb-1 lg:h-[27px] lg:w-[50px] h-[24px] w-[45px]" />
 			</button>
 			<div class="h-5 w-0.5 bg-gray-900"></div>
-			<button
+			<div class="flex space-x-3 lg:text-lg md:text-base text-sm">
+				<button
 				onclick={() => switchToLanguage('en')}
 				class="hover:underline"
 				class:active={languageTag() === 'en'}
@@ -51,9 +52,10 @@
 			>
 				ZH-TW
 			</button>
+			</div>
 		</div>
 
-		<nav class="flex items-center justify-center space-x-6 font-bold">
+		<nav class="flex items-center justify-center space-x-6 font-bold lg:text-lg md:text-base text-sm">
 			<a href="/archive" class="hover:underline">{m.Archive()}</a>
 			<a href="/search" class="hover:underline">{m.Search()}</a>
 			<a href="/tags" class="hover:underline">{m.Tags()}</a>
