@@ -61,7 +61,8 @@
 			{data.metadata.title}
 
 		</h1>
-			<a href="https://github.com/deltamaya/blog_site/pulls" class="lg:text-base text-sm flex hover:underline hover:text-red-500 text-gray-500">{m.SuggestChanges()}
+			<a href="https://github.com/deltamaya/blog_site/pulls"
+				 class="lg:text-sm text-xs flex hover:underline hover:text-red-500 text-gray-500">
 			<svg
 						fill="none"
 						shape-rendering="geometricPrecision"
@@ -76,7 +77,9 @@
 						<path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
 						<path d="M15 3h6v6"></path>
 						<path d="M10 14L21 3"></path>
-					</svg></a>
+					</svg>
+						{m.SuggestChanges()}</a>
+
 		</div>
 
 		<div class="my-1 text-base text-gray-500 flex">
@@ -112,7 +115,7 @@
     }
 
     :global(.katex-display) {
-        font-size: 1.2em;
+        font-size: 1.1em;
     }
 		:global(.katex-html) {
         /*width: 100%;*/

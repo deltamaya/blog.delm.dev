@@ -21,7 +21,7 @@
 </script>
 
 <header
-	class="flex min-h-16 w-full items-center justify-center bg-neutral-50 font-IBMPlexSansSC text-neutral-900"
+	class="flex min-h-16 w-full items-center justify-center bg-neutral-50 font-Sans text-neutral-900"
 >
 	<div class="flex w-full max-w-[1024px] flex-wrap items-center justify-between gap-5 p-4">
 		<div class="flex items-center space-x-3">

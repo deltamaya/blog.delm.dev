@@ -6,8 +6,17 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				IBMPlexSansSC: ['IBM Plex Sans SC', 'sans-serif'],
-				JetBrainsMono: ['JetBrains Mono', 'sans-serif']
+Sans: [
+  '-apple-system',
+	  'IBM Plex Sans SC',
+  'IBM Plex Sans',
+  'Inter',
+  'Noto Sans SC',
+  'system-ui',
+  'sans-serif',
+],
+
+				JetBrainsMono: ['JetBrains Mono', 'consolas','monospace']
 			},
 			typography: ({ theme }) => ({
 				DEFAULT: {
