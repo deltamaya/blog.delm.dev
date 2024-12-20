@@ -1,7 +1,7 @@
 ---
 title: YUV 顏色模型
 date: 2024-09-21
-tags: ['圖形', '媒體處理']
+tags: ['graphics', 'media-processing']
 authors: ['Maya']
 ai: true
 ---
