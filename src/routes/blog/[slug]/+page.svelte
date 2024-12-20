@@ -56,10 +56,9 @@
 
 <div class="flex w-full flex-col items-center flex-wrap">
 	<div class="flex h-full max-w-[48rem] flex-col p-4">
-		<div class="flex">
+		<div class="flex flex-wrap">
 					<h1 class="lg:text-5xl  text-4xl  font-bold">
 			{data.metadata.title}
-
 		</h1>
 			<a href="https://github.com/deltamaya/blog_site/pulls"
 				 class="lg:text-sm text-xs flex hover:underline hover:text-red-500 text-gray-500">
