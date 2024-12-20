@@ -54,9 +54,9 @@
 	});
 </script>
 
-<div class="flex w-full flex-col items-center">
+<div class="flex w-full flex-col items-center flex-wrap overflow-hidden">
 	<div class="flex h-full max-w-[48rem] flex-col p-4">
-		<h1 class="text-5xl font-bold">
+		<h1 class="lg:text-5xl  text-4xl  font-bold">
 			{data.metadata.title}
 		</h1>
 		<div class="my-1 text-base text-gray-500">
@@ -72,7 +72,7 @@
 			<AINotice />
 		{/if}
 		<hr class="my-10 h-[2px] bg-neutral-100" />
-		<article class="prose prose-base prose-neutral lg:prose-lg">
+		<article class="prose prose-neutral lg:prose-lg md:prose-base prose-sm self-center">
 			{@html data.content}
 		</article>
 		{#if showHeadingMap}
@@ -86,11 +86,27 @@
 </div>
 
 <style>
-	:global(.katex) {
-		padding: 5px;
-		font-size: 1.2em;
-	}
-	:global(.katex-display) {
-		font-size: 1.2em;
-	}
+
+  :global(.katex) {
+        font-size: 1.2em;
+    }
+
+    :global(.katex-display) {
+        font-size: 1.2em;
+    }
+		:global(.katex-html) {
+        /*width: 100%;*/
+        overflow-wrap: break-word;
+        word-break: break-word;
+        white-space: normal;
+    }
+
+    @media (max-width: 768px) {
+        :global(.katex-display) {
+            font-size: 1rem;
+        }
+				:global(.katex) {
+            font-size: 1rem;
+        }
+    }
 </style>
