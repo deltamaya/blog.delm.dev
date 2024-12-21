@@ -1,5 +1,5 @@
 ---
-title: The YUV Color Model
+title: YUV色彩模型
 date: 2024-09-21
 tags: ['graphics', 'media-processing']
 authors: ['Maya']
