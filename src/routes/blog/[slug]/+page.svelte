@@ -117,7 +117,7 @@
     }
 
     :global(.katex-html) {
-        /*width: 100%;*/
+				width: 100%;
         overflow-wrap: break-word;
         word-break: break-all;
         white-space: normal;

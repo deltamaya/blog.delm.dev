@@ -4,15 +4,15 @@
 
 </script>
 
-<nav class="sticky w-64 px-4 my-5 overflow-y-auto break-all
+<nav class="w-full px-4 my-5
  border-l-2 border-neutral-200"
 style="scrollbar-width: none;-ms-overflow-style: none">
-	<h2 class="mb-4 text-lg font-bold">{m.TableOfContents()}</h2>
+	<h2 class="mb-1 text-lg font-bold">{m.TableOfContents()}</h2>
 	<div class="flex flex-col flex-wrap">
 		{#each headings as heading}
 			<a
 				href={`#${heading.id}`}
-				class="text-neutral-900 hover:text-red-600 hover:underline flex flex-wrap"
+				class="text-neutral-900 hover:text-red-600 hover:underline w-full truncate"
 				style={`margin-left: ${(heading.depth - 1) * 12}px;font-weight: ${(7 - heading.depth) * 100}`}
 			>
 				{heading.text}
