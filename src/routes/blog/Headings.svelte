@@ -1,14 +1,18 @@
 <script>
 	let { headings } = $props();
+	import * as m from '$lib/paraglide/messages.js';
+
 </script>
 
-<nav class="fixed left-5 top-1/2 w-64 -translate-y-1/2 rounded-xl bg-neutral-100 p-4">
-	<h2 class="mb-4 text-lg font-bold">Table of Contents</h2>
-	<div class="flex flex-col">
+<nav class="sticky w-64 px-4 my-5 overflow-y-auto break-all
+ border-l-2 border-neutral-200"
+style="scrollbar-width: none;-ms-overflow-style: none">
+	<h2 class="mb-4 text-lg font-bold">{m.TableOfContents()}</h2>
+	<div class="flex flex-col flex-wrap">
 		{#each headings as heading}
 			<a
 				href={`#${heading.id}`}
-				class="text-rose hover:text-red-600 hover:underline"
+				class="text-neutral-900 hover:text-red-600 hover:underline flex flex-wrap"
 				style={`margin-left: ${(heading.depth - 1) * 12}px;font-weight: ${(7 - heading.depth) * 100}`}
 			>
 				{heading.text}
@@ -16,3 +20,9 @@
 		{/each}
 	</div>
 </nav>
+
+<style>
+	::-webkit-scrollbar {
+    display: none;
+}
+</style>

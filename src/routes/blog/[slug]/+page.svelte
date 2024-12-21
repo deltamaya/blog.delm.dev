@@ -10,7 +10,7 @@
 	import 'katex/dist/katex.min.css';
 
 	const ReturnButtonThreshold = 300;
-	const HeadingMapThreshold = 1420;
+	const HeadingMapThreshold = 1550;
 	let showReturnButton = $state(false);
 	let showHeadingMap = $state(true);
 
@@ -55,29 +55,29 @@
 </script>
 
 <div class="flex w-full flex-col items-center flex-wrap">
-	<div class="flex h-full max-w-[48rem] flex-col p-4">
+	<div class="flex flex-col h-full max-w-[48rem] p-4">
 		<div class="flex flex-wrap">
-					<h1 class="lg:text-5xl  text-4xl  font-bold">
-			{data.metadata.title}
-		</h1>
+			<h1 class="lg:text-5xl  text-4xl  font-bold">
+				{data.metadata.title}
+			</h1>
 			<a href="https://github.com/deltamaya/blog_site/pulls"
 				 class="lg:text-sm text-xs flex hover:underline hover:text-red-500 text-gray-500">
-			<svg
-						fill="none"
-						shape-rendering="geometricPrecision"
-						stroke="currentColor"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2.5"
-						viewBox="0 0 24 24"
-						height="12"
-						width="12"
-					>
-						<path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
-						<path d="M15 3h6v6"></path>
-						<path d="M10 14L21 3"></path>
-					</svg>
-						{m.SuggestChanges()}</a>
+				<svg
+					fill="none"
+					shape-rendering="geometricPrecision"
+					stroke="currentColor"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2.5"
+					viewBox="0 0 24 24"
+					height="12"
+					width="12"
+				>
+					<path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+					<path d="M15 3h6v6"></path>
+					<path d="M10 14L21 3"></path>
+				</svg>
+				{m.SuggestChanges()}</a>
 
 		</div>
 
@@ -85,21 +85,20 @@
 			{data.metadata.date.toLocaleDateString(languageTag())}
 			· {m.AuthoredBy({ authors: data.metadata.authors.join(', ') })}
 		</div>
+
 		<div class="flex flex-wrap text-lg font-bold text-red-500">
 			{#each data.metadata.tags as tag}
 				<a href="/tags/{tag.toLowerCase()}" class="mr-5 hover:underline">#{tag.toUpperCase()}</a>
 			{/each}
 		</div>
+		<Headings headings={data.headings} />
 		{#if data.metadata.ai}
 			<AINotice />
 		{/if}
 		<hr class="my-10 h-[2px] bg-neutral-100" />
-		<article class="prose prose-neutral lg:prose-lg md:prose-base prose-sm self-center">
+		<article class="prose prose-neutral lg:prose-lg md:prose-base prose-sm self-center  break-all break-words">
 			{@html data.content}
 		</article>
-		{#if showHeadingMap}
-			<Headings headings={data.headings} />
-		{/if}
 	</div>
 
 	{#if showReturnButton}
@@ -109,17 +108,18 @@
 
 <style>
 
-  :global(.katex) {
+    :global(.katex) {
         font-size: 1.2em;
     }
 
     :global(.katex-display) {
         font-size: 1.1em;
     }
-		:global(.katex-html) {
+
+    :global(.katex-html) {
         /*width: 100%;*/
         overflow-wrap: break-word;
-        word-break: break-word;
+        word-break: break-all;
         white-space: normal;
     }
 
@@ -127,7 +127,8 @@
         :global(.katex-display) {
             font-size: 1rem;
         }
-				:global(.katex) {
+
+        :global(.katex) {
             font-size: 1rem;
         }
     }
