@@ -1,7 +1,7 @@
 ---
 title: ArcVP 開發日誌#4
 date: 2024-10-10
-tags: ['圖形', '開發日誌', 'opengl', 'ffmpeg', '媒體處理', 'arcvp']
+tags: ['graphics', 'devlog', 'opengl', 'ffmpeg', 'media-processing', 'arcvp']
 authors: ['Maya']
 ai: true
 ---

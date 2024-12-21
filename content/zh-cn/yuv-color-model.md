@@ -3,7 +3,7 @@ title: The YUV Color Model
 date: 2024-09-21
 tags: ['graphics', 'media-processing']
 authors: ['Maya']
-ai: true
+ai: false
 ---
 
 **YCbCr颜色空间**，又常被称作**YUV颜色空间**，是用于数字电视的颜色空间

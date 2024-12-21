@@ -1,14 +1,14 @@
 ---
-title: “盗取”clash代理
-date: 2024-12.\-21
+title: “盗用”clash代理
+date: 2024-12-21
 ai: false
-tags: ['networking','cybersecurity']
+tags: ['networking','cybersecurity','gfw']
 authors: ['Maya']
 ---
 
 ## zmap扫描网络
 
-今天刷b站的时候看到了一个介绍zmap作为网络扫描工具的视频,
+今天刷b站的时候看到了一个介绍`zmap`作为网络扫描工具的视频,
 觉得很有意思,随即马上下了一个来玩,突发奇想要不要扫描一下校园网里
 用clash(7890)端口的人.
 
@@ -33,7 +33,12 @@ zmap -p 7890 10.78.0.0/15
 ...
 ```
 
-## “盗用”代理
+### “盗用”代理
 
 之所以能够在zmap中扫描到,是因为对方主机允许其他ip连接,也就是关闭了防火墙, 并且clash监听在`0.0.0.0:7890`上, 此时直接在windows中配置
-网络代理为“对方ip:7890”就可以“盗用”对方的代理流量了.(但是不建议这么做)
+网络代理为`ip:7890`就可以“盗用”对方的代理流量了.(但是不建议这么做)
+
+## 配置与使用
+![configure proxy](/networking/scan_clash.png)
+这样配置之后，就算自己的clash关掉之后也能够访问外网了
+![experiment result](/networking/result.png)

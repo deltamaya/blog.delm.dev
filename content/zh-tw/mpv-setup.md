@@ -1,7 +1,7 @@
 ---
 title: MPV 播放器設定
 date: 2024-11-18
-tags: ['媒體處理', '動漫', '設置']
+tags: ['media-processing', 'anime', 'setup']
 authors: ['Maya']
 ai: true
 ---

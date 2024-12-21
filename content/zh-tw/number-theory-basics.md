@@ -3,7 +3,7 @@ title: 數論基礎
 date: 2024-09-13
 tags: ['number-theory', 'mathematics']
 authors: ['Maya']
-ai: false
+ai: true
 ---
 
 # GCD、模運算與同餘

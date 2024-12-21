@@ -1,9 +1,9 @@
 ---
 title: 《被討厭的勇氣》讀書心得
 date: 2024-10-29
-tags: ['哲學', '心理學']
+tags: ['philosophy', 'psychology']
 authors: ['Maya']
-ai: false
+ai: true
 ---
 
 # 目的論
