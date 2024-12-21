@@ -20,6 +20,7 @@ ai: false
 - 4: 4: 0，平均每像素3字节
 - 4: 2: 2，平均每像素2字节
 - 4: 2: 0，平均每像素1.5字节
+
 ![yuv-intro](/media-processing/yuv-intro.png)
 
 ### YUV444
