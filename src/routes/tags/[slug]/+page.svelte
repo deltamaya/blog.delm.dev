@@ -9,7 +9,8 @@
 <div class="flex h-full w-full flex-col items-center">
 	<div class="h-full w-full max-w-[48rem] p-4">
 		<div class="flex py-6 text-4xl font-bold">
-			<p class="text-4xl font-bold text-red-500">#{data.tag}</p>
+			#
+			<p class="text-4xl font-bold text-red-500">{data.tag.toUpperCase()}</p>
 			&nbsp;{m.Blogs()}
 		</div>
 

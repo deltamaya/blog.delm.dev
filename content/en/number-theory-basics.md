@@ -28,7 +28,7 @@ Congruences have the following properties:
 
 Prime numbers are at the core of number theory. A prime number has only two factors: 1 and itself. Any composite number can be expressed as:
 
-$$ a = \prod \limits_{p \in P} p^{a_p}, a_p \geq 0 $$
+$$ a = \prod \limits\_{p \in P} p^{a_p}, a_p \geq 0 $$
 
 Here, $P$ represents all prime numbers, and most of the $a_p$ are 0.
 
@@ -50,7 +50,7 @@ For $a=3$ and $p=5$, $3^5 = 243 \mod 5 = 3$, and $3 \mod 5 = 3$.
 The Euler's totient function $\phi(n)$ is the count of positive integers less than $n$ that are coprime to $n$. By convention, $\phi(1)=1$. The function has the following properties:
 
 - For a prime $n$, $\phi(n) = n-1$.
-- For two primes $p$ and $q$, if $n = pq$, then: 
+- For two primes $p$ and $q$, if $n = pq$, then:
 
   $$ \phi(n) = \phi(pq) = \phi(p) \phi(q) = (p-1)(q-1) $$
 

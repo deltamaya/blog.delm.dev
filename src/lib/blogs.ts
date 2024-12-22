@@ -10,18 +10,18 @@ export interface BlogMeta {
 	tags: string[]; // 博客包含的标签
 }
 
-const supportedLanguages=['en','zh-cn','zh-tw']
+const supportedLanguages = ['en', 'zh-cn', 'zh-tw'];
 
 // 定义全局数据存储
 
-const blogs = new Map<string,BlogMeta[]>(); // 存储所有博客
-const tagToBlogs = new  Map<string,Map<string, BlogMeta[]>>; // tag -> blogs 的映射
+const blogs = new Map<string, BlogMeta[]>(); // 存储所有博客
+const tagToBlogs = new Map<string, Map<string, BlogMeta[]>>(); // tag -> blogs 的映射
 
 function loadAllBlogs() {
 	console.log('loading all posts');
-	for (const lang of supportedLanguages){
-		console.log(lang)
-			const postsDirectory = path.resolve(`content/${lang}`);
+	for (const lang of supportedLanguages) {
+		console.log(lang);
+		const postsDirectory = path.resolve(`content/${lang}`);
 		const files = fs.readdirSync(postsDirectory);
 		const temp = files.map((file) => {
 			const filePath = path.join(postsDirectory, file);
@@ -37,17 +37,17 @@ function loadAllBlogs() {
 		temp.sort((a, b) => b.date.getTime() - a.date.getTime());
 		temp.forEach((blog) => {
 			blog.tags.forEach((tag) => {
-				if(!tagToBlogs.has(lang)){
-					tagToBlogs.set(lang,new Map<string,BlogMeta[]>)
+				if (!tagToBlogs.has(lang)) {
+					tagToBlogs.set(lang, new Map<string, BlogMeta[]>());
 				}
-				const langTaggedBlogs=tagToBlogs.get(lang)!
+				const langTaggedBlogs = tagToBlogs.get(lang)!;
 				if (!langTaggedBlogs!.has(tag)) {
 					langTaggedBlogs.set(tag, []);
 				}
 				langTaggedBlogs.get(tag)!.push(blog);
 			});
 		});
-		blogs.set(lang,temp)
+		blogs.set(lang, temp);
 	}
 }
 

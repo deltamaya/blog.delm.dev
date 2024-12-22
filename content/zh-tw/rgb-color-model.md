@@ -1,8 +1,8 @@
 ---
-title: RGB顏色模型  
-date: 2024-09-06  
-tags: ['graphics', 'media-processing']  
-authors: ['Maya']  
+title: RGB顏色模型
+date: 2024-09-06
+tags: ['graphics', 'media-processing']
+authors: ['Maya']
 ai: true
 ---
 

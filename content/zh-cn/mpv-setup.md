@@ -13,7 +13,7 @@ MPV 不是一个简单的视频播放器，而是一个播放器库，就像 **l
 
 ## 下载与安装
 
-您可以通过以下链接下载 Windows 最新版本的 MPV 播放器：[mpv.net](https://github.com/mpvnet-player/mpv.net/releases)  
+您可以通过以下链接下载 Windows 最新版本的 MPV 播放器：[mpv.net](https://github.com/mpvnet-player/mpv.net/releases)
 
 或者使用跨平台版本：[mpv.io](https://mpv.io/installation/)
 

@@ -17,7 +17,7 @@ DDoS attacks often rely on multiple compromised devices as the sources of attack
 
 DoS attacks can be mitigated by filtering requests, such as monitoring suspicious client behavior (e.g., a single IP or geographic location, or the same web browser version generating a high volume of requests in a short time) and restricting the attacker’s devices.
 
-Additionally, server performance can be optimized to combat DoS attacks through methods such as load balancing or upgrading bandwidth. However, this approach is *not very effective* because the volume of traffic from attackers is often massive, sometimes reaching tens of gigabytes per second, making it difficult to counteract with basic optimizations.
+Additionally, server performance can be optimized to combat DoS attacks through methods such as load balancing or upgrading bandwidth. However, this approach is _not very effective_ because the volume of traffic from attackers is often massive, sometimes reaching tens of gigabytes per second, making it difficult to counteract with basic optimizations.
 
 # Man-in-the-Middle Attack
 
@@ -29,7 +29,7 @@ If information is not encrypted, the intermediary can easily obtain the data tra
 
 ## Information Modification
 
-In the early days of the internet in China, most network traffic used the HTTP protocol. During this time, ISPs (Internet Service Providers) would inject advertisements into users' web pages automatically. While this may seem harmless, the ISP essentially acted as the largest man-in-the-middle, performing a MitM attack on all users.  
+In the early days of the internet in China, most network traffic used the HTTP protocol. During this time, ISPs (Internet Service Providers) would inject advertisements into users' web pages automatically. While this may seem harmless, the ISP essentially acted as the largest man-in-the-middle, performing a MitM attack on all users.
 
 An attacker intercepts communication data and modifies it before sending the tampered data to the recipient. This is known as a `Modification Attack`.
 

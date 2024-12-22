@@ -1,5 +1,3 @@
-
-
 <footer
 	class="font-inter z-40 flex h-10 items-center justify-center bg-white py-4 font-Sans text-neutral-500"
 >

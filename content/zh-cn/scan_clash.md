@@ -2,7 +2,7 @@
 title: “盗用”clash代理
 date: 2024-12-21
 ai: false
-tags: ['networking','cybersecurity','gfw']
+tags: ['networking', 'cybersecurity', 'gfw']
 authors: ['Maya']
 ---
 
@@ -39,6 +39,7 @@ zmap -p 7890 10.78.0.0/15
 网络代理为`ip:7890`就可以“盗用”对方的代理流量了.(但是不建议这么做)
 
 ## 配置与使用
+
 ![configure proxy](/networking/scan_clash.png)
 这样配置之后，就算自己的clash关掉之后也能够访问外网了
 ![experiment result](/networking/result.png)

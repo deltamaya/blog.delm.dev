@@ -37,52 +37,52 @@
 			window.removeEventListener('click', hideDropMenu);
 		};
 	});
-
 </script>
 
 <header
-	class="flex min-h-16 w-full items-center justify-center bg-neutral-50 font-Sans text-neutral-900 font-bold"
+	class="flex min-h-16 w-full items-center justify-center bg-neutral-50 font-Sans font-bold text-neutral-900"
 >
 	<div class="flex w-full max-w-[1024px] flex-wrap items-center justify-between gap-5 p-4">
 		<div class="flex items-center space-x-3">
 			<button class="flex items-center space-x-3" onclick={() => gotoHome()}>
-				<span class="lg:text-2xl md:text-xl text-lg font-bold">DELM.<span
-					class="text-red-600">{languageTag()}</span></span>
+				<span class="text-lg font-bold md:text-xl lg:text-2xl"
+					>DELM.<span class="text-red-600">{languageTag()}</span></span
+				>
 			</button>
-			<div class="flex space-x-3 lg:text-lg md:text-base text-sm">
+			<div class="flex space-x-3 text-sm md:text-base lg:text-lg">
 				<div class="relative inline-block text-left">
 					<button
 						aria-label="languages"
 						class="flex hover:text-red-600"
-						onclick={(event)=>toggleDropdown(event)}
+						onclick={(event) => toggleDropdown(event)}
 					>
 						<Icon icon="material-symbols:language" width="1.5em" height="1.5em" />
 					</button>
 					{#if showLanguageDropMenu}
 						<div
 							id="dropdownMenu"
-							class="origin-top-right absolute left-0 mt-2 w-28 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+							class="absolute left-0 mt-2 w-28 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
 							aria-orientation="vertical"
 							aria-labelledby="dropdownButton"
 						>
 							<button
-								class="w-full block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-100  hover:text-red-600"
-								class:active={languageTag()==='en'}
-								onclick={()=>switchToLanguage('en')}
+								class="block w-full px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-100 hover:text-red-600"
+								class:active={languageTag() === 'en'}
+								onclick={() => switchToLanguage('en')}
 							>
 								English
 							</button>
 							<button
-								class="w-full block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-100 hover:text-red-600"
-								onclick={()=>switchToLanguage('zh-cn')}
-								class:active={languageTag()==='zh-cn'}
+								class="block w-full px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-100 hover:text-red-600"
+								onclick={() => switchToLanguage('zh-cn')}
+								class:active={languageTag() === 'zh-cn'}
 							>
 								简体中文
 							</button>
 							<button
-								class="w-full block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-100 hover:text-red-600"
-								onclick={()=>switchToLanguage('zh-tw')}
-								class:active={languageTag()==='zh-tw'}
+								class="block w-full px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-100 hover:text-red-600"
+								onclick={() => switchToLanguage('zh-tw')}
+								class:active={languageTag() === 'zh-tw'}
 							>
 								繁體中文
 							</button>
@@ -92,15 +92,20 @@
 			</div>
 		</div>
 
-		<nav class="flex items-center justify-center space-x-6 font-bold lg:text-lg md:text-base text-sm">
-			<a href="/archive" class="hover:underline">{m.Archive()}</a>
+		<nav
+			class="flex items-center justify-center space-x-6 text-sm font-bold md:text-base lg:text-lg"
+		>
+			<a href="/archive/{new Date().getFullYear()}" class="hover:underline">{m.Archive()}</a>
 			<a href="/search" class="hover:underline">{m.Search()}</a>
 			<a href="/tags" class="hover:underline">{m.Tags()}</a>
 
 			<div class="flex">
 				<a href="https://delm.dev" class="flex hover:underline">
-					<img src="/logo-dark.png" alt="Logo" class="mb-1 lg:h-[27px] lg:w-[50px] h-[24px] w-[45px]" />
-
+					<img
+						src="/logo-dark.png"
+						alt="Logo"
+						class="mb-1 h-[24px] w-[45px] lg:h-[27px] lg:w-[50px]"
+					/>
 				</a>
 			</div>
 		</nav>
@@ -108,7 +113,7 @@
 </header>
 
 <style>
-    .active {
-        @apply font-bold text-red-600 underline;
-    }
+	.active {
+		@apply font-bold text-red-600 underline;
+	}
 </style>

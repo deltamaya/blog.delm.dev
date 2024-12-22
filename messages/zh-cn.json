@@ -14,5 +14,7 @@
 	"Blogs": "博客",
 	"SuggestChanges": "提议修改",
 	"Notice": "注意",
-	"TableOfContents": "目录"
+	"TableOfContents": "目录",
+	"Prev":"上一页",
+	"Next":"下一页"
 }

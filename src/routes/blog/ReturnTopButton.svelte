@@ -1,5 +1,5 @@
 <script>
-import Icon from '@iconify/svelte';
+	import Icon from '@iconify/svelte';
 </script>
 
 <button
@@ -7,6 +7,5 @@ import Icon from '@iconify/svelte';
 	aria-label="return to top"
 	onclick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
 >
-						<Icon icon="emojione-monotone:up-arrow" width="2.4em" height="2.4em" />
-
+	<Icon icon="emojione-monotone:up-arrow" width="2.4em" height="2.4em" />
 </button>

@@ -1,8 +1,8 @@
 ---
-title: RGB颜色模型  
-date: 2024-09-06  
-tags: ['graphics', 'media-processing']  
-authors: ['Maya']  
+title: RGB颜色模型
+date: 2024-09-06
+tags: ['graphics', 'media-processing']
+authors: ['Maya']
 ai: true
 ---
 
@@ -19,4 +19,3 @@ RGB是一种**设备相关的**颜色模型：不同的设备对给定的RGB值�
 **RGBA**代表**红、绿、蓝、透明度（Alpha）**。虽然有时它被描述为一种颜色空间，但实际上它是一个三通道的RGB颜色模型，补充了一个第四通道——_Alpha通道_。Alpha通道表示每个像素的不透明程度，并允许通过`Alpha合成`将图像与其他图像叠加，实现图像边缘区域的`透明度`和`抗锯齿`。
 
 ![test](https://upload.wikimedia.org/wikipedia/commons/0/0e/PixelSamples32bppRGBA.png)
-

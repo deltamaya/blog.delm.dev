@@ -1,12 +1,13 @@
-import { languageTag } from '$lib/paraglide/runtime.js';
 import { getAllBlogsMeta } from '$lib/blogs';
+import { languageTag } from '$lib/paraglide/runtime';
 
-export function load() {
+export function load({ params }) {
+	const { slug } = params;
 	const posts = getAllBlogsMeta();
 
 	const groupedPosts = new Map();
 
-	posts.forEach((post) => {
+	posts!.forEach((post) => {
 		const year = post.date.getFullYear();
 		const month = post.date.toLocaleString(languageTag(), { month: 'long' });
 
@@ -22,6 +23,6 @@ export function load() {
 
 		monthsMap.get(month).push(post);
 	});
-
-	return { groupedPosts };
+	const year = Number(slug);
+	return { year: year, months: groupedPosts.get(year) };
 }

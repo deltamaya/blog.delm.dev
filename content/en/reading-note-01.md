@@ -8,7 +8,7 @@ ai: true
 
 # Teleology
 
-The book's first key idea is "teleology." Unlike Freud's "causality," Adler believes that problematic behaviors in the present are not caused by past psychological traumas but are created to achieve specific goals. This doesn’t mean the pain people feel isn’t real; rather, this pain is self-created to fulfill a purpose. 
+The book's first key idea is "teleology." Unlike Freud's "causality," Adler believes that problematic behaviors in the present are not caused by past psychological traumas but are created to achieve specific goals. This doesn’t mean the pain people feel isn’t real; rather, this pain is self-created to fulfill a purpose.
 
 This concept forms the foundation of all the ideas in the book. It argues that our "unhappiness" is not entirely determined by fate or the past but by our goals.  
 **What matters is not what life has given you, but how you use what you've been given.**  
@@ -18,13 +18,13 @@ If you choose to, you can be happy.
 
 This perspective was very novel to me, and I think it’s accurate.  
 What is the smallest unit of interpersonal relationships? Two people.  
-Imagine if you were the only person in the entire universe. Would your current troubles still exist? Your innate flaws or unfulfilled ambitions would no longer matter.  
+Imagine if you were the only person in the entire universe. Would your current troubles still exist? Your innate flaws or unfulfilled ambitions would no longer matter.
 
 However, since we cannot live alone, how can we free ourselves from the troubles caused by interpersonal relationships?
 
 ## Life Is Not a Competition with Others
 
-First, we need to realize that life is not a competition with others. Everyone starts at different points and heads in different directions. Life is a journey unique to yourself.  
+First, we need to realize that life is not a competition with others. Everyone starts at different points and heads in different directions. Life is a journey unique to yourself.
 
 That said, Adler acknowledges the existence of inferiority complexes and the desire for superiority. But this inferiority should not arise from comparing yourself to others; it should come from comparing yourself to your "ideal self." All we need to do is walk our own path and continuously surpass ourselves.
 
@@ -69,7 +69,7 @@ There’s a saying: **"You can lead a horse to water, but you can’t make it dr
 
 ## Freedom Means Being Disliked
 
-Your life is your own, and you don’t need to live for the approval of others. If you don’t live for yourself, who will? Don’t live up to others’ expectations.  
+Your life is your own, and you don’t need to live for the approval of others. If you don’t live for yourself, who will? Don’t live up to others’ expectations.
 
 If those around you don’t approve of you, **that’s their life task.** Their opinions of you are not something you should interfere with.
 
@@ -106,9 +106,10 @@ An example in the book describes people who use "not being able to disobey a bos
 
 ## Three Elements of a Sense of Community
 
-Adler outlines three key factors for building a sense of community, or feeling that "my existence matters":  
-1. **Self-acceptance**  
-2. **Trust in others**  
+Adler outlines three key factors for building a sense of community, or feeling that "my existence matters":
+
+1. **Self-acceptance**
+2. **Trust in others**
 3. **Contribution to others**
 
 ### Self-Acceptance
@@ -153,12 +154,12 @@ The biggest lie is "not living in the moment"—dwelling on the past or obsessin
 Setting distant goals and telling yourself, "I’ll do what I want once the time is right," is a way of procrastinating through life. In this state, life stagnates, and each day feels dull and tedious. "Now" becomes a period of preparation and endurance.
 
 Even without a goal, living earnestly in the moment is already a dance.  
-Neither the past nor the future determines your life—**only "now" does.**  
+Neither the past nor the future determines your life—**only "now" does.**
 
 Remember, life is always complete. A life that ends at 20 is just as complete as one that ends at 90. Happiness lies in this completeness.
 
 ### The Meaning of Life
 
-**There is no universal meaning of life.** This is why you can create your own meaning, and only you can assign meaning to your life.  
+**There is no universal meaning of life.** This is why you can create your own meaning, and only you can assign meaning to your life.
 
 If you feel lost in your current life, it’s because you’re seeking freedom. When pursuing freedom, it’s natural to feel lost. Adler offers the idea of a "guiding star," like the North Star. This guiding star is "contribution to others." As long as you don’t lose sight of this direction, moving forward will bring happiness.

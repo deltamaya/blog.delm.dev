@@ -36,9 +36,9 @@ zmap -p 7890 10.78.0.0/15
 之所以能夠在 zmap 中掃描到，是因為對方主機允許其他 IP 連接，也就是關閉了防火牆，並且 clash 監聽在 `0.0.0.0:7890` 上。此時直接在 Windows 中配置網路代理為 `ip:7890` 就可以“盜用”對方的代理流量了。（但不建議這麼做）
 
 ## 配置與使用
+
 ![configure proxy](/networking/scan_clash.png)
 
 這樣配置之後，就算自己的 clash 關掉了，也能夠訪問外網了。
 
 ![experiment result](/networking/result.png)
-

@@ -16,10 +16,10 @@ A rational individual is one who always chooses the option that maximizes their 
 
 Let’s begin with a well-known and simple example to introduce Game Theory:
 
-|         | B remains silent (cooperates) | B confesses (betrays)  |
-|---------|-------------------------------|-------------------------|
-| A remains silent (cooperates) | Both serve six months | A serves 10 years; B is released immediately |
-| A confesses (betrays)          | A is released immediately; B serves 10 years | Both serve five years |
+|                               | B remains silent (cooperates)                | B confesses (betrays)                        |
+| ----------------------------- | -------------------------------------------- | -------------------------------------------- |
+| A remains silent (cooperates) | Both serve six months                        | A serves 10 years; B is released immediately |
+| A confesses (betrays)         | A is released immediately; B serves 10 years | Both serve five years                        |
 
 The police arrest two suspects, A and B, but lack sufficient evidence to convict them. The suspects are interrogated separately and offered the same choices:
 
@@ -27,14 +27,14 @@ The police arrest two suspects, A and B, but lack sufficient evidence to convict
 - If both remain silent (termed "cooperation"), each will serve six months.
 - If both confess (mutual "betrayal"), each will serve five years.
 
-If you were A or B, what would you choose? 
+If you were A or B, what would you choose?
 
 To analyze this systematically, we enumerate the choices for both players and their outcomes, then construct a **payoff matrix** based on these outcomes:
 
-|         | B remains silent (cooperates) | B confesses (betrays) |
-|---------|-------------------------------|-----------------------|
-| A remains silent (cooperates) | (-0.5, -0.5)                 | (-10, 0)            |
-| A confesses (betrays)          | (0, -10)                    | (-5, -5)           |
+|                               | B remains silent (cooperates) | B confesses (betrays) |
+| ----------------------------- | ----------------------------- | --------------------- |
+| A remains silent (cooperates) | (-0.5, -0.5)                  | (-10, 0)              |
+| A confesses (betrays)         | (0, -10)                      | (-5, -5)              |
 
 This payoff matrix clearly and succinctly represents the outcomes of the game. It is a key tool for analyzing strategic interactions.
 
@@ -54,7 +54,7 @@ How can we change this outcome? The best approach is to **alter the payoff matri
 
 If A chooses strategy $S$ and B chooses strategy $T$, and $S$ is the best response to $T$ while $T$ is the best response to $S$, the strategy pair $(S, T)$ is called a **Nash equilibrium**. In this state, no participant has enough incentive to unilaterally change their strategy.
 
-Strictly dominant strategies do not always exist. What happens when they don’t? 
+Strictly dominant strategies do not always exist. What happens when they don’t?
 
 In such cases, we introduce **dominated strategies**, which are the opposite of dominant strategies. Participants never choose dominated strategies. By iteratively eliminating dominated strategies, we may arrive at the outcome of the game. This outcome can be considered as representing the Nash equilibrium.
 
@@ -68,12 +68,12 @@ What if a game does not have a Nash equilibrium as described above? For instance
 
 The payoff matrix for this game is:
 
-|         | B heads  | B tails  |
-|---------|----------|----------|
+|             | B heads  | B tails  |
+| ----------- | -------- | -------- |
 | **A heads** | (-1, +1) | (+1, -1) |
 | **A tails** | (+1, -1) | (-1, +1) |
 
-In this game, no strategy pair $(S, T)$ makes $S$ and $T$ mutual best responses, meaning there is no Nash equilibrium. 
+In this game, no strategy pair $(S, T)$ makes $S$ and $T$ mutual best responses, meaning there is no Nash equilibrium.
 
 To address this, we introduce **mixed strategies**, where players predict the probabilities of their opponent’s choices and adjust their strategies accordingly.
 

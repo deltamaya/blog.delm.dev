@@ -14,5 +14,7 @@
 	"Blogs": "Blogs",
 	"SuggestChanges": "Suggest Changes",
 	"Notice": "Notice",
-	"TableOfContents": "Table of Contents"
+	"TableOfContents": "Table of Contents",
+	"Prev":"Prev",
+	"Next":"Next"
 }
