@@ -53,7 +53,7 @@
 				<div class="relative inline-block text-left">
 					<button
 						aria-label="languages"
-						class="flex hover:text-red-600"
+						class="flex hover:text-red-600 mb-1"
 						onclick={(event) => toggleDropdown(event)}
 					>
 						<Icon icon="material-symbols:language" width="1.5em" height="1.5em" />
@@ -61,7 +61,7 @@
 					{#if showLanguageDropMenu}
 						<div
 							id="dropdownMenu"
-							class="absolute left-0 mt-2 w-28 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+							class="absolute mt-2 w-28 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
 							aria-orientation="vertical"
 							aria-labelledby="dropdownButton"
 						>
