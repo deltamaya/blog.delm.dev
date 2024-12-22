@@ -1,15 +1,21 @@
 ---
 title: ArcVP DevLog#1
 date: 2024-09-22
-tags: ['graphics', 'devlog', 'opengl', 'ffmpeg', 'media-processing', 'arcvp']
-authors: ['Maya']
+tags:
+  - graphics
+  - devlog
+  - opengl
+  - ffmpeg
+  - media-processing
+  - arcvp
+authors:
+  - Maya
 ai: false
 ---
 
 # What is OpenGL?
 
 First, OpenGL is **not** a library or framework. It's a graphics API specification, meaning it doesn't contain actual code like C++. Each GPU manufacturer provides its own implementation of OpenGL, which explains why a game may look slightly different on an NVIDIA GPU compared to an AMD GPU. Despite its name, it's not truly "open," as GPU manufacturers do not open-source the code for their drivers.
-
 ## How Do I 'Download' OpenGL?
 
 As I mentioned earlier, GPU manufacturers already include OpenGL in their drivers. So, if you have the correct driver installed for your GPU, you already have OpenGL.
