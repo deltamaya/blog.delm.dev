@@ -7,5 +7,6 @@
 	aria-label="return to top"
 	onclick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
 >
-	<Icon icon="emojione-monotone:up-arrow" width="2.4em" height="2.4em" />
+	<Icon icon="mdi:arrow-up-bold" width="2.4em" height="2.4em" />
+
 </button>
