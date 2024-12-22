@@ -22,7 +22,7 @@
 			{/if}
 
 			<div class="flex-grow"></div>
-			{#if data.year > 2024}
+			{#if data.year > 2023}
 				<a href="/archive/{data.year - 1}"> {m.Next()} </a>
 			{/if}
 		</div>
