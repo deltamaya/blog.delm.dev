@@ -53,10 +53,10 @@
 				<div class="relative inline-block text-left">
 					<button
 						aria-label="languages"
-						class="flex hover:text-red-600 mb-1"
+						class="flex hover:text-red-600 justify-center items-center"
 						onclick={(event) => toggleDropdown(event)}
 					>
-						<Icon icon="material-symbols:language" width="1.5em" height="1.5em" />
+						<Icon icon="material-symbols:language" width="1.5em" height="1.5em" class="mb-1"/>
 					</button>
 					{#if showLanguageDropMenu}
 						<div

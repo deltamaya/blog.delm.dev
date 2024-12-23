@@ -4,6 +4,7 @@
 
 	let { data } = $props();
 	let curYear = $state(new Date().getFullYear());
+
 </script>
 
 <div class="flex flex-grow flex-col items-center">

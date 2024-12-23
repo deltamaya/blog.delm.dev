@@ -10,6 +10,7 @@
 		mobileLayout = window.innerWidth < 768;
 	}
 	$effect(() => {
+		handleResize()
 		window.addEventListener('resize', handleResize);
 		return () => {
 			window.removeEventListener('resize', handleResize);

@@ -7,12 +7,11 @@ export interface BlogMeta {
 	slug: string;
 	title: string;
 	date: Date;
-	tags: string[]; // 博客包含的标签
+	tags: string[];
 }
 
 const supportedLanguages = ['en', 'zh-cn', 'zh-tw'];
 
-// 定义全局数据存储
 
 const blogs = new Map<string, BlogMeta[]>(); // 存储所有博客
 const tagToBlogs = new Map<string, Map<string, BlogMeta[]>>(); // tag -> blogs 的映射

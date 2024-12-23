@@ -8,7 +8,6 @@ export default {
 			fontFamily: {
 				Sans: [
 					'-apple-system',
-					'IBM Plex Sans SC',
 					'IBM Plex Sans',
 					'Inter',
 					'Noto Sans SC',

@@ -2,6 +2,7 @@
 	import * as m from '$lib/paraglide/messages.js';
 
 	let { data } = $props();
+	let firstLetters=new Map()
 </script>
 
 <div class="flex h-full w-full flex-col items-center">
@@ -10,12 +11,13 @@
 			{m.Tags()}
 		</div>
 
-		<div class="space-y-5">
+		<div class="flex flex-wrap gap-5 ">
+
 			{#each data.tagCounts as [tag, count]}
-				<div class="flex justify-between text-xl font-bold text-red-500">
-					<a href="/tags/{tag.toLowerCase()}" class="mr-3 hover:underline">#{tag.toUpperCase()}</a>
-					<div class="text-neutral-900">{count}</div>
-				</div>
+				<a href="/tags/{tag.toLowerCase()}" class="hover:underline decoration-red-500 flex justify-between text-xl font-bold bg-neutral-100 px-3 py-2 rounded-xl">
+					#<div class="text-red-500 ">{tag.toUpperCase()}</div>
+					<div class="text-neutral-900">|{count}</div>
+				</a>
 			{/each}
 		</div>
 	</div>
