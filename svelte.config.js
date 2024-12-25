@@ -11,7 +11,7 @@ const config = {
 			// see below for options that can be set here
 		})
 	},
-	extensions: ['.svelte', '.md']
+	extensions: ['.svelte'],
 };
 
 export default config;

@@ -3,15 +3,18 @@ const site = 'https://blog.dev.dev'; // change this to reflect your domain
 
 
 const cnBlogs = import.meta.glob('/content/zh-cn/*.md', {
-	eager: false
+	eager: true,
+	query:'raw'
 });
 
 const twBlogs = import.meta.glob('/content/zh-tw/*.md', {
-	eager: false
+	eager: true,
+	query:'raw'
 });
 
 const enBlogs = import.meta.glob('/content/en/*.md', {
-	eager: false
+	eager: true,
+	query:'raw'
 });
 const i18nMap = {};
 
