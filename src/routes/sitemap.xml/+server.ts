@@ -2,15 +2,48 @@ const site = 'https://blog.dev.dev'; // change this to reflect your domain
 
 
 
-const posts = import.meta.glob('/content/zh-cn/*.md', {
+const cnBlogs = import.meta.glob('/content/zh-cn/*.md', {
 	eager: false
 });
 
-// We just want the directories
-const directoryArray = Object.keys(posts); // List of posts as an absolute directory (e.g. '/src/posts/drizzle-sveltekit-integration.md')
+const twBlogs = import.meta.glob('/content/zh-tw/*.md', {
+	eager: false
+});
 
-// Trim the directories so that you have just the slugs
-const slugArray = directoryArray.map((post) => post.split('/').at(-1)?.replace('.md', '')); // List of posts as a slug (e.g. 'drizzle-sveltekit-integration')
+const enBlogs = import.meta.glob('/content/en/*.md', {
+	eager: false
+});
+const i18nMap = {};
+
+// Process English files
+for (const filePath in enBlogs) {
+  const fileName = filePath.split('/').pop();
+  if (fileName) {
+    i18nMap[`${fileName}`] = filePath;
+  }
+}
+
+// Process Chinese files
+for (const filePath in cnBlogs) {
+  const fileName = filePath.split('/').pop();
+  if (fileName) {
+    i18nMap[`zh-cn/${fileName}`] = filePath;
+  }
+}
+// Process Chinese files
+for (const filePath in twBlogs) {
+  const fileName = filePath.split('/').pop();
+  if (fileName) {
+    i18nMap[`zh-tw/${fileName}`] = filePath;
+  }
+}
+
+
+console.log(i18nMap);
+
+// We just want the directories
+const slugArray = Object.keys(i18nMap); // List of posts as an absolute directory (e.g. '/src/posts/drizzle-sveltekit-integration.md')
+
 console.log(slugArray)
 const sitemap = (pages: string[]) => `<?xml version="1.0" encoding="UTF-8" ?>
 <urlset
