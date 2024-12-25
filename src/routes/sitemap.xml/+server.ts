@@ -1,4 +1,4 @@
-const site = 'https://blog.dev.dev'; // change this to reflect your domain
+const site = 'https://blog.delm.dev'; // change this to reflect your domain
 
 
 
@@ -22,7 +22,7 @@ const i18nMap = {};
 for (const filePath in enBlogs) {
   const fileName = filePath.split('/').pop()?.replace('.md','');
   if (fileName) {
-    i18nMap[`${fileName}`] = filePath;
+    i18nMap[`blog/${fileName}`] = filePath;
   }
 }
 
@@ -30,14 +30,14 @@ for (const filePath in enBlogs) {
 for (const filePath in cnBlogs) {
   const fileName = filePath.split('/').pop()?.replace('.md','');
   if (fileName) {
-    i18nMap[`zh-cn/${fileName}`] = filePath;
+    i18nMap[`zh-cn/blog/${fileName}`] = filePath;
   }
 }
 // Process Chinese files
 for (const filePath in twBlogs) {
   const fileName = filePath.split('/').pop()?.replace('.md','');
   if (fileName) {
-    i18nMap[`zh-tw/${fileName}`] = filePath;
+    i18nMap[`zh-tw/blog/${fileName}`] = filePath;
   }
 }
 
