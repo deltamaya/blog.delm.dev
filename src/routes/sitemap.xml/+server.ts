@@ -20,7 +20,7 @@ const i18nMap = {};
 
 // Process English files
 for (const filePath in enBlogs) {
-  const fileName = filePath.split('/').pop();
+  const fileName = filePath.split('/').pop()?.replace('.md','');
   if (fileName) {
     i18nMap[`${fileName}`] = filePath;
   }
@@ -28,14 +28,14 @@ for (const filePath in enBlogs) {
 
 // Process Chinese files
 for (const filePath in cnBlogs) {
-  const fileName = filePath.split('/').pop();
+  const fileName = filePath.split('/').pop()?.replace('.md','');
   if (fileName) {
     i18nMap[`zh-cn/${fileName}`] = filePath;
   }
 }
 // Process Chinese files
 for (const filePath in twBlogs) {
-  const fileName = filePath.split('/').pop();
+  const fileName = filePath.split('/').pop()?.replace('.md','');
   if (fileName) {
     i18nMap[`zh-tw/${fileName}`] = filePath;
   }
