@@ -1,3 +1,5 @@
+import matter from 'gray-matter';
+
 const site = 'https://blog.delm.dev'; // change this to reflect your domain
 
 
@@ -18,8 +20,15 @@ const enBlogs = import.meta.glob('/content/en/*.md', {
 });
 const i18nMap = {};
 
+function isDraft(blogPath){
+	const content = blogPath.default;
+	const { data } = matter(content);
+	return data.draft;
+}
+
 // Process English files
 for (const filePath in enBlogs) {
+	if(isDraft(enBlogs[filePath])) continue;
   const fileName = filePath.split('/').pop()?.replace('.md','');
   if (fileName) {
     i18nMap[`blog/${fileName}`] = filePath;
@@ -28,6 +37,7 @@ for (const filePath in enBlogs) {
 
 // Process Chinese files
 for (const filePath in cnBlogs) {
+	if(isDraft(cnBlogs[filePath])) continue;
   const fileName = filePath.split('/').pop()?.replace('.md','');
   if (fileName) {
     i18nMap[`zh-cn/blog/${fileName}`] = filePath;
@@ -35,6 +45,7 @@ for (const filePath in cnBlogs) {
 }
 // Process Chinese files
 for (const filePath in twBlogs) {
+	if(isDraft(twBlogs[filePath])) continue;
   const fileName = filePath.split('/').pop()?.replace('.md','');
   if (fileName) {
     i18nMap[`zh-tw/blog/${fileName}`] = filePath;

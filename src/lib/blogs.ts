@@ -13,8 +13,8 @@ export interface BlogMeta {
 const supportedLanguages = ['en', 'zh-cn', 'zh-tw'];
 
 
-const blogs = new Map<string, BlogMeta[]>(); // 存储所有博客
-const tagToBlogs = new Map<string, Map<string, BlogMeta[]>>(); // tag -> blogs 的映射
+const blogs = new Map<string, BlogMeta[]>();
+const tagToBlogs = new Map<string, Map<string, BlogMeta[]>>();
 
 function loadAllBlogs() {
 	console.log('loading all posts');
@@ -30,9 +30,10 @@ function loadAllBlogs() {
 				slug: file.replace(/\.md$/, ''),
 				date: data.date,
 				title: data.title,
-				tags: data.tags
+				tags: data.tags,
+				draft:data.draft
 			};
-		});
+		}).filter((blog) => !blog.draft);
 		temp.sort((a, b) => b.date.getTime() - a.date.getTime());
 		temp.forEach((blog) => {
 			blog.tags.forEach((tag) => {
