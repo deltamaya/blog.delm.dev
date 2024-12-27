@@ -25,6 +25,11 @@ export async function load({ params }) {
 				<button class="copy-button hidden absolute group-hover:block top-2 right-2 bg-neutral-500 text-white text-sm px-2 py-1 rounded">Copy</button>
 				</div>`;
 	};
+	renderer.image = function ({ href, title, text }) {
+		const staticPath = href.startsWith('/') ? href : `/${href}`;
+		const titleAttr = title ? ` title="${title}"` : '';
+		return `<img src="${staticPath}" alt="${text}"${titleAttr} />`;
+	};
 	renderer.blockquote = blockquoteHandler;
 	renderer.heading = (heading) => headingHandler(heading, headings);
 	marked.setOptions({ renderer: renderer });
