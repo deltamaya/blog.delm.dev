@@ -4,7 +4,7 @@ date: 2024-12-27
 authors:
   - Maya
 ai: false
-draft: false
+draft: true
 tags:
   - cybersecurity
   - note

@@ -26,7 +26,16 @@ export async function load({ params }) {
 				</div>`;
 	};
 	renderer.image = function ({ href, title, text }) {
-		const staticPath = href.startsWith('/') ? href : `/${href}`;
+		let staticPath=''
+		if(href.startsWith('/')){
+			staticPath = href
+		}else{
+			if(href.startsWith('http://')||href.startsWith('https://')){
+				staticPath = href
+			}else{
+				staticPath=`/${href}`
+			}
+		}
 		const titleAttr = title ? ` title="${title}"` : '';
 		return `<img src="${staticPath}" alt="${text}"${titleAttr} />`;
 	};
