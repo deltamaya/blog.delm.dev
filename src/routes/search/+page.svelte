@@ -17,7 +17,7 @@
 			/>
 			<button
 				onclick={() =>
-					(window.location = `https://duckduckgo.com/?sites=blog.delm.dev&q=${keyword}&ia=web`)}
+					(window.location = `https://www.google.com/search?q=site:blog.delm.dev+${keyword.trim().split(' ').join('+')}`)}
 				class="mt-3 flex w-32 items-center justify-center rounded-2xl bg-red-500 px-3 py-2 font-bold text-white"
 			>
 				{m.Search()}
