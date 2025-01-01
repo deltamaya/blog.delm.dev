@@ -5,13 +5,13 @@
 
 	let { data } = $props();
 </script>
-
+<svelte:head>
+	<title>#{data.tag.toUpperCase()} - DELM</title>
+</svelte:head>
 <div class="flex h-full w-full flex-col items-center">
 	<div class="h-full w-full max-w-[48rem] p-4">
 		<div class="flex py-6 text-4xl font-bold">
-			#
-			<p class="text-4xl font-bold text-red-500">{data.tag.toUpperCase()}</p>
-			&nbsp;{m.Blogs()}
+			#{data.tag.toUpperCase()}
 		</div>
 
 		<div class="flex flex-col">

@@ -5,7 +5,7 @@
 	const total = [...months.entries()].reduce((sum, entry) => sum + entry[1].length, 0);
 </script>
 
-<div class="flex flex-col">
+<div class="flex flex-col w-full">
 	<div class="my-5 flex">
 		<div class="text-2xl font-bold">
 			{year}

@@ -53,7 +53,10 @@
 		};
 	});
 </script>
+<svelte:head>
+	<title>{data.metadata.title} - DELM</title>
 
+</svelte:head>
 <div class="flex w-full flex-col flex-wrap items-center">
 	<div class="flex h-full max-w-[48rem] flex-col p-4">
 		<div class="flex flex-wrap">

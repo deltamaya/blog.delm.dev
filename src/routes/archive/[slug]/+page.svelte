@@ -6,11 +6,13 @@
 	let curYear = $state(new Date().getFullYear());
 
 </script>
-
+<svelte:head>
+	<title>Archive {data.year} - DELM</title>
+</svelte:head>
 <div class="flex flex-grow flex-col items-center">
 	<div class="flex h-full w-full max-w-[48rem] flex-col p-4">
 		<div class="py-6 text-4xl font-bold">
-			{m.Archive()}
+			{m.Archive()}-{data.year}
 		</div>
 		{#if data.months}
 			<YearArchive year={data.year} months={data.months} />

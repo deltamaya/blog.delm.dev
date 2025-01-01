@@ -4,7 +4,9 @@
 
 	let { data } = $props();
 </script>
-
+<svelte:head>
+	<title>DELM Blog Site</title>
+</svelte:head>
 <div class="flex flex-grow flex-col items-center justify-center">
 	<div class="h-full w-full max-w-[48rem] p-4">
 		<div class="py-6 text-2xl font-bold">

@@ -18,7 +18,7 @@
 	});
 </script>
 
-<div class="flex" class:flex-col={mobileLayout}>
+<div class="flex w-full" class:flex-col={mobileLayout}>
 	<div class="mt-3 flex w-32">
 		<div class="text-lg font-bold">
 			{month}
@@ -27,7 +27,7 @@
 			{total}
 		</div>
 	</div>
-	<div class="flex flex-col">
+	<div class="flex flex-col w-full">
 		{#each blogs as blog}
 			<BlogCard {blog} />
 		{/each}
