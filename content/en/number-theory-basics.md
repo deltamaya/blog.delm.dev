@@ -28,7 +28,7 @@ Congruences have the following properties:
 
 Prime numbers are at the core of number theory. A prime number has only two factors: 1 and itself. Any composite number can be expressed as:
 
-$$ a = \prod \limits\_{p \in P} p^{a_p}, a_p \geq 0 $$
+$$ a = \prod \limits_{p \in P} p^{a_p}, a_p \geq 0 $$
 
 Here, $P$ represents all prime numbers, and most of the $a_p$ are 0.
 

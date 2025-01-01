@@ -29,7 +29,7 @@ ai: false
 
 素数是数论的核心，素数指它的因子只有1和它本身，任何一个非素数都可以表示为
 
-$$ a= \prod \limits\_{p \in P} p^{a_p}, a_p \geq 0$$
+$$ a= \prod \limits_{p \in P} p^{a_p}, a_p \geq 0$$
 
 其中P表示所有的素数，其中大部分的$a_p$都是0。
 

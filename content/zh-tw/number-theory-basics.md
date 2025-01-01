@@ -28,7 +28,7 @@ ai: true
 
 素數是數論的核心。素數是指它的因子只有 1 和它本身的數字。任何一個非素數都可以表示為：
 
-$$ a= \prod \limits\_{p \in P} p^{a_p}, a_p \geq 0$$
+$$ a= \prod \limits_{p \in P} p^{a_p}, a_p \geq 0$$
 
 其中 $P$ 表示所有的素數，大多數的 $a_p$ 都是 0。
 

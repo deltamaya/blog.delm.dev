@@ -3,7 +3,7 @@
 	import { languageTag } from '$lib/paraglide/runtime.js';
 </script>
 
-<div class="my-2 ml-5 flex hover:bg-neutral-100 px-3 py-2 rounded-2xl w-full">
+<div class="flex hover:bg-neutral-100 px-3 py-2 rounded-2xl w-full">
 	<div class="flex flex-col">
 		<a class="text-xl font-bold" href={`/blog/${blog.slug}`}>
 			{blog.title}
