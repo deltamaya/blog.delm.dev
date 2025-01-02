@@ -1,6 +1,7 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages.js';
 	import BlogCard from './BlogCard.svelte';
+	import Icon from '@iconify/svelte';
 
 	let { data } = $props();
 </script>
@@ -12,8 +13,11 @@
 		<div class="py-6 text-2xl font-bold">
 			{m.Welcome()}
 		</div>
-		<div class="py-6 text-4xl font-bold">
+		<div class="py-6 text-4xl font-bold flex">
 			{m.Latest()}
+			<a href="/rss" class="hover:text-red-600">
+<Icon icon="mdi:rss" width="30" height="30" />
+			</a>
 		</div>
 		<div class="flex flex-col">
 			{#each data.blogs as blog}
