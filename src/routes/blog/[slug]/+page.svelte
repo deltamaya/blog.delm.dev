@@ -1,5 +1,6 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages.js';
+	import { RegisteredAuthors } from '$lib/authors';
 
 	let { data } = $props();
 
@@ -88,7 +89,13 @@
 
 		<div class="my-1 flex text-base text-gray-500">
 			{data.metadata.date.toLocaleDateString(languageTag())}
-			· {m.AuthoredBy({ authors: data.metadata.authors.join(', ') })}
+			·
+			{ m.AuthoredBy()}
+			<div class="flex ml-1 space-x-2">
+				{#each data.metadata.authors as author}
+					<a href={RegisteredAuthors.get(author)?.url??"#"} class="hover:text-red-500 hover:underline">{author}</a>
+				{/each}
+			</div>
 		</div>
 
 		<div class="flex flex-wrap text-lg font-bold text-red-500">
