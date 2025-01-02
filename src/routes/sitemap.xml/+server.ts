@@ -1,64 +1,15 @@
-import matter from 'gray-matter';
+import {slugs} from '$lib/blogs'
 
 const site = 'https://blog.delm.dev'; // change this to reflect your domain
 
 
 
-const cnBlogs = import.meta.glob('/content/zh-cn/*.md', {
-	eager: true,
-	query:'raw'
-});
-
-const twBlogs = import.meta.glob('/content/zh-tw/*.md', {
-	eager: true,
-	query:'raw'
-});
-
-const enBlogs = import.meta.glob('/content/en/*.md', {
-	eager: true,
-	query:'raw'
-});
-const i18nMap = {};
-
-function isDraft(blogPath){
-	const content = blogPath.default;
-	const { data } = matter(content);
-	return data.draft;
-}
-
-// Process English files
-for (const filePath in enBlogs) {
-	if(isDraft(enBlogs[filePath])) continue;
-  const fileName = filePath.split('/').pop()?.replace('.md','');
-  if (fileName) {
-    i18nMap[`blog/${fileName}`] = filePath;
-  }
-}
-
-// Process Chinese files
-for (const filePath in cnBlogs) {
-	if(isDraft(cnBlogs[filePath])) continue;
-  const fileName = filePath.split('/').pop()?.replace('.md','');
-  if (fileName) {
-    i18nMap[`zh-cn/blog/${fileName}`] = filePath;
-  }
-}
-// Process Chinese files
-for (const filePath in twBlogs) {
-	if(isDraft(twBlogs[filePath])) continue;
-  const fileName = filePath.split('/').pop()?.replace('.md','');
-  if (fileName) {
-    i18nMap[`zh-tw/blog/${fileName}`] = filePath;
-  }
-}
 
 
-console.log(i18nMap);
 
-// We just want the directories
-const slugArray = Object.keys(i18nMap); // List of posts as an absolute directory (e.g. '/src/posts/drizzle-sveltekit-integration.md')
+const slugArray = slugs;
 
-console.log(slugArray)
+
 const sitemap = (pages: string[]) => `<?xml version="1.0" encoding="UTF-8" ?>
 <urlset
   xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"

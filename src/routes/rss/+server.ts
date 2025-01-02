@@ -1,7 +1,8 @@
-import { getAllBlogsMeta } from '$lib/blogs';
 import { languageTag } from '$lib/paraglide/runtime';
+import { getAllBlogsMeta } from '$lib/blogs';
 
-const blogs=getAllBlogsMeta().slice(0,20);
+const blogs=getAllBlogsMeta().slice(0,20)
+
 
 function generateRSS(blogs: any) {
 	return `<?xml version="1.0" encoding="UTF-8"?>

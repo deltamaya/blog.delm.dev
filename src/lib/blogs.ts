@@ -12,28 +12,53 @@ export interface BlogMeta {
 
 const supportedLanguages = ['en', 'zh-cn', 'zh-tw'];
 
-
 const blogs = new Map<string, BlogMeta[]>();
 const tagToBlogs = new Map<string, Map<string, BlogMeta[]>>();
+export const slugs:string[]=[]
+
+const blogsRaw = new Map(
+	[
+		['zh-cn', import.meta.glob('/content/zh-cn/*.md', {
+			eager: true,
+			query: 'raw'
+		})],
+		['zh-tw', import.meta.glob('/content/zh-tw/*.md', {
+			eager: true,
+			query: 'raw'
+		})], [
+		'en', import.meta.glob('/content/en/*.md', {
+			eager: true,
+			query: 'raw'
+		})
+	]
+	]
+);
+
+
 
 function loadAllBlogs() {
 	console.log('loading all posts');
 	for (const lang of supportedLanguages) {
-		console.log(lang);
-		const postsDirectory = path.resolve(`content/${lang}`);
-		const files = fs.readdirSync(postsDirectory);
-		const temp = files.map((file) => {
-			const filePath = path.join(postsDirectory, file);
-			const content = fs.readFileSync(filePath, 'utf-8');
-			const { data } = matter(content);
-			return {
-				slug: file.replace(/\.md$/, ''),
-				date: data.date,
-				title: data.title,
-				tags: data.tags,
-				draft:data.draft
-			};
-		}).filter((blog) => !blog.draft);
+		const files=blogsRaw.get(lang)
+		let temp=[]
+		for (const [filepath, file] of Object.entries(files)) {
+			const metadata=matter(file.default)
+			const slug= filepath.split('/').pop().replace(/\.md$/, '')
+			if(lang==='en'){
+				slugs.push(`blog/${slug}`)
+			}else{
+				slugs.push(`${lang}/blog/${slug}`)
+			}
+			temp.push({
+				slug:slug,
+				date: metadata.data.date,
+				title: metadata.data.title,
+				tags: metadata.data.tags,
+				draft: metadata.data.draft
+			})
+		}
+		temp=temp.filter((blog)=>!blog.draft)
+		// console.log(temp)
 		temp.sort((a, b) => b.date.getTime() - a.date.getTime());
 		temp.forEach((blog) => {
 			blog.tags.forEach((tag) => {
@@ -52,6 +77,7 @@ function loadAllBlogs() {
 }
 
 loadAllBlogs();
+
 export function getAllBlogsMeta() {
 	return blogs.get(languageTag());
 }
@@ -59,3 +85,4 @@ export function getAllBlogsMeta() {
 export function getTaggedBlogsMeta(tag: string) {
 	return tagToBlogs.get(languageTag())!.get(tag);
 }
+
