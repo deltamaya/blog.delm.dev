@@ -66,7 +66,7 @@
 			</h1>
 			<a
 				href="https://github.com/deltamaya/blog_site/pulls"
-				class="flex text-xs text-gray-500 hover:text-red-500 hover:underline lg:text-sm"
+				class="flex text-xs text-gray-500 hover:text-red-500 hover:underline lg:text-sm dark:text-gray-400"
 			>
 				<svg
 					fill="none"
@@ -87,7 +87,7 @@
 			>
 		</div>
 
-		<div class="my-1 flex text-base text-gray-500">
+		<div class="my-1 flex text-base text-gray-500 dark:text-gray-400">
 			{data.metadata.date.toLocaleDateString(languageTag())}
 			·
 			{ m.AuthoredBy()}&nbsp;
@@ -111,7 +111,7 @@
 			<AINotice />
 		{/if}
 		<hr class="my-10 h-[2px] bg-neutral-100" />
-		<article class="prose prose-sm prose-neutral self-center md:prose-base lg:prose-lg">
+		<article class="prose prose-sm prose-neutral self-center md:prose-base lg:prose-lg dark:text-neutral-50">
 			{@html data.content}
 		</article>
 	</div>

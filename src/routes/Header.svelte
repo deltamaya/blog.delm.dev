@@ -21,18 +21,34 @@
 	}
 
 	let showLanguageDropMenu = $state(false);
+	let isDark = $state(false);
 
 	function toggleDropdown(event: MouseEvent) {
 		event.stopPropagation();
 		showLanguageDropMenu = !showLanguageDropMenu;
 	}
 
+
 	function hideDropMenu() {
 		showLanguageDropMenu = false;
 	}
 
+	function toggleDarkTheme() {
+		isDark = !isDark;
+		if (isDark) {
+			document.documentElement.classList.add('dark');
+		} else {
+			document.documentElement.classList.remove('dark');
+		}
+	}
+
 	$effect(() => {
 		window.addEventListener('click', hideDropMenu);
+				if (isDark) {
+			document.documentElement.classList.add('dark');
+		} else {
+			document.documentElement.classList.remove('dark');
+		}
 		return () => {
 			window.removeEventListener('click', hideDropMenu);
 		};
@@ -40,13 +56,13 @@
 </script>
 
 <header
-	class="flex min-h-16 w-full items-center justify-center bg-neutral-50 font-Sans font-bold text-neutral-900"
+	class="flex min-h-16 w-full items-center justify-center bg-neutral-50 font-Sans font-bold text-neutral-900 dark:bg-neutral-900 dark:text-white"
 >
 	<div class="flex w-full max-w-[1024px] flex-wrap items-center justify-between gap-5 p-4">
 		<div class="flex items-center space-x-3">
 			<button class="flex items-center space-x-3" onclick={() => gotoHome()}>
 				<span class="text-lg font-bold md:text-xl lg:text-2xl"
-					>DELM.<span class="text-red-600">{languageTag()}</span></span
+				>DELM.<span class="text-red-600">{languageTag()}</span></span
 				>
 			</button>
 			<div class="flex space-x-3 text-sm md:text-base lg:text-lg">
@@ -54,9 +70,9 @@
 					<button
 						aria-label="languages"
 						class="flex hover:text-red-600 justify-center items-center"
-						onclick={(event) => toggleDropdown(event)}
+						onclick={(event)=>{toggleDropdown(event)}}
 					>
-						<Icon icon="material-symbols:language" width="1.5em" height="1.5em" class="mb-1"/>
+						<Icon icon="material-symbols:language" width="1.5em" height="1.5em" class="mb-1" />
 					</button>
 					{#if showLanguageDropMenu}
 						<div
@@ -89,6 +105,15 @@
 						</div>
 					{/if}
 				</div>
+				<div class="relative inline-block text-left">
+					<button onclick="{()=>toggleDarkTheme()}">
+						{#if !isDark}
+							<Icon icon="ri:sun-fill" width="24" height="24" />
+						{:else}
+							<Icon icon="solar:moon-broken" width="24" height="24" />
+						{/if}
+					</button>
+				</div>
 			</div>
 		</div>
 
@@ -101,11 +126,19 @@
 
 			<div class="flex">
 				<a href="https://delm.dev" class="flex hover:underline">
-					<img
-						src="/logo-dark.png"
-						alt="Logo"
-						class="mb-1 h-[24px] w-[45px] lg:h-[27px] lg:w-[50px]"
-					/>
+					{#if isDark}
+						<img
+							src="/logo-white.png"
+							alt="Logo"
+							class="mb-1 h-[24px] w-[45px] lg:h-[27px] lg:w-[50px]"
+						/>
+					{:else}
+						<img
+							src="/logo-dark.png"
+							alt="Logo"
+							class="mb-1 h-[24px] w-[45px] lg:h-[27px] lg:w-[50px]"
+						/>
+					{/if}
 				</a>
 			</div>
 		</nav>
@@ -113,7 +146,7 @@
 </header>
 
 <style>
-	.active {
-		@apply font-bold text-red-600 underline;
-	}
+    .active {
+        @apply font-bold text-red-600 underline;
+    }
 </style>

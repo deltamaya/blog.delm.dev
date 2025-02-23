@@ -12,7 +12,7 @@
 		{#each headings as heading}
 			<a
 				href={`#${heading.id}`}
-				class="w-full text-neutral-900 hover:text-red-600 hover:underline flex flex-wrap"
+				class="w-full hover:text-red-600 hover:underline flex flex-wrap"
 				style={`margin-left: ${(heading.depth - 1) * 12}px;font-weight: ${(7 - heading.depth) * 100}`}
 			>
 				{heading.text}
