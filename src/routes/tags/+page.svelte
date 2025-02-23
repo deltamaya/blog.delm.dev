@@ -17,7 +17,7 @@
 
 			{#each data.tagCounts as [tag, count]}
 				<a href="/tags/{tag.toLowerCase()}"
-					 class="hover:underline decoration-red-500 flex justify-between text-xl font-bold bg-neutral-100 px-3 py-2 rounded-xl dark:bg-neutral-800 text-neutral-100">
+					 class="hover:underline decoration-red-500 flex justify-between text-xl font-bold bg-neutral-100 px-3 py-2 rounded-xl dark:bg-neutral-800 dark:text-neutral-100">
 					<div class="text-red-500">#</div>
 					{tag.toUpperCase()}
 					<div class="text-red-500">&nbsp;{count}</div>
