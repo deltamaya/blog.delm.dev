@@ -37,14 +37,18 @@
 		isDark = !isDark;
 		if (isDark) {
 			document.documentElement.classList.add('dark');
+			localStorage.setItem('theme', 'dark');
 		} else {
 			document.documentElement.classList.remove('dark');
+			localStorage.setItem('theme', 'light');
 		}
 	}
 
 	$effect(() => {
 		window.addEventListener('click', hideDropMenu);
-				if (isDark) {
+		const theme = localStorage.getItem('theme');
+		isDark = theme === 'dark';
+		if (isDark) {
 			document.documentElement.classList.add('dark');
 		} else {
 			document.documentElement.classList.remove('dark');
