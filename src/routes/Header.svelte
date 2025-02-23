@@ -81,26 +81,26 @@
 					{#if showLanguageDropMenu}
 						<div
 							id="dropdownMenu"
-							class="absolute mt-2 w-28 rounded-md bg-neutral-100 dark:bg-neutral-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+							class="absolute mt-2 w-28 rounded-md bg-neutral-100 dark:bg-neutral-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-20"
 							aria-orientation="vertical"
 							aria-labelledby="dropdownButton"
 						>
 							<button
-								class="block w-full px-4 py-2 text-sm text-neutral-700 dark:text-neutral-100 hover:bg-neutral-100 hover:text-red-600"
+								class="block w-full px-4 py-2 text-sm text-neutral-700 dark:text-neutral-100 hover:text-red-600 dark:hover:text-red-600"
 								class:active={languageTag() === 'en'}
 								onclick={() => switchToLanguage('en')}
 							>
 								English
 							</button>
 							<button
-								class="block w-full px-4 py-2 text-sm text-neutral-700 dark:text-neutral-100 hover:bg-neutral-100 hover:text-red-600"
+								class="block w-full px-4 py-2 text-sm text-neutral-700 dark:text-neutral-100 hover:text-red-600 dark:hover:text-red-600"
 								onclick={() => switchToLanguage('zh-cn')}
 								class:active={languageTag() === 'zh-cn'}
 							>
 								简体中文
 							</button>
 							<button
-								class="block w-full px-4 py-2 text-sm text-neutral-700 dark:text-neutral-100 hover:bg-neutral-100 hover:text-red-600"
+								class="block w-full px-4 py-2 text-sm text-neutral-700 dark:text-neutral-100 hover:text-red-600 dark:hover:text-red-600"
 								onclick={() => switchToLanguage('zh-tw')}
 								class:active={languageTag() === 'zh-tw'}
 							>
@@ -124,9 +124,9 @@
 		<nav
 			class="flex items-center justify-center space-x-6 text-sm font-bold md:text-base lg:text-lg"
 		>
-			<a href="/archive/{new Date().getFullYear()}" class="hover:underline">{m.Archive()}</a>
-			<a href="/search" class="hover:underline">{m.Search()}</a>
-			<a href="/tags" class="hover:underline">{m.Tags()}</a>
+			<a href="/archive/{new Date().getFullYear()}" class="hover:underline hover:text-red-600">{m.Archive()}</a>
+			<a href="/search" class="hover:underline hover:text-red-600">{m.Search()}</a>
+			<a href="/tags" class="hover:underline hover:text-red-600">{m.Tags()}</a>
 
 			<div class="flex">
 				<a href="https://delm.dev" class="flex hover:underline">

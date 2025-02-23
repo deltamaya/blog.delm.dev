@@ -16,7 +16,7 @@
 				type="text"
 				bind:value={keyword}
 				placeholder={m.SearchHere()}
-				class="w-full rounded-2xl border-2 border-neutral-300 px-3 py-2 font-bold"
+				class="w-full rounded-2xl border-2 border-neutral-300 px-3 py-2 font-bold dark:bg-neutral-800"
 			/>
 			<button
 				onclick={() =>

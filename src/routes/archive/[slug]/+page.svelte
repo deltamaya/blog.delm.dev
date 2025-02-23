@@ -19,7 +19,7 @@
 		{:else}
 			<div class="flex-grow text-3xl font-bold">NULL</div>
 		{/if}
-		<div class="flex w-full items-center justify-between text-xl font-bold text-neutral-900">
+		<div class="flex w-full items-center justify-between text-xl font-bold text-neutral-900 dark:text-neutral-100">
 			{#if curYear > data.year}
 				<a href="/archive/{data.year + 1}"> {m.Prev()} </a>
 			{/if}
