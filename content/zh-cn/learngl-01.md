@@ -1,5 +1,5 @@
 ---
-title: 初见OpenGL-01
+title: 初见OpenGL
 authors:
   - Maya
 ai: false

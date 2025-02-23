@@ -1,21 +1,39 @@
-import openai
-import re
+import httpx
+import json
 import os
-from pathlib import Path
+import frontmatter
+import re
+
+# === Config the settings ===
+# supports zh-cn, zh-cn, en
+SOURCE_LANGUAGE = "zh-cn"
+TARGET_LANGUAGE = "en"
+FILENAME = "learngl-01"
+
+with open("./secrets.json", "r") as f:
+    secrets = json.load(f)
+    OPENAI_KEY = secrets["openai_key"]
+
 
 # Set your OpenAI API key
-openai.api_key = "YOUR_API_KEY_HERE"
+header = {
+    "Authorization": f"Bearer {OPENAI_KEY}",
+    "Content-Type": "application/json",
+}
 
 
-def extract_frontmatter_and_content(text):
+def extract_frontmatter_and_content(text, target_language):
     """Separate frontmatter and main content."""
-    frontmatter_pattern = r'^---\s*\n(.*?)\n---\s*\n'
-    match = re.match(frontmatter_pattern, text, re.DOTALL)
-    if match:
-        frontmatter = match.group(0)
-        content = text[match.end():]
-        return frontmatter, content
-    return "", text
+    parsed = frontmatter.loads(text)
+    curFrontmatter = parsed.metadata
+    curFrontmatter["ai"] = True
+    titleTemp: str = translate_text(curFrontmatter["title"], target_language)
+    curFrontmatter["title"] = titleTemp.strip()
+    frontmatterText = "---\n"
+    for k, v in curFrontmatter.items():
+        frontmatterText += f"{k}: {v}\n"
+    frontmatterText += "---\n"
+    return frontmatterText, parsed.content
 
 
 def preserve_code_blocks(text):
@@ -27,7 +45,7 @@ def preserve_code_blocks(text):
         return f"CODEBLOCK_{len(code_blocks) - 1}"
 
     # Match both triple backtick and indented code blocks
-    pattern = r'```[\s\S]*?```|\n\s{4}.*?(?=\n[^ ]|\Z)'
+    pattern = r"```[\s\S]*?```|\n\s{4}.*?(?=\n[^ ]|\Z)"
     protected_text = re.sub(pattern, replace_code, text, flags=re.MULTILINE)
     return protected_text, code_blocks
 
@@ -46,27 +64,41 @@ def translate_text(text, target_language):
     {text}
     """
 
-    response = openai.ChatCompletion.create(
-        model="gpt-4",
-        messages=[
-            {"role": "system", "content": "You are a translator that preserves markdown formatting."},
-            {"role": "user", "content": prompt}
+    data = {
+        "model": "gpt-4o-mini",
+        "messages": [
+            {
+                "role": "system",
+                "content": "You are a translator that preserves markdown formatting.",
+            },
+            {
+                "role": "user",
+                "content": prompt,
+            },
         ],
-        temperature=0.3
+        "temperature": 0.3,
+    }
+    response = httpx.post(
+        "https://api.kksj.org/v1/chat/completions",
+        headers=header,
+        data=json.dumps(data),
+        verify=False,
+        timeout=9999,
     )
-
-    return response.choices[0].message.content
+    return response.json()["choices"][0]["message"]["content"]
 
 
 def translate_file(input_file, output_file, target_language):
     """Translate a single markdown file."""
     try:
         # Read the input file
-        with open(input_file, 'r', encoding='utf-8') as f:
+        with open(input_file, "r", encoding="utf-8") as f:
             original_text = f.read()
 
         # Separate frontmatter and content
-        frontmatter, content = extract_frontmatter_and_content(original_text)
+        frontmatter, content = extract_frontmatter_and_content(
+            original_text, target_language
+        )
 
         # Protect code blocks
         protected_content, code_blocks = preserve_code_blocks(content)
@@ -81,7 +113,7 @@ def translate_file(input_file, output_file, target_language):
         final_text = frontmatter + final_content
 
         # Write to output file
-        with open(output_file, 'w', encoding='utf-8') as f:
+        with open(output_file, "w", encoding="utf-8") as f:
             f.write(final_text)
 
         print(f"Successfully translated {input_file} to {output_file}")
@@ -90,27 +122,16 @@ def translate_file(input_file, output_file, target_language):
         print(f"Error processing {input_file}: {str(e)}")
 
 
-def translate_directory(input_dir, output_dir, target_language):
-    """Translate all markdown files in a directory."""
-    input_path = Path(input_dir)
-    output_path = Path(output_dir)
-    output_path.mkdir(parents=True, exist_ok=True)
-
-    for md_file in input_path.glob("*.md"):
-        output_file = output_path / md_file.name
-        translate_file(md_file, output_file, target_language)
-
-
 # Example usage
 if __name__ == "__main__":
     # Single file translation
-    input_file = "blog_post.md"
-    output_file = "blog_post_es.md"
-    target_language = "Spanish"
+    input_file = f"./content/{SOURCE_LANGUAGE}/{FILENAME}.md"
+    output_file = f"./content/{TARGET_LANGUAGE}/{FILENAME}.md"
 
-    translate_file(input_file, output_file, target_language)
+    language_map = {
+        "zh-cn": "Chinese Simplified",
+        "zh-tw": "Chinese Traditional",
+        "en": "English",
+    }
 
-    # Directory translation
-    # input_directory = "blog_posts"
-    # output_directory = "blog_posts_translated"
-    # translate_directory(input_directory, output_directory, "Spanish")
+    translate_file(input_file, output_file, language_map[TARGET_LANGUAGE])

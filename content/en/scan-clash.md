@@ -1,21 +1,19 @@
 ---
-title: 'Using Clash Proxies Without Authorization'
+title: "Misappropriation of clash proxy"
 date: 2024-12-21
-ai: true
-draft: false
+ai: True
 tags: ['networking', 'cybersecurity', 'gfw']
 authors: ['Maya']
 ---
+## zmap Scanning the Network
 
-## Scanning Networks with zmap
-
-Today, while browsing Bilibili, I came across a video introducing `zmap` as a network scanning tool. It seemed very interesting, so I quickly downloaded it to try it out. On a whim, I decided to scan my campus network to see if anyone was using the Clash proxy on port 7890.
+Today, while browsing Bilibili, I came across a video introducing `zmap` as a network scanning tool. I found it very interesting, so I immediately downloaded it to play around with. I suddenly had the idea to scan for users on the campus network using the clash (7890) port.
 
 ```bash
 zmap -p 7890 10.78.0.0/15
 ```
 
-After running the command above, I actually managed to discover several IP addresses!
+After executing the above command, I actually found these IPs!
 
 ```
 10.79.11.174
@@ -32,14 +30,12 @@ After running the command above, I actually managed to discover several IP addre
 ...
 ```
 
-### Unauthorized Proxy Use
+### "Stealing" Proxy
 
-The reason these IPs can be discovered using `zmap` is that the target machines allow connections from other IPs. In other words, their firewalls are disabled, and Clash is listening on `0.0.0.0:7890`. By configuring the network proxy on Windows to `IP:7890`, you can effectively "borrow" someone else's proxy traffic. (However, this is **not recommended** and is unethical.)
+The reason I was able to scan with zmap is that the target host allows other IPs to connect, meaning the firewall is turned off, and clash is listening on `0.0.0.0:7890`. At this point, you can directly configure the network proxy in Windows to `ip:7890` to "steal" the proxy traffic from the other party. (However, it's not recommended to do this.)
 
 ## Configuration and Usage
 
-![configure proxy](/networking/scan_clash.png)
-
-After configuring your system like this, you can access the internet through the external proxy, even if your own Clash is turned off.
-
+![configure proxy](/networking/scan_clash.png)  
+With this configuration, even if you turn off your own clash, you can still access the external network.  
 ![experiment result](/networking/result.png)

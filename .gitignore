@@ -27,3 +27,4 @@ src/lib/paraglide
 
 .idea/
 .obsidian/
+secrets.json
