@@ -22,6 +22,8 @@
 
 	let showLanguageDropMenu = $state(false);
 	let isDark = $state(false);
+	let themeIndex = $state(0);
+	const themeList = ['system', 'light', 'dark'];
 
 	function toggleDropdown(event: MouseEvent) {
 		event.stopPropagation();
@@ -33,21 +35,36 @@
 		showLanguageDropMenu = false;
 	}
 
-	function toggleDarkTheme() {
-		isDark = !isDark;
+	function switchTheme() {
+		themeIndex = (themeIndex + 1) % themeList.length;
+
+		const theme = themeList[themeIndex];
+		if (themeIndex == 0) {
+			isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+		} else {
+			isDark = theme === 'dark';
+		}
+
 		if (isDark) {
 			document.documentElement.classList.add('dark');
-			localStorage.setItem('theme', 'dark');
 		} else {
 			document.documentElement.classList.remove('dark');
-			localStorage.setItem('theme', 'light');
 		}
+		localStorage.setItem('theme', theme);
+
 	}
 
 	$effect(() => {
 		window.addEventListener('click', hideDropMenu);
 		const theme = localStorage.getItem('theme');
-		isDark = theme === 'dark';
+		if (theme === 'system') {
+			isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+			themeIndex = 0;
+		} else {
+			isDark = theme === 'dark';
+			themeIndex = isDark ? 2 : 1;
+		}
+
 		if (isDark) {
 			document.documentElement.classList.add('dark');
 		} else {
@@ -76,7 +93,7 @@
 						class="flex hover:text-red-600 justify-center items-center"
 						onclick={(event)=>{toggleDropdown(event)}}
 					>
-						<Icon icon="material-symbols:language" width="24" height="24"/>
+						<Icon icon="material-symbols:language" width="24" height="24" />
 					</button>
 					{#if showLanguageDropMenu}
 						<div
@@ -110,8 +127,10 @@
 					{/if}
 				</div>
 				<div class="relative flex text-left">
-					<button class="hover:text-red-600 justify-center items-center" onclick="{()=>toggleDarkTheme()}">
-						{#if !isDark}
+					<button class="hover:text-red-600 justify-center items-center" onclick="{()=>switchTheme()}">
+						{#if themeIndex === 0}
+							<Icon icon="material-symbols:brightness-auto-outline" width="24" height="24" />
+						{:else if themeIndex === 1}
 							<Icon icon="ri:sun-fill" width="24" height="24" />
 						{:else}
 							<Icon icon="solar:moon-broken" width="24" height="24" />
