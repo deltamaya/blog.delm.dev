@@ -1,6 +1,5 @@
 import type { Config } from 'tailwindcss';
 
-// @ts-ignore
 export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 
