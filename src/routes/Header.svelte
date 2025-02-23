@@ -60,7 +60,7 @@
 </script>
 
 <header
-	class="flex min-h-16 w-full items-center justify-center bg-neutral-50 font-Sans font-bold text-neutral-900 dark:bg-neutral-900 dark:text-white"
+	class="flex min-h-16 w-full items-center justify-center bg-neutral-50 font-Sans font-bold text-neutral-900 dark:bg-neutral-900 dark:text-white transition-colors"
 >
 	<div class="flex w-full max-w-[1024px] flex-wrap items-center justify-between gap-5 p-4">
 		<div class="flex items-center space-x-3">
@@ -69,38 +69,38 @@
 				>DELM.<span class="text-red-600">{languageTag()}</span></span
 				>
 			</button>
-			<div class="flex space-x-3 text-sm md:text-base lg:text-lg">
-				<div class="relative inline-block text-left">
+			<div class="flex items-center space-x-3 text-sm md:text-base lg:text-lg">
+				<div class="relative flex text-left">
 					<button
 						aria-label="languages"
 						class="flex hover:text-red-600 justify-center items-center"
 						onclick={(event)=>{toggleDropdown(event)}}
 					>
-						<Icon icon="material-symbols:language" width="1.5em" height="1.5em" class="mb-1" />
+						<Icon icon="material-symbols:language" width="24" height="24"/>
 					</button>
 					{#if showLanguageDropMenu}
 						<div
 							id="dropdownMenu"
-							class="absolute mt-2 w-28 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+							class="absolute mt-2 w-28 rounded-md bg-neutral-100 dark:bg-neutral-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
 							aria-orientation="vertical"
 							aria-labelledby="dropdownButton"
 						>
 							<button
-								class="block w-full px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-100 hover:text-red-600"
+								class="block w-full px-4 py-2 text-sm text-neutral-700 dark:text-neutral-100 hover:bg-neutral-100 hover:text-red-600"
 								class:active={languageTag() === 'en'}
 								onclick={() => switchToLanguage('en')}
 							>
 								English
 							</button>
 							<button
-								class="block w-full px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-100 hover:text-red-600"
+								class="block w-full px-4 py-2 text-sm text-neutral-700 dark:text-neutral-100 hover:bg-neutral-100 hover:text-red-600"
 								onclick={() => switchToLanguage('zh-cn')}
 								class:active={languageTag() === 'zh-cn'}
 							>
 								简体中文
 							</button>
 							<button
-								class="block w-full px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-100 hover:text-red-600"
+								class="block w-full px-4 py-2 text-sm text-neutral-700 dark:text-neutral-100 hover:bg-neutral-100 hover:text-red-600"
 								onclick={() => switchToLanguage('zh-tw')}
 								class:active={languageTag() === 'zh-tw'}
 							>
@@ -109,8 +109,8 @@
 						</div>
 					{/if}
 				</div>
-				<div class="relative inline-block text-left">
-					<button onclick="{()=>toggleDarkTheme()}">
+				<div class="relative flex text-left">
+					<button class="hover:text-red-600 justify-center items-center" onclick="{()=>toggleDarkTheme()}">
 						{#if !isDark}
 							<Icon icon="ri:sun-fill" width="24" height="24" />
 						{:else}
