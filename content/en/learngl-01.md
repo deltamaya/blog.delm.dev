@@ -275,7 +275,7 @@ The **Model Matrix** is a transformation matrix that can position an object wher
 ## View Space
 
 **View Space** is often referred to as OpenGL's **Camera** (hence sometimes called **Camera Space** or **Eye Space**). View Space is the result of transforming world space coordinates into coordinates that are in front of the user's field of view. Thus, view space is the space observed from the perspective of the camera. This is typically accomplished by a combination of translations and rotations, translating/rotating the scene so that specific objects are transformed in front of the camera. These combined transformations are usually stored in a **View Matrix**, which is used to transform world coordinates into view space. In the next section, we will delve into how to create such a view matrix to simulate a camera.
-
+When we multiply the model, view, and projection matrices together and then multiply the resulting matrix by a vector, the result is the corresponding vector in clip space. However, the effect of this matrix product on the vector is applied in reverse order. That is, the multiplication of $model * view * projection$ with the vector is equivalent to first applying the projection transformation to the vector, rather than the model transformation. This result does not meet expectations, so we need to multiply them in reverse order, i.e., $projection * view * model$.
 ## Clip Space
 
 At the end of a vertex shader run, OpenGL expects all coordinates to fall within a specific range, and any points outside this range should be clipped. Clipped coordinates will be ignored, so the remaining coordinates will become the visible fragments on the screen. This is also the origin of the name **Clip Space**.
