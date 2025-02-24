@@ -1,3 +1,16 @@
+---
+title: 双向反射分布函数基础
+date: 2025-02-24
+tags:
+  - graphics
+  - lighting
+  - mathematics
+authors:
+  - Maya
+ai: false
+draft: true
+---
+
 ## 定义
 **BRDF**(Bidirectional Reflectance Distribution Function, 双向反射分布函数)是计算机图形学中一个核心概念，用于描述物体表面如何反射光线。它在真实感渲染中扮演着关键角色，帮助我们模拟光线与物体表面的复杂交互，从而生成逼真的图像。
 
