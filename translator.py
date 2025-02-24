@@ -7,8 +7,8 @@ import re
 # === Config the settings ===
 # supports zh-cn, zh-cn, en
 SOURCE_LANGUAGE = "zh-cn"
-TARGET_LANGUAGE = "en"
-FILENAME = "learngl-01"
+TARGET_LANGUAGE = "zh-tw"
+FILENAME = "opengl-lighting"
 
 with open("./secrets.json", "r") as f:
     secrets = json.load(f)
