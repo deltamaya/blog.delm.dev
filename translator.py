@@ -4,10 +4,14 @@ import os
 import frontmatter
 import re
 
+EN = "en"
+CN = "zh-cn"
+TW = "zh-tw"
+
 # === Config the settings ===
 # supports zh-cn, zh-cn, en
-SOURCE_LANGUAGE = "zh-cn"
-TARGET_LANGUAGE = "zh-tw"
+SOURCE_LANGUAGE = CN
+TARGET_LANGUAGE = TW
 FILENAME = "opengl-lighting"
 
 with open("./secrets.json", "r") as f:
