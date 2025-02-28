@@ -11,8 +11,9 @@ TW = "zh-tw"
 # === Config the settings ===
 # supports zh-cn, zh-cn, en
 SOURCE_LANGUAGE = CN
-TARGET_LANGUAGE = TW
-FILENAME = "opengl-lighting"
+TARGET_LANGUAGE = EN
+FILENAME = "raii-smart-pointers"
+
 
 with open("./secrets.json", "r") as f:
     secrets = json.load(f)
