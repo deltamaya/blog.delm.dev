@@ -12,7 +12,7 @@ TW = "zh-tw"
 # supports zh-cn, zh-cn, en
 SOURCE_LANGUAGE = CN
 TARGET_LANGUAGE = TW
-FILENAME = "how-does-shazam-work"
+FILENAME = "learngl-02"
 
 
 with open("./secrets.json", "r") as f:
