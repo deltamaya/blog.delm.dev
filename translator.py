@@ -11,7 +11,7 @@ TW = "zh-tw"
 # === Config the settings ===
 # supports zh-cn, zh-cn, en
 SOURCE_LANGUAGE = CN
-TARGET_LANGUAGE = TW
+TARGET_LANGUAGE = EN
 FILENAME = "learngl-02"
 
 
