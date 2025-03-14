@@ -7,7 +7,7 @@ tags:
 authors:
   - Maya
 ai: false
-draft: true
+draft: False
 ---
 # 帧缓冲的概念
 

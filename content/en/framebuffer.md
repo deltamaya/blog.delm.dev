@@ -4,7 +4,7 @@ date: 2025-03-14
 tags: ['opengl', 'graphics']
 authors: ['Maya']
 ai: True
-draft: True
+draft: False
 ---
 # Concept of Frame Buffer
 
