@@ -11,8 +11,8 @@ TW = "zh-tw"
 # === Config the settings ===
 # supports zh-cn, zh-cn, en
 SOURCE_LANGUAGE = CN
-TARGET_LANGUAGE = EN
-FILENAME = "learngl-02"
+TARGET_LANGUAGE = TW
+FILENAME = "framebuffer"
 
 
 with open("./secrets.json", "r") as f:
