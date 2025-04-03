@@ -137,13 +137,13 @@ glEnable(GL_CULL_FACE);
 We can also use
 ```cpp
 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-```0
+```
 to tell OpenGL to cull the front face.
 
 Of course, we can also set which winding order is considered the front:
 ```cpp
 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-```1
+```
 The above code defines clockwise as the front face. Face culling is a great tool, but you need to remember which objects can benefit from face culling and which should not be culled.
 
 ## Relationship with Depth Testing

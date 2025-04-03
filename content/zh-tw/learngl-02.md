@@ -139,13 +139,13 @@ glEnable(GL_CULL_FACE);
 同時我們還可以使用
 ```cpp
 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-```0
+```
 來告訴OpenGL我們要剔除正面。
 
 當然我們也可以設置到底順時針還是逆時針是正面：
 ```cpp
 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-```1
+```
 上面的代碼定義順時針（Clock-wise）是正面。
 面剔除是一個很棒的工具，但你需要記住哪些物體能夠從面剔除中獲益，而哪些物體不應該被剔除。
 
