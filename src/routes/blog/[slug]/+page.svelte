@@ -65,7 +65,7 @@
 				{data.metadata.title}
 			</h1>
 			<a
-				href="https://github.com/deltamaya/blog_site/pulls"
+				href="https://github.com/deltamaya/blog.delm.dev/issues/new"
 				class="flex text-xs text-gray-500 hover:text-red-500 hover:underline lg:text-sm dark:text-gray-400"
 			>
 				<svg
