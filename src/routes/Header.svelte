@@ -21,8 +21,8 @@
 	}
 
 	let showLanguageDropMenu = $state(false);
-	let isDark = $state(false);
-	let themeIndex = $state(0);
+	let isDark = $state(true);
+	let themeIndex = $state(2);
 	const themeList = ['system', 'light', 'dark'];
 
 	function toggleDropdown(event: MouseEvent) {
@@ -79,7 +79,7 @@
 <header
 	class="flex min-h-16 w-full items-center justify-center bg-neutral-50 font-Sans font-bold text-neutral-900 dark:bg-neutral-900 dark:text-white transition-colors"
 >
-	<div class="flex w-full max-w-[1024px] flex-wrap items-center justify-between gap-5 p-4">
+	<div class="flex w-full max-w-[1440px] flex-wrap items-center justify-between gap-5 p-4">
 		<div class="flex items-center space-x-3">
 			<button class="flex items-center space-x-3" onclick={() => gotoHome()}>
 				<span class="text-lg font-bold md:text-xl lg:text-2xl"

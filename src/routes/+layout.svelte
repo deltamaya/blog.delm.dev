@@ -10,7 +10,7 @@
 
 <ParaglideJS {i18n}>
 	<Header />
-	<div class="min-h-[calc(100vh-6.5rem)] w-full bg-white font-Sans text-neutral-900 dark:text-neutral-50 dark:bg-neutral-900 transition-colors">
+	<div class="min-h-[calc(100vh-6.5rem)] w-full bg-white text-neutral-900 dark:text-neutral-50 dark:bg-neutral-900 transition-colors">
 		{@render children()}
 	</div>
 </ParaglideJS>
