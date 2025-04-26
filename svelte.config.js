@@ -19,7 +19,8 @@ const config = {
 			routes: {
 				include: ['/*'],
 				exclude: ['<all>']
-			}
+			},
+			pages:'.svelte-kit/cloudflare'
 		})
 	},
 	extensions: ['.svelte'],
