@@ -24,6 +24,7 @@ const blogsRaw = new Map([
 function loadAllBlogs() {
   console.log('loading all posts');
   for (const lang of supportedLanguages) {
+    console.log('processing ', lang)
     const files = blogsRaw.get(lang);
     let temp: BlogMeta[] = [];
     for (const [filepath, file] of Object.entries(files || {})) {
