@@ -1,6 +1,4 @@
-import path from 'path';
 import { languageTag } from '$lib/paraglide/runtime';
-import fs from 'fs';
 import matter from 'gray-matter';
 
 export interface BlogMeta {

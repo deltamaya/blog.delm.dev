@@ -8,7 +8,7 @@
 		<a class="text-xl font-bold" href={`/blog/${blog.slug}`}>
 			{blog.title}
 			<div class="flex flex-wrap text-sm font-medium text-neutral-500">
-				{blog.date.toLocaleDateString(languageTag())}
+				{blog.date.toLocaleString(languageTag())}
 			</div>
 		</a>
 

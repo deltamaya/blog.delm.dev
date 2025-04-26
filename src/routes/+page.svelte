@@ -4,6 +4,7 @@
 	import Icon from '@iconify/svelte';
 
 	let { data } = $props();
+
 </script>
 <svelte:head>
 	<title>DELM Blog Site</title>

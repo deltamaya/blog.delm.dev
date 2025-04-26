@@ -26,8 +26,10 @@ function generateRSS(blogs: any) {
     </rss>`
 	}
 
-export async function GET(){
-const body = generateRSS(blogs);
+export function GET(){
+	console.log('getting rss data')
+	const body = generateRSS(blogs);
+	console.log('rss body: ',body)
 	const response = new Response(body);
 	response.headers.set('Content-Type', 'application/rss+xml');
 	return response;
