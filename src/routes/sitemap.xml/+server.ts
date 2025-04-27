@@ -1,4 +1,5 @@
 import {slugs} from '$lib/blogs'
+export const prerender = true;
 
 const site = 'https://blog.delm.dev'; // change this to reflect your domain
 

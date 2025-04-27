@@ -1,5 +1,6 @@
 import { languageTag } from '$lib/paraglide/runtime';
 import { getAllBlogsMeta } from '$lib/blogs';
+export const prerender = true;
 
 // Function to escape only XML special characters, preserving non-ASCII characters
 function escapeXML(str: string): string {
