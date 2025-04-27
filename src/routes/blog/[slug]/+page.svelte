@@ -60,7 +60,7 @@
 </svelte:head>
 <div
 	class="flex w-full flex-col flex-wrap items-center">
-	<div class="flex h-full max-w-[1024px] w-full flex-col p-4  dark:text-white">
+	<div class="flex h-full max-w-[800px] w-full flex-col p-4  dark:text-white">
 		<div class="flex flex-wrap">
 			<h1 class="text-3xl font-bold lg:text-5xl">
 				{data.metadata.title}
@@ -112,7 +112,7 @@
 			<AINotice />
 		{/if}
 		<hr class="my-10 h-[1px] " />
-		<article class="prose prose-sm prose-neutral self-center md:prose-base lg:prose-lg dark:text-white max-w-[1024px] w-full ">
+		<article class="prose prose-sm prose-neutral self-center md:prose-base lg:prose-lg dark:text-white max-w-[800px] w-full ">
 			{@html data.content}
 		</article>
 	</div>
