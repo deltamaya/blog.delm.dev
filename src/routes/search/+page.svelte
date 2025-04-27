@@ -16,12 +16,12 @@
 				type="text"
 				bind:value={keyword}
 				placeholder={m.SearchHere()}
-				class="w-full rounded-2xl border-2 border-neutral-300 px-3 py-2 font-bold dark:bg-neutral-800"
+				class="w-full rounded-sm border-2 border-neutral-200 px-3 py-2 font-bold dark:bg-neutral-800 text-white dark:placeholder-neutral-100 "
 			/>
 			<button
 				onclick={() =>
 					(window.location = `https://www.google.com/search?q=site:blog.delm.dev+${keyword.trim().split(' ').join('+')}`)}
-				class="mt-3 flex w-32 items-center justify-center rounded-2xl bg-red-500 px-3 py-2 font-bold text-white"
+				class="mt-3 flex w-32 items-center justify-center rounded-lg bg-red-500 px-3 py-2 font-bold text-white"
 			>
 				{m.Search()}
 			</button>
