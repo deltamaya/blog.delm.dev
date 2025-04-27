@@ -19,7 +19,7 @@
 <Icon icon="mdi:rss" width="30" height="30" />
 			</a>
 		</div>
-		<div class="flex flex-col">
+		<div class="flex flex-col space-y-2">
 			{#each data.blogs as blog}
 				<BlogCard {blog} />
 			{/each}

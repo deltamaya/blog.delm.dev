@@ -4,8 +4,8 @@
 </script>
 
 <nav
-	class="my-5 w-full border-l-2
- border-neutral-200 px-4"
+	class="my-5 w-full border-l-[1px]
+ border-neutral-800 dark:border-neutral-100 px-4"
 >
 	<h2 class="mb-1 text-lg font-bold">{m.TableOfContents()}</h2>
 	<div class="flex flex-col flex-wrap">

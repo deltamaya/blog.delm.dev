@@ -24,12 +24,14 @@ export default {
 							padding: '0px !important'
 						},
 						code: {
-							padding: '3px !important',
+							padding: '2px !important',
+							marginLeft: '3px',
+							marginRight: '3px',
 							backgroundColor: theme('colors.neutral.100'),
 							'.dark &': {
 								backgroundColor: theme('colors.neutral.800'), // Slightly lighter in dark mode
 							},
-							borderRadius: '3px',
+							borderRadius: '2px',
 							color: theme('colors.red.500'),
 							fontFamily: 'JetBrains Mono, monospace',
 							fontWeight: theme('fontWeight.bold'),
@@ -53,7 +55,7 @@ export default {
 							}
 						},
 						hr: {
-							height: '3px',
+							height: '1px',
 							backgroundColor: theme('colors.neutral.200')
 						},
 						// Fix strong text

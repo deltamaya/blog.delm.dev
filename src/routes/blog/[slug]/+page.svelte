@@ -60,14 +60,14 @@
 </svelte:head>
 <div
 	class="flex w-full flex-col flex-wrap items-center">
-	<div class="flex h-full max-w-[48rem] flex-col p-4  dark:text-white">
+	<div class="flex h-full max-w-[1024px] w-full flex-col p-4  dark:text-white">
 		<div class="flex flex-wrap">
 			<h1 class="text-3xl font-bold lg:text-5xl">
 				{data.metadata.title}
 			</h1>
 			<a
 				href="https://github.com/deltamaya/blog.delm.dev/issues/new"
-				class="flex text-xs text-gray-500 hover:text-red-500 hover:underline lg:text-sm dark:text-gray-400"
+				class="flex text-xs text-gray-500 hover:text-red-500 hover:underline lg:text-sm dark:text-gray-300"
 			>
 				<svg
 					fill="none"
@@ -88,7 +88,7 @@
 			>
 		</div>
 
-		<div class="my-1 flex text-base text-gray-500 dark:text-gray-400">
+		<div class="my-1 flex text-base text-gray-500 dark:text-gray-300">
 			{data.metadata.date.toLocaleDateString(languageTag())}
 			·
 			{ m.AuthoredBy()}&nbsp;
@@ -111,8 +111,8 @@
 		{#if data.metadata.ai}
 			<AINotice />
 		{/if}
-		<hr class="my-10 h-[2px] bg-neutral-100" />
-		<article class="prose prose-sm prose-neutral self-center md:prose-base lg:prose-lg dark:text-neutral-50">
+		<hr class="my-10 h-[1px] " />
+		<article class="prose prose-sm prose-neutral self-center md:prose-base lg:prose-lg dark:text-white max-w-[1024px] w-full ">
 			{@html data.content}
 		</article>
 	</div>
@@ -123,28 +123,5 @@
 </div>
 
 <style>
-	:global(.katex) {
-		font-size: 1.2em;
-	}
 
-	:global(.katex-display) {
-		font-size: 1.1em;
-	}
-
-	:global(.katex-html) {
-		width: 100%;
-		overflow-wrap: break-word;
-		word-break: break-all;
-		white-space: normal;
-	}
-
-	@media (max-width: 768px) {
-		:global(.katex-display) {
-			font-size: 1rem;
-		}
-
-		:global(.katex) {
-			font-size: 1rem;
-		}
-	}
 </style>

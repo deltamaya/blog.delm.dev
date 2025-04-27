@@ -128,17 +128,9 @@
 			<div class="flex">
 				<a href="https://delm.dev" class="flex hover:underline">
 					{#if $isDark}
-						<img
-							src="/logo-white.png"
-							alt="Logo"
-							class="mb-1 h-[24px] w-[45px] lg:h-[27px] lg:w-[50px]"
-						/>
+						<img src="/logo-white.svg" alt="logo-white" class="w-[55px] h-[40px]"/>
 					{:else}
-						<img
-							src="/logo-dark.png"
-							alt="Logo"
-							class="mb-1 h-[24px] w-[45px] lg:h-[27px] lg:w-[50px]"
-						/>
+						<img src="/logo.svg" alt="logo" class="w-[55px] h-[40px]"/>
 					{/if}
 				</a>
 			</div>
