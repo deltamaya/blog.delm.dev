@@ -6,6 +6,7 @@
 	import { goto } from '$app/navigation';
 	import * as m from '$lib/paraglide/messages.js';
 	import Icon from '@iconify/svelte';
+	import { isDark } from '$lib/stores';
 
 	function switchToLanguage(newLanguage: AvailableLanguageTag) {
 		const canonicalPath = i18n.route($page.url.pathname);
@@ -21,9 +22,6 @@
 	}
 
 	let showLanguageDropMenu = $state(false);
-	let isDark = $state(true);
-	let themeIndex = $state(2);
-	const themeList = ['system', 'light', 'dark'];
 
 	function toggleDropdown(event: MouseEvent) {
 		event.stopPropagation();
@@ -36,40 +34,13 @@
 	}
 
 	function switchTheme() {
-		themeIndex = (themeIndex + 1) % themeList.length;
-
-		const theme = themeList[themeIndex];
-		if (themeIndex == 0) {
-			isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-		} else {
-			isDark = theme === 'dark';
-		}
-
-		if (isDark) {
-			document.documentElement.classList.add('dark');
-		} else {
-			document.documentElement.classList.remove('dark');
-		}
-		localStorage.setItem('theme', theme);
-
+		isDark.update((v)=>!v)
+		console.log($isDark)
 	}
 
 	$effect(() => {
 		window.addEventListener('click', hideDropMenu);
-		const theme = localStorage.getItem('theme');
-		if (theme === 'system') {
-			isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-			themeIndex = 0;
-		} else {
-			isDark = theme === 'dark';
-			themeIndex = isDark ? 2 : 1;
-		}
 
-		if (isDark) {
-			document.documentElement.classList.add('dark');
-		} else {
-			document.documentElement.classList.remove('dark');
-		}
 		return () => {
 			window.removeEventListener('click', hideDropMenu);
 		};
@@ -128,13 +99,15 @@
 				</div>
 				<div class="relative flex text-left">
 					<button class="hover:text-red-600 justify-center items-center" onclick="{()=>switchTheme()}">
-						{#if themeIndex === 0}
-							<Icon icon="material-symbols:brightness-auto-outline" width="24" height="24" />
-						{:else if themeIndex === 1}
-							<Icon icon="ri:sun-fill" width="24" height="24" />
-						{:else}
+						<!--{#if themeIndex === 0}-->
+						<!--	<Icon icon="material-symbols:brightness-auto-outline" width="24" height="24" />-->
+						<!--{:else if themeIndex === 1}-->
+						<!--	<Icon icon="ri:sun-fill" width="24" height="24" />-->
+						<!--{:else}-->
+						<!--	<Icon icon="solar:moon-broken" width="24" height="24" />-->
+						<!--{/if}-->
 							<Icon icon="solar:moon-broken" width="24" height="24" />
-						{/if}
+
 					</button>
 				</div>
 			</div>
@@ -149,7 +122,7 @@
 
 			<div class="flex">
 				<a href="https://delm.dev" class="flex hover:underline">
-					{#if isDark}
+					{#if $isDark}
 						<img
 							src="/logo-white.png"
 							alt="Logo"

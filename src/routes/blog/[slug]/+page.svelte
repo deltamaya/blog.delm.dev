@@ -58,8 +58,9 @@
 	<title>{data.metadata.title} - DELM</title>
 
 </svelte:head>
-<div class="flex w-full flex-col flex-wrap items-center">
-	<div class="flex h-full max-w-[48rem] flex-col p-4">
+<div
+	class="flex w-full flex-col flex-wrap items-center">
+	<div class="flex h-full max-w-[48rem] flex-col p-4  dark:text-white">
 		<div class="flex flex-wrap">
 			<h1 class="text-3xl font-bold lg:text-5xl">
 				{data.metadata.title}
