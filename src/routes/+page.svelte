@@ -2,11 +2,14 @@
 	import * as m from '$lib/paraglide/messages.js';
 	import BlogCard from './BlogCard.svelte';
 	import Icon from '@iconify/svelte';
+	import { languageTag } from '$lib/paraglide/runtime';
 
 	let { data } = $props();
 </script>
 <svelte:head>
 	<title>DELM Blog Site</title>
+	<link rel="alternate" type="application/rss+xml" title="DELM Blog RSS Feed" href="https://blog.delm.dev{languageTag()==='en'?'':'/'+languageTag()}/rss" />
+
 </svelte:head>
 <div class="flex flex-grow flex-col items-center justify-center">
 	<div class="h-full w-full max-w-[48rem] p-4">

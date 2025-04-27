@@ -17,6 +17,7 @@
       document.documentElement.classList.remove('dark');
     }
   </script>
+
 </svelte:head>
 <ParaglideJS {i18n}>
 	<ThemeProvider>
