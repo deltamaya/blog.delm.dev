@@ -19,16 +19,19 @@ function generateRSS(blogs: any) {
     <title>DELM blog</title>
     <link>https://blog.delm.dev</link>
     <description>deltamaya blog project, shares my insights on programming, technology and life</description>
+    <language>${languageTag()}</language>
     ${blogs
       .map((blog: any) => {
         // Use blog.date directly (assumes RFC-822 string from BlogMeta)
-        const pubDate = blog.date.toLocaleDateString(languageTag())
+        const pubDate = blog.date.toUTCString()
+        const link=`https://blog.delm.dev${languageTag() === 'en' ? '' : '/' + languageTag()}/blog/${blog.slug}`
         return `
     <item>
       <title>${escapeXML(blog.title)}</title>
-      <link>https://blog.delm.dev${languageTag() === 'en' ? '' : '/' + languageTag()}/blog/${blog.slug}</link>
+      <link>${link}</link>
       <description>${escapeXML(blog.title)}</description>
       <pubDate>${pubDate}</pubDate>
+      <guid>${link}</guid>
     </item>
         `;
       })
@@ -39,7 +42,7 @@ function generateRSS(blogs: any) {
 
 export async function GET() {
   try {
-    const blogs = getAllBlogsMeta()?.slice(0, 10) || [];
+    const blogs = getAllBlogsMeta()?.slice(0, 5) || [];
     if (!blogs.length) {
       return new Response('No blogs available', {
         status: 404,
