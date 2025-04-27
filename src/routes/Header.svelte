@@ -106,7 +106,12 @@
 						<!--{:else}-->
 						<!--	<Icon icon="solar:moon-broken" width="24" height="24" />-->
 						<!--{/if}-->
+						{#if $isDark}
+
 							<Icon icon="solar:moon-broken" width="24" height="24" />
+							{:else}
+								<Icon icon="ri:sun-fill" width="24" height="24" />
+							{/if}
 
 					</button>
 				</div>
