@@ -20,6 +20,7 @@
 </svelte:head>
 <ParaglideJS {i18n}>
 	<ThemeProvider>
+			<div class="bg-red-600 h-[2px]"></div>
 			<Header />
 			<div class="min-h-[calc(100vh-6.5rem)] w-full bg-white text-neutral-900 dark:text-neutral-50 dark:bg-neutral-900 transition-colors font-Sans">
 				{@render children()}
