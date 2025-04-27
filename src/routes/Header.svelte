@@ -48,7 +48,7 @@
 </script>
 
 <header
-	class="flex min-h-16 w-full items-center justify-center bg-neutral-50 font-Sans font-bold text-neutral-900 dark:bg-neutral-900 dark:text-white transition-colors"
+	class="flex w-full items-center justify-center bg-neutral-50 font-Sans font-bold text-neutral-900 dark:bg-neutral-900 dark:text-white transition-colors"
 >
 	<div class="flex w-full max-w-[1440px] flex-wrap items-center justify-between gap-5 p-4">
 		<div class="flex items-center space-x-3">

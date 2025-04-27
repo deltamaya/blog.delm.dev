@@ -49,7 +49,7 @@ function loadAllBlogs() {
           slug,
           date: date,
           title: metadata.data.title || 'Untitled',
-          tags: metadata.data.tags || [],
+          tags: metadata.data.tags.map((t)=>t.toLowerCase()) || [],
           draft: metadata.data.draft || false,
         });
       } catch (error) {

@@ -6,7 +6,7 @@ const config = {
 	// for more information about preprocessors
 	preprocess: [],
 	kit: {
-		adapter: adapter({ precompress: true, fallback: undefined })
+		adapter: adapter({ precompress: true, fallback: '404.html' })
 	},
 
 	extensions: ['.svelte']

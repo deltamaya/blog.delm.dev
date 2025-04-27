@@ -1,3 +1,7 @@
+<script>
+	export const prerender = true;
+
+</script>
 <div class="w-full flex flex-col justify-center items-center space-y-5 min-h-[calc(100vh-6.5rem)]">
 	<div class="text-6xl font-bold">Oops!😢</div>
 	<div class="flex justify-center items-center">
