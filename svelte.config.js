@@ -7,8 +7,10 @@ const config = {
 	// for more information about preprocessors
 	preprocess: [],
 	kit: {
-		adapter: adapter()
+		adapter: adapter({ precompress: true }),
+		fallback: undefined
 	},
-	extensions: ['.svelte'],
+
+	extensions: ['.svelte']
 };
 export default config;
