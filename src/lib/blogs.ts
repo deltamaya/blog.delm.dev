@@ -22,13 +22,13 @@ const blogsRaw = new Map([
 ]);
 
 function loadAllBlogs() {
-  console.log('loading all posts');
+  console.log('Loading all posts');
   for (const lang of supportedLanguages) {
-    console.log('processing ', lang)
     const files = blogsRaw.get(lang);
     let temp: BlogMeta[] = [];
     for (const [filepath, file] of Object.entries(files || {})) {
       try {
+				console.log(`Processing ${filepath}`);
         const metadata = matter(file.default);
         const slug = filepath.split('/').pop()?.replace(/\.md$/, '') || '';
         if (!slug) continue;

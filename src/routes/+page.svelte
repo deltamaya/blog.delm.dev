@@ -8,7 +8,8 @@
 </script>
 <svelte:head>
 	<title>DELM Blog Site</title>
-	<link rel="alternate" type="application/rss+xml" title="DELM Blog RSS Feed" href="https://blog.delm.dev{languageTag()==='en'?'':'/'+languageTag()}/rss" />
+	<link rel="alternate" type="application/rss+xml" title="DELM Blog RSS Feed"
+				href="https://blog.delm.dev{languageTag()==='en'?'':'/'+languageTag()}/rss" />
 
 </svelte:head>
 <div class="flex flex-grow flex-col items-center justify-center">
@@ -19,7 +20,7 @@
 		<div class="py-6 text-4xl font-bold flex">
 			{m.Latest()}
 			<a href="/rss" class="hover:text-red-600">
-<Icon icon="mdi:rss" width="30" height="30" />
+				<Icon icon="mdi:rss" width="30" height="30" />
 			</a>
 		</div>
 		<div class="flex flex-col space-y-2">
