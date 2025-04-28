@@ -13,7 +13,6 @@
 	const ReturnButtonThreshold = 300;
 	const HeadingMapThreshold = 1550;
 	let showReturnButton = $state(false);
-	let showHeadingMap = $state(true);
 
 	function handleCopy(event) {
 		const button = event.target;
