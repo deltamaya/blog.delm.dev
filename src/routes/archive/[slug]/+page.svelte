@@ -21,12 +21,20 @@
 		{/if}
 		<div class="flex w-full items-center justify-between text-xl font-bold text-neutral-900 dark:text-neutral-100">
 			{#if curYear > data.year}
-				<a href="/archive/{data.year + 1}" class="bg-neutral-50 px-3 py-2 rounded hover:bg-neutral-200 transition-colors duration-200 border border-neutral-600 dark:bg-neutral-900 dark:hover:bg-neutral-800"> {m.Prev()} </a>
+				<a href="/archive/{data.year + 1}" class="transition-colors duration-200 flex items-center dark:fill-white dark:hover:fill-red-600 hover:text-red-600 hover:fill-red-600">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path  d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6l6 6z"/></svg>
+					{m.Prev()}
+				</a>
 			{/if}
 
 			<div class="flex-grow"></div>
 			{#if data.year > 2023}
-				<a href="/archive/{data.year - 1}" class="bg-neutral-50 px-3 py-2 rounded hover:bg-neutral-200 transition-colors duration-200 border border-neutral-600 dark:bg-neutral-900 dark:hover:bg-neutral-800"> {m.Next()} </a>
+				<a href="/archive/{data.year - 1}" class="transition-colors duration-200 flex items-center dark:fill-white dark:hover:fill-red-600 hover:text-red-600 hover:fill-red-600">
+					{m.Next()}
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+	<path d="M8.59 16.58L13.17 12L8.59 7.41L10 6l6 6l-6 6z" />
+</svg>
+				</a>
 			{/if}
 		</div>
 	</div>
