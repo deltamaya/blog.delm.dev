@@ -13,11 +13,11 @@
 			{m.Tags()}
 		</div>
 
-		<div class="flex flex-wrap gap-5 ">
+		<div class="flex flex-wrap gap-3 ">
 
 			{#each data.tagCounts as [tag, count]}
 				<a href="/tags/{tag.toLowerCase()}"
-					 class="hover:underline decoration-red-500 flex justify-between text-xl font-bold rounded bg-neutral-50 hover:bg-neutral-200 transition-colors duration-300 px-3 py-2 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:bg-neutral-800">
+					 class="hover:underline decoration-red-500 flex justify-between text-xl font-bold rounded bg-neutral-50 hover:bg-neutral-200 transition-colors duration-300 px-2 py-1 dark:bg-neutral-900 dark:text-neutral-100 dark:hover:bg-neutral-800">
 					<div class="text-red-500">#</div>
 					{tag.toUpperCase()}
 					<div class="text-red-500">&nbsp;{count}</div>
