@@ -12,7 +12,7 @@ TW = "zh-tw"
 # supports zh-cn, zh-cn, en
 SOURCE_LANGUAGE = CN
 TARGET_LANGUAGE = TW
-FILENAME = "framebuffer"
+FILENAME = "vmem"
 
 
 with open("./secrets.json", "r") as f:
