@@ -1,6 +1,4 @@
 <script>
-	import * as m from '$lib/paraglide/messages.js';
-
 	import BlogCard from '../../BlogCard.svelte';
 
 	let { data } = $props();
