@@ -11,7 +11,6 @@
 	import 'katex/dist/katex.min.css';
 
 	const ReturnButtonThreshold = 300;
-	const HeadingMapThreshold = 1550;
 	let showReturnButton = $state(false);
 
 	function handleCopy(event) {
@@ -28,18 +27,13 @@
 		});
 	}
 
-	function handleResize() {
-		showHeadingMap = window.innerWidth >= HeadingMapThreshold;
-	}
 
 	function handleScroll() {
 		showReturnButton = window.scrollY >= ReturnButtonThreshold;
 	}
 
 	$effect(() => {
-		handleResize();
 		handleScroll();
-		window.addEventListener('resize', handleResize);
 		window.addEventListener('scroll', handleScroll);
 		const buttons = document.querySelectorAll('.copy-button');
 		buttons.forEach((button) => {
@@ -48,7 +42,6 @@
 		});
 
 		return () => {
-			window.removeEventListener('resize', handleResize);
 			window.removeEventListener('scroll', handleScroll);
 		};
 	});

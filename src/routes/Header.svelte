@@ -35,7 +35,6 @@
 
 	function switchTheme() {
 		isDark.update((v)=>!v)
-		console.log($isDark)
 	}
 
 	$effect(() => {
