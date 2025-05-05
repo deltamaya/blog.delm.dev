@@ -169,7 +169,7 @@ def process_file(operation, input_file, output_file, target_language):
 if __name__ == "__main__":
     # Single file translation
     input_file = f"./content/{SOURCE_LANGUAGE}/{FILENAME}.md"
-    output_file = f"./content/{SOURCE_LANGUAGE}/{FILENAME}_polished.md"
+    output_file = f"./content/{TARGET_LANGUAGE}/{FILENAME}.md"
 
     language_map = {
         "zh-cn": "Chinese Simplified",
@@ -177,6 +177,6 @@ if __name__ == "__main__":
         "en": "English",
     }
 
-    process_file('p',input_file, output_file, language_map[TARGET_LANGUAGE])
+    process_file('t',input_file, output_file, language_map[TARGET_LANGUAGE])
 
 
