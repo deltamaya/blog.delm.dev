@@ -70,7 +70,7 @@ def translate_text(text, target_language):
     """
 
     data = {
-        "model": "gpt-4o-mini",
+        "model": "deepseek-chat",
         "messages": [
             {
                 "role": "system",
@@ -81,10 +81,10 @@ def translate_text(text, target_language):
                 "content": prompt,
             },
         ],
-        "temperature": 0.3,
+        "temperature": 1.3,
     }
     response = httpx.post(
-        "https://api.kksj.org/v1/chat/completions",
+        "https://api.deepseek.com/chat/completions",
         headers=header,
         data=json.dumps(data),
         verify=False,
