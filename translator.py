@@ -32,7 +32,7 @@ def extract_frontmatter_and_content(text, target_language):
     parsed = frontmatter.loads(text)
     curFrontmatter = parsed.metadata
     curFrontmatter["ai"] = True
-    titleTemp: str = translate_text(curFrontmatter["title"], target_language)
+    titleTemp: str = translate_content(curFrontmatter["title"], target_language)
     curFrontmatter["title"] = titleTemp.strip()
     frontmatterText = "---\n"
     for k, v in curFrontmatter.items():
@@ -62,9 +62,22 @@ def restore_code_blocks(text, code_blocks):
     return text
 
 
-def translate_text(text, target_language):
+def send_api_request(data)->str:
+    response = httpx.post(
+        "https://api.deepseek.com/chat/completions",
+        headers=header,
+        data=json.dumps(data),
+        verify=False,
+        timeout=9999,
+    )
+    return response.json()["choices"][0]["message"]["content"]
+
+
+def translate_content(text, target_language):
     """Translate text using OpenAI API."""
-    prompt = f"""Translate the following text to {target_language}. Preserve markdown syntax and do not translate text within code block placeholders (like CODEBLOCK_0). Only translate the natural language content:
+    prompt = f"""Translate the following text to {target_language}.
+    Preserve markdown syntax and do not translate text within code block placeholders (like CODEBLOCK_0).
+    Only translate the natural language content, do not output any redundant message, just pure translated content:
 
     {text}
     """
@@ -83,17 +96,36 @@ def translate_text(text, target_language):
         ],
         "temperature": 1.3,
     }
-    response = httpx.post(
-        "https://api.deepseek.com/chat/completions",
-        headers=header,
-        data=json.dumps(data),
-        verify=False,
-        timeout=9999,
-    )
-    return response.json()["choices"][0]["message"]["content"]
+    return send_api_request(data)
 
 
-def translate_file(input_file, output_file, target_language):
+def polish_content(text)->str:
+    """Translate text using OpenAI API."""
+    prompt = f"""Polish this article, making it more interesting and accurate, but do not translate it, if it is Chinese, then output Chinese, if it is English, output English.
+     Preserve markdown syntax and do not modify text within code block placeholders (like CODEBLOCK_0). Only polish the natural language content, do not output any redundant message, just pure polished content:
+
+       {text}
+       """
+
+    data = {
+        "model": "deepseek-chat",
+        "messages": [
+            {
+                "role": "system",
+                "content": "You are a programmer and interesting tech blog writer.",
+            },
+            {
+                "role": "user",
+                "content": prompt,
+            },
+        ],
+        "temperature": 1.3,
+    }
+    return send_api_request(data)
+
+
+
+def process_file(operation, input_file, output_file, target_language):
     """Translate a single markdown file."""
     try:
         # Read the input file
@@ -108,11 +140,16 @@ def translate_file(input_file, output_file, target_language):
         # Protect code blocks
         protected_content, code_blocks = preserve_code_blocks(content)
 
-        # Translate the content
-        translated_content = translate_text(protected_content, target_language)
+        if operation == "translate" or operation=='t':
+            # Translate the content
+            output_content = translate_content(protected_content, target_language)
+        elif operation=="polish" or operation=='p':
+            output_content = polish_content(protected_content)
+        else:
+            raise ValueError("Invalid operation. Use 'translate' or 'polish'.")
 
         # Restore code blocks
-        final_content = restore_code_blocks(translated_content, code_blocks)
+        final_content = restore_code_blocks(output_content, code_blocks)
 
         # Combine frontmatter with translated content
         final_text = frontmatter + final_content
@@ -127,11 +164,12 @@ def translate_file(input_file, output_file, target_language):
         print(f"Error processing {input_file}: {str(e)}")
 
 
+
 # Example usage
 if __name__ == "__main__":
     # Single file translation
     input_file = f"./content/{SOURCE_LANGUAGE}/{FILENAME}.md"
-    output_file = f"./content/{TARGET_LANGUAGE}/{FILENAME}.md"
+    output_file = f"./content/{SOURCE_LANGUAGE}/{FILENAME}_polished.md"
 
     language_map = {
         "zh-cn": "Chinese Simplified",
@@ -139,4 +177,6 @@ if __name__ == "__main__":
         "en": "English",
     }
 
-    translate_file(input_file, output_file, language_map[TARGET_LANGUAGE])
+    process_file('p',input_file, output_file, language_map[TARGET_LANGUAGE])
+
+
