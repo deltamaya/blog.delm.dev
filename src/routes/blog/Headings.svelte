@@ -29,7 +29,7 @@
 					style={`margin-left: ${(heading.depth - 1) * 12}px;font-weight: ${(7 - heading.depth) * 100}`}
 				>
 
-					<a class="hover:text-red-600 hover:underline flex flex-wrap" href={`#${heading.id}`}>{heading.text}</a>
+					<a class="hover:text-red-500 hover:underline flex flex-wrap" href={`#${heading.id}`}>{heading.text}</a>
 
 				</div>
 			{/each}
