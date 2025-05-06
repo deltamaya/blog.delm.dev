@@ -1,10 +1,10 @@
 <script>
 	import * as m from '$lib/paraglide/messages.js';
-	import YearArchive from '../YearArchive.svelte';
+	import MonthArchive from '../MonthArchive.svelte';
+
 
 	let { data } = $props();
 	let curYear = $state(new Date().getFullYear());
-
 </script>
 <svelte:head>
 	<title>Archive {data.year} - DELM</title>
@@ -15,7 +15,20 @@
 			{m.Archive()}-{data.year}
 		</div>
 		{#if data.months}
-			<YearArchive year={data.year} months={data.months} />
+			<div class="flex flex-col w-full">
+				<div class="my-5 flex">
+					<div class="text-2xl font-bold">
+						{data.year}
+					</div>
+					<div class="ml-2 text-sm font-bold text-neutral-500">
+						{[...data.months.entries()].reduce((sum, entry) => sum + entry[1].length, 0)}
+					</div>
+				</div>
+				{#each data.months as kv}
+					<MonthArchive month={kv[0]} blogs={kv[1]} />
+				{/each}
+			</div>
+
 		{:else}
 			<div class="flex-grow text-3xl font-bold">NULL</div>
 		{/if}
