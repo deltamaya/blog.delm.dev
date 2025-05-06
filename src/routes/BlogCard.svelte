@@ -4,7 +4,7 @@
 </script>
 
 <div class="lg:text-xl md:text-lg flex px-3 py-2 transition-colors"  >
-	<div class="flex flex-col" >
+	<div class="flex flex-col font-normal" >
 			<a href={`/blog/${blog.slug}`}>
 							{blog.title}
 				<div class="flex flex-wrap text-sm font-medium text-neutral-500">

@@ -4,7 +4,7 @@
 	let collapsed = $state(true);
 	import * as m from '$lib/paraglide/messages.js';
 	import { slide } from 'svelte/transition';
-	import { cubicIn, cubicInOut, cubicOut, elasticOut, linear } from 'svelte/easing';
+	import { cubicOut } from 'svelte/easing';
 </script>
 
 <nav
