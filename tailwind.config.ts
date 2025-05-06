@@ -56,7 +56,9 @@ export default {
 						},
 						hr: {
 							height: '1px',
-							backgroundColor: theme('colors.neutral.200')
+							'.dark &': {
+								borderColor: theme('colors.neutral.800'), // 深色模式颜色
+							},
 						},
 						// Fix strong text
 						strong: {
