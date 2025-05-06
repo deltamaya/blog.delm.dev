@@ -44,6 +44,15 @@
 			window.removeEventListener('click', hideDropMenu);
 		};
 	});
+
+	let countryCode=languageTag().split('-')[1];
+	// console.log(countryCode)
+	let siteSubName =$state('');
+	if(!countryCode){
+		siteSubName= 'en';
+	}else{
+		siteSubName='zh-'+countryCode.toUpperCase();
+	}
 </script>
 
 <header
@@ -53,7 +62,7 @@
 		<div class="flex items-center space-x-3">
 			<button class="flex items-center space-x-3" onclick={() => gotoHome()}>
 				<span class="text-lg font-bold md:text-xl lg:text-2xl"
-				>DELM.<span class="text-red-600">{languageTag()}</span></span
+				>DELM.<span class="text-red-600">{siteSubName}</span></span
 				>
 			</button>
 			<div class="flex items-center space-x-3 text-sm md:text-base lg:text-lg">
