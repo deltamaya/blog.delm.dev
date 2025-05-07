@@ -11,8 +11,8 @@ TW = "zh-tw"
 # === Config the settings ===
 # supports zh-cn, zh-cn, en
 SOURCE_LANGUAGE = CN
-TARGET_LANGUAGE = TW
-FILENAME = "vmem"
+TARGET_LANGUAGE = EN
+FILENAME = "concurrent-control"
 
 
 with open("./secrets.json", "r") as f:
@@ -62,7 +62,7 @@ def restore_code_blocks(text, code_blocks):
     return text
 
 
-def send_api_request(data)->str:
+def send_api_request(data) -> str:
     response = httpx.post(
         "https://api.deepseek.com/chat/completions",
         headers=header,
@@ -99,7 +99,7 @@ def translate_content(text, target_language):
     return send_api_request(data)
 
 
-def polish_content(text)->str:
+def polish_content(text) -> str:
     """Translate text using OpenAI API."""
     prompt = f"""Polish this article, making it more interesting and accurate, but do not translate it, if it is Chinese, then output Chinese, if it is English, output English.
      Preserve markdown syntax and do not modify text within code block placeholders (like CODEBLOCK_0). Only polish the natural language content, do not output any redundant message, just pure polished content:
@@ -124,7 +124,6 @@ def polish_content(text)->str:
     return send_api_request(data)
 
 
-
 def process_file(operation, input_file, output_file, target_language):
     """Translate a single markdown file."""
     try:
@@ -140,10 +139,10 @@ def process_file(operation, input_file, output_file, target_language):
         # Protect code blocks
         protected_content, code_blocks = preserve_code_blocks(content)
 
-        if operation == "translate" or operation=='t':
+        if operation == "translate" or operation == "t":
             # Translate the content
             output_content = translate_content(protected_content, target_language)
-        elif operation=="polish" or operation=='p':
+        elif operation == "polish" or operation == "p":
             output_content = polish_content(protected_content)
         else:
             raise ValueError("Invalid operation. Use 'translate' or 'polish'.")
@@ -164,7 +163,6 @@ def process_file(operation, input_file, output_file, target_language):
         print(f"Error processing {input_file}: {str(e)}")
 
 
-
 # Example usage
 if __name__ == "__main__":
     # Single file translation
@@ -177,6 +175,4 @@ if __name__ == "__main__":
         "en": "English",
     }
 
-    process_file('t',input_file, output_file, language_map[TARGET_LANGUAGE])
-
-
+    process_file("t", input_file, output_file, language_map[TARGET_LANGUAGE])
