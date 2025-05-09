@@ -33,7 +33,7 @@ export async function load({ params }) {
 			staticPath=`/${href}`
 		}
 		const titleAttr = title ? ` title="${title}"` : '';
-		return `<img src="${staticPath}" alt="${text}"${titleAttr} />`;
+		return `<div class="justify-center flex flex-col my-5"><img class="!my-0" src="${staticPath}" alt="${text}"${titleAttr} /><span class="self-center text-sm dark:text-neutral-400 text-neutral-600 mt-2">${text}</span></div>`;
 	};
 	renderer.blockquote = blockquoteHandler;
 	renderer.heading = (heading) => headingHandler(heading, headings);
