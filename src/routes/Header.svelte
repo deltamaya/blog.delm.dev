@@ -34,7 +34,7 @@
 	}
 
 	function switchTheme() {
-		isDark.update((v)=>!v)
+		isDark.update((v) => !v);
 	}
 
 	$effect(() => {
@@ -49,14 +49,15 @@
 </script>
 
 <header
-	class="flex w-full items-center justify-center bg-neutral-50 font-Sans font-bold text-neutral-900 dark:bg-neutral-900 dark:text-white transition-colors"
+	class="flex w-full items-center justify-center bg-neutral-50 font-Sans font-bold text-neutral-900 dark:bg-neutral-900 dark:text-white transition-colors  border-b-[1px] border-neutral-200 dark:border-neutral-800"
 >
-	<div class="flex w-full max-w-[1440px] flex-wrap items-center justify-between gap-5 p-4">
+	<div class="flex w-full max-w-[1440px] flex-wrap items-center justify-between gap-5 px-5 py-1">
 		<div class="flex items-center space-x-3">
 			<button class="flex items-center space-x-3" onclick={() => gotoHome()}>
-				<span class="text-lg font-bold md:text-xl lg:text-2xl"
-				>DELM.<span class="text-red-600">{languageTag()}</span></span
-				>
+				<span class="text-lg font-bold md:text-xl lg:text-2xl">
+					DELM.
+					<span class="text-red-600">{languageTag()}</span>
+				</span>
 			</button>
 			<div class="flex items-center space-x-3 text-sm md:text-base lg:text-lg">
 				<div class="relative flex text-left">
@@ -100,19 +101,11 @@
 				</div>
 				<div class="relative flex text-left">
 					<button class="hover:text-red-600 justify-center items-center" onclick="{()=>switchTheme()}">
-						<!--{#if themeIndex === 0}-->
-						<!--	<Icon icon="material-symbols:brightness-auto-outline" width="24" height="24" />-->
-						<!--{:else if themeIndex === 1}-->
-						<!--	<Icon icon="ri:sun-fill" width="24" height="24" />-->
-						<!--{:else}-->
-						<!--	<Icon icon="solar:moon-broken" width="24" height="24" />-->
-						<!--{/if}-->
 						{#if $isDark}
-
 							<Icon icon="solar:moon-broken" width="24" height="24" />
-							{:else}
-								<Icon icon="ri:sun-fill" width="24" height="24" />
-							{/if}
+						{:else}
+							<Icon icon="ri:sun-fill" width="24" height="24" />
+						{/if}
 
 					</button>
 				</div>
@@ -126,14 +119,17 @@
 			<a href="/search" class="hover:underline hover:text-red-600">{m.Search()}</a>
 			<a href="/tags" class="hover:underline hover:text-red-600">{m.Tags()}</a>
 
-			<div class="flex">
-				<a href="https://delm.dev" class="flex hover:underline">
-					{#if $isDark}
-						<img src="/logo-white.svg" alt="logo-white" class="lg:w-[50px] lg:h-[50px] md:w-[40px] md:h-[40px] w-[35px] h-[35px]"/>
-					{:else}
-						<img src="/logo.svg" alt="logo" class="lg:w-[50px] lg:h-[50px] md:w-[40px] md:h-[40px] w-[35px] h-[35px]"/>
-					{/if}
-				</a>
+			<div class="flex" >
+					<a href="https://delm.dev" class="flex">
+
+						{#if $isDark}
+							<img transition:slide src="/logo-white.svg" alt="logo-white"
+									 class="lg:w-[50px] lg:h-[50px] md:w-[45px] md:h-[45px] w-[40px] h-[40px]" />
+						{:else}
+							<img transition:slide src="/logo.svg" alt="logo"
+									 class="lg:w-[50px] lg:h-[50px] md:w-[45px] md:h-[45px] w-[40px] h-[40px]" />
+						{/if}
+					</a>
 			</div>
 		</nav>
 	</div>
