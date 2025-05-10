@@ -1,6 +1,6 @@
 <script>
 	import * as m from '$lib/paraglide/messages.js';
-	import TagEntry from './TagEntry.svelte';
+	import SlideUnderline from '../SlideUnderline.svelte';
 
 	let { data } = $props();
 
@@ -18,7 +18,21 @@
 		<div class="flex flex-wrap gap-3 ">
 
 			{#each data.tagCounts as [tag, count]}
-				<TagEntry {tag} {count}/>
+				<a href="/tags/{tag.toLowerCase()}"
+
+					 class="flex justify-between text-xl font-bold transition-colors px-2 py-1 duration-300 dark:text-neutral-100
+				">
+					<SlideUnderline>
+
+						<div class="flex">
+							<div class="text-red-600">#</div>
+							{tag.toUpperCase()}
+						</div>
+					</SlideUnderline>
+
+					<div class="text-red-600 text-sm">{count}</div>
+
+				</a>
 			{/each}
 		</div>
 	</div>
