@@ -1,7 +1,9 @@
 <script>
 	import * as m from '$lib/paraglide/messages.js';
+	import TagEntry from './TagEntry.svelte';
 
 	let { data } = $props();
+
 </script>
 
 <svelte:head>
@@ -16,12 +18,7 @@
 		<div class="flex flex-wrap gap-3 ">
 
 			{#each data.tagCounts as [tag, count]}
-				<a href="/tags/{tag.toLowerCase()}"
-					 class="hover:underline decoration-red-600 flex justify-between text-xl font-bold rounded  transition-colors duration-300 px-2 py-1 dark:text-neutral-100 ">
-					<div class="text-red-600">#</div>
-					{tag.toUpperCase()}
-					<div class="text-red-600 text-sm">{count}</div>
-				</a>
+				<TagEntry {tag} {count}/>
 			{/each}
 		</div>
 	</div>

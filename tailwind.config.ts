@@ -20,7 +20,7 @@ export default {
 							}
 						},
 						'pre code': {
-							backgroundColor: theme('colors.neutral.800'),
+							backgroundColor: theme('colors.neutral.300') + ' !important',
 							padding: '0px !important'
 						},
 						code: {
@@ -31,18 +31,20 @@ export default {
 							'.dark &': {
 								backgroundColor: theme('colors.neutral.800'), // Slightly lighter in dark mode
 							},
-							borderRadius: '2px',
-							color: theme('colors.red.500'),
+							borderRadius: '0px !important',
+							color: theme('colors.red.400'),
 							fontFamily: 'JetBrains Mono, monospace',
 							fontWeight: theme('fontWeight.bold'),
 							whiteSpace: 'pre-wrap',
 							wordBreak: 'break-word'
 						},
 						pre: {
+							borderRadius: '0px !important',
 							fontWeight: theme('fontWeight.bold'),
 							fontFamily: 'JetBrains Mono, monospace',
 							whiteSpace: 'pre-wrap',
-							wordBreak: 'break-word'
+							wordBreak: 'break-word',
+							backgroundColor: theme('colors.neutral.800'),
 						},
 						'.info-block p': {
 							margin: '0 !important'
@@ -55,7 +57,7 @@ export default {
 							}
 						},
 						hr: {
-							height: '1px',
+							height: '2px',
 							'.dark &': {
 								borderColor: theme('colors.neutral.800'), // 深色模式颜色
 							},
