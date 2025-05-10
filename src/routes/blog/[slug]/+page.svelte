@@ -87,7 +87,7 @@
 			<div class="flex space-x-2">
 				{#each data.metadata.authors as author,index}
 					<a href={RegisteredAuthors.get(author)?.url??"#"} class="hover:text-red-500 hover:underline">{author}</a>
-					{#if index!==data.metadata.authors.length-1}
+					{#if index !== data.metadata.authors.length - 1}
 						,
 					{/if}
 				{/each}
@@ -99,12 +99,14 @@
 				<a href="/tags/{tag.toLowerCase()}" class="mr-5 hover:underline">#{tag.toUpperCase()}</a>
 			{/each}
 		</div>
-		<Headings headings={data.headings} />
 		{#if data.metadata.ai}
 			<AINotice />
 		{/if}
-		<hr class="my-10 h-[1px] dark:border-neutral-800" />
-		<article class="prose prose-sm prose-neutral self-center md:prose-base lg:prose-lg dark:text-white max-w-[800px] w-full ">
+		<Headings headings={data.headings} />
+
+		<hr class="my-10 h-[1px] dark:border-neutral-800 transition-colors" />
+		<article
+			class="prose prose-sm prose-neutral self-center md:prose-base lg:prose-lg dark:text-white max-w-[800px] w-full ">
 			{@html data.content}
 		</article>
 	</div>

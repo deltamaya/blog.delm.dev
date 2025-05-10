@@ -7,6 +7,7 @@
 	import * as m from '$lib/paraglide/messages.js';
 	import Icon from '@iconify/svelte';
 	import { isDark } from '$lib/stores';
+	import SlideUnderline from './SlideUnderline.svelte';
 
 	function switchToLanguage(newLanguage: AvailableLanguageTag) {
 		const canonicalPath = i18n.route($page.url.pathname);
@@ -63,7 +64,7 @@
 				<div class="relative flex text-left">
 					<button
 						aria-label="languages"
-						class="flex hover:text-red-600 justify-center items-center"
+						class="flex hover:text-red-600 justify-center items-center transition-colors duration-200 "
 						onclick={(event)=>{toggleDropdown(event)}}
 					>
 						<Icon icon="material-symbols:language" width="24" height="24" />
@@ -100,7 +101,7 @@
 					{/if}
 				</div>
 				<div class="relative flex text-left">
-					<button class="hover:text-red-600 justify-center items-center" onclick="{()=>switchTheme()}">
+					<button class="hover:text-red-600 transition-colors duration-200 justify-center items-center" onclick="{()=>switchTheme()}">
 						{#if $isDark}
 							<Icon icon="solar:moon-broken" width="24" height="24" />
 						{:else}
@@ -115,21 +116,33 @@
 		<nav
 			class="flex items-center justify-center space-x-6 text-sm font-bold md:text-base lg:text-lg"
 		>
-			<a href="/archive/{new Date().getFullYear()}" class="hover:underline hover:text-red-600">{m.Archive()}</a>
-			<a href="/search" class="hover:underline hover:text-red-600">{m.Search()}</a>
-			<a href="/tags" class="hover:underline hover:text-red-600">{m.Tags()}</a>
+			<a href="/archive/{new Date().getFullYear()}" class="hover:text-red-600 transition-colors">
+				<SlideUnderline>
+					{m.Archive()}
+				</SlideUnderline>
+			</a>
+			<a href="/search" class="hover:text-red-600 transition-colors">
+				<SlideUnderline>
+					{m.Search()}
+				</SlideUnderline>
+			</a>
+			<a href="/tags" class="hover:text-red-600 transition-colors">
+				<SlideUnderline>
+					{m.Tags()}
+				</SlideUnderline>
+			</a>
 
-			<div class="flex" >
-					<a href="https://delm.dev" class="flex">
+			<div class="flex">
+				<a href="https://delm.dev" class="flex">
 
-						{#if $isDark}
-							<img transition:slide src="/logo-white.svg" alt="logo-white"
-									 class="lg:w-[50px] lg:h-[50px] md:w-[45px] md:h-[45px] w-[40px] h-[40px]" />
-						{:else}
-							<img transition:slide src="/logo.svg" alt="logo"
-									 class="lg:w-[50px] lg:h-[50px] md:w-[45px] md:h-[45px] w-[40px] h-[40px]" />
-						{/if}
-					</a>
+					{#if $isDark}
+						<img src="/logo-white.svg" alt="logo-white"
+								 class="lg:w-[50px] lg:h-[50px] md:w-[45px] md:h-[45px] w-[40px] h-[40px]" />
+					{:else}
+						<img src="/logo.svg" alt="logo"
+								 class="lg:w-[50px] lg:h-[50px] md:w-[45px] md:h-[45px] w-[40px] h-[40px]" />
+					{/if}
+				</a>
 			</div>
 		</nav>
 	</div>
