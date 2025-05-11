@@ -14,7 +14,7 @@
 </svelte:head>
 <div class="flex flex-grow flex-col items-center justify-center">
 	<div class="h-full w-full max-w-[48rem] p-4">
-		<div class="py-6 text-2xl font-bold">
+		<div class="py-2 text-2xl font-bold">
 			{m.Welcome()}
 		</div>
 		<div class="py-6 text-4xl font-bold flex">
