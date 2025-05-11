@@ -12,6 +12,36 @@ export default {
 			typography: ({ theme }) => ({
 				DEFAULT: {
 					css: {
+						table: {
+							borderCollapse: 'collapse',
+							border: `1px solid ${theme('colors.neutral.300')}`,
+							'.dark &': {
+								border: `2px solid ${theme('colors.neutral.800')}`
+							}
+						},
+						thead: {
+							'& > tr > th': {
+								color: theme('colors.neutral.900'),
+								'.dark &': {
+									color: theme('colors.neutral.100')
+								}
+							}
+						},
+						'thead th': {
+							border: `1px solid ${theme('colors.neutral.300')}`,
+							textAlign: 'center !important', // Center-align header text
+							'.dark &': {
+								border: `2px solid ${theme('colors.neutral.800')}`
+							},
+							padding: theme('padding.2')+' !important',
+						},
+						'tbody td': {
+							border: `1px solid ${theme('colors.neutral.300')}`,
+							textAlign: 'left', // Left-align body text (default, but explicitly set for clarity)
+							'.dark &': {
+								border: `2px solid ${theme('colors.neutral.800')}`
+							}
+						},
 						a: {
 							color: theme('colors.red.500'),
 							textDecoration: theme('textDecoration.underline'),
@@ -29,7 +59,7 @@ export default {
 							marginRight: '3px',
 							backgroundColor: theme('colors.neutral.100'),
 							'.dark &': {
-								backgroundColor: theme('colors.neutral.900'), // Slightly lighter in dark mode
+								backgroundColor: theme('colors.neutral.900') // Slightly lighter in dark mode
 							},
 							borderRadius: '0px !important',
 							color: theme('colors.red.400'),
@@ -46,7 +76,7 @@ export default {
 							wordBreak: 'break-word',
 							backgroundColor: theme('colors.neutral.900'),
 							borderWidth: '2px',
-							borderColor:  theme('colors.neutral.800')
+							borderColor: theme('colors.neutral.800')
 						},
 						'.info-block p': {
 							margin: '0 !important'
@@ -61,8 +91,8 @@ export default {
 						hr: {
 							height: '2px',
 							'.dark &': {
-								borderColor: theme('colors.neutral.800'), // 深色模式颜色
-							},
+								borderColor: theme('colors.neutral.800') // 深色模式颜色
+							}
 						},
 						// Fix strong text
 						strong: {
@@ -114,5 +144,5 @@ export default {
 		}
 	},
 	// eslint-disable-next-line @typescript-eslint/no-require-imports
-	plugins: [require('@tailwindcss/typography')],
+	plugins: [require('@tailwindcss/typography')]
 } satisfies Config;
