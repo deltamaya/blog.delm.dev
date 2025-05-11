@@ -29,7 +29,7 @@ export default {
 							marginRight: '3px',
 							backgroundColor: theme('colors.neutral.100'),
 							'.dark &': {
-								backgroundColor: theme('colors.neutral.800'), // Slightly lighter in dark mode
+								backgroundColor: theme('colors.neutral.900'), // Slightly lighter in dark mode
 							},
 							borderRadius: '0px !important',
 							color: theme('colors.red.400'),
@@ -44,7 +44,9 @@ export default {
 							fontFamily: 'JetBrains Mono, monospace',
 							whiteSpace: 'pre-wrap',
 							wordBreak: 'break-word',
-							backgroundColor: theme('colors.neutral.800'),
+							backgroundColor: theme('colors.neutral.900'),
+							borderWidth: '2px',
+							borderColor:  theme('colors.neutral.800')
 						},
 						'.info-block p': {
 							margin: '0 !important'

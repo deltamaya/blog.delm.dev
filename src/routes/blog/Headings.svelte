@@ -8,7 +8,7 @@
 </script>
 
 <nav
-	class="my-5 w-full border-l-[1px]
+	class="my-5 w-full border-l-[2px]
  border-neutral-800 dark:border-neutral-100 px-4"
 >
 	<div class="flex justify-between">
