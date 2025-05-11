@@ -37,16 +37,17 @@ export default {
 						},
 						'tbody td': {
 							border: `1px solid ${theme('colors.neutral.300')}`,
-							textAlign: 'left', // Left-align body text (default, but explicitly set for clarity)
+							textAlign: 'left',
 							'.dark &': {
 								border: `2px solid ${theme('colors.neutral.800')}`
-							}
+							},
+							padding: theme('padding.2')+' !important',
 						},
 						a: {
 							color: theme('colors.red.500'),
 							textDecoration: theme('textDecoration.underline'),
 							'&:hover': {
-								color: theme('colors.red.700')
+								color: theme('colors.red.600')
 							}
 						},
 						'pre code': {
@@ -101,43 +102,6 @@ export default {
 								color: theme('colors.neutral.100') // Light color for dark mode
 							}
 						},
-						// Fix headings (h1, h2, h3, etc.)
-						h1: {
-							color: theme('colors.neutral.900'),
-							'.dark &': {
-								color: theme('colors.neutral.100')
-							}
-						},
-						h2: {
-							color: theme('colors.neutral.900'),
-							'.dark &': {
-								color: theme('colors.neutral.100')
-							}
-						},
-						h3: {
-							color: theme('colors.neutral.900'),
-							'.dark &': {
-								color: theme('colors.neutral.100')
-							}
-						},
-						h4: {
-							color: theme('colors.neutral.900'),
-							'.dark &': {
-								color: theme('colors.neutral.100')
-							}
-						},
-						h5: {
-							color: theme('colors.neutral.900'),
-							'.dark &': {
-								color: theme('colors.neutral.100')
-							}
-						},
-						h6: {
-							color: theme('colors.neutral.900'),
-							'.dark &': {
-								color: theme('colors.neutral.100')
-							}
-						}
 					}
 				}
 			})

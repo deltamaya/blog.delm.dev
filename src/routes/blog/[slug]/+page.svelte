@@ -106,7 +106,12 @@
 
 		<hr class="my-10 h-[1px] dark:border-neutral-800 transition-colors" />
 		<article
-			class="prose prose-sm prose-neutral self-center md:prose-base lg:prose-lg dark:text-white max-w-[800px] w-full ">
+			class="
+			max-w-[800px] w-full
+			prose prose-neutral prose-base lg:prose-lg self-center
+			dark:text-white prose-headings:dark:text-white
+
+">
 			{@html data.content}
 		</article>
 	</div>

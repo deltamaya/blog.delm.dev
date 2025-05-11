@@ -9,21 +9,25 @@
 
 </script>
 <svelte:head>
-  <script>
-    if (localStorage.getItem('theme') === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  </script>
+	<script>
+		if (localStorage.getItem('theme') === 'dark') {
+			document.documentElement.classList.add('dark');
+		} else {
+			document.documentElement.classList.remove('dark');
+		}
+	</script>
 
 </svelte:head>
 <ParaglideJS {i18n}>
-	<div class="bg-red-600 h-[2px]"></div>
-	<Header />
-	<div class="min-h-[calc(100vh-124px)] w-full bg-neutral-50 text-neutral-900 dark:text-white dark:bg-neutral-900 transition-colors font-Sans">
-		{@render children()}
+	<div class="flex flex-col min-h-screen">
+		<div class="bg-red-600 h-[2px]"></div>
+		<Header />
+		<div
+			class="flex flex-grow min-h-[calc(100vh-124px)] w-full bg-neutral-50 text-neutral-900 dark:text-white dark:bg-neutral-900 transition-colors font-Sans">
+			{@render children()}
+		</div>
+		<Footer />
 	</div>
-	<Footer />
+
 </ParaglideJS>
 
