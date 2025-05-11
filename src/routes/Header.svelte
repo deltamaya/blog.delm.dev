@@ -8,6 +8,7 @@
 	import Icon from '@iconify/svelte';
 	import { isDark } from '$lib/stores';
 	import SlideUnderline from './SlideUnderline.svelte';
+	import {fade} from 'svelte/transition';
 
 	function switchToLanguage(newLanguage: AvailableLanguageTag) {
 		const canonicalPath = i18n.route($page.url.pathname);
@@ -41,7 +42,8 @@
 </script>
 
 <header
-	class="flex w-full items-center justify-center bg-neutral-50 font-Sans font-bold text-neutral-900 dark:bg-neutral-900 dark:text-white transition-colors  border-b-[1px] border-neutral-200 dark:border-neutral-800"
+	transition:crossfade
+	class="flex w-full items-center justify-center bg-neutral-50 font-Sans font-bold text-neutral-900 dark:bg-neutral-900 dark:text-white transition-colors border-b-[1px] border-neutral-200 dark:border-neutral-800"
 >
 	<div class="flex w-full max-w-[1440px] flex-wrap items-center justify-between gap-5 px-5 py-1">
 		<div class="flex items-center space-x-3">
@@ -92,14 +94,16 @@
 				</SlideUnderline>
 			</a>
 
-			<div role="region" onmouseenter={()=>{drawLogo=true;console.log('aasdf')}} onmouseleave={()=>drawLogo=false} class="flex">
-				<a href="https://delm.dev" class="flex">
+			<div class="flex">
+				<a href="https://delm.dev" class="flex relative items-center justify-center lg:w-[50px] lg:h-[50px] md:w-[45px] md:h-[45px] w-[40px] h-[40px] ">
 					{#if $isDark}
-						<img src="/logo-white.svg" alt="logo"
-								 class="lg:w-[50px] lg:h-[50px] md:w-[45px] md:h-[45px] w-[40px] h-[40px]" />
+						<img src="/logo-white.svg" alt="logo-white" transition:fade={{duration:400}}
+								 class="absolute lg:w-[50px] lg:h-[50px] md:w-[45px] md:h-[45px] w-[40px] h-[40px] "
+						/>
 					{:else}
-						<img src="/logo.svg" alt="logo"
-								 class="lg:w-[50px] lg:h-[50px] md:w-[45px] md:h-[45px] w-[40px] h-[40px]" />
+						<img src="/logo.svg" alt="logo" transition:fade={{duration:400}}
+								 class="absolute lg:w-[50px] lg:h-[50px] md:w-[45px] md:h-[45px] w-[40px] h-[40px] "
+						/>
 					{/if}
 				</a>
 			</div>
