@@ -7,7 +7,6 @@
 
 	let { children } = $props();
 
-	import ThemeProvider from './ThemeProvider.svelte';
 </script>
 <svelte:head>
   <script>
@@ -20,13 +19,11 @@
 
 </svelte:head>
 <ParaglideJS {i18n}>
-	<ThemeProvider>
-			<div class="bg-red-600 h-[2px]"></div>
-			<Header />
-			<div class="min-h-[calc(100vh-124px)] w-full bg-neutral-50 text-neutral-900 dark:text-white dark:bg-neutral-900 transition-colors font-Sans">
-				{@render children()}
-			</div>
-			<Footer />
-	</ThemeProvider>
+	<div class="bg-red-600 h-[2px]"></div>
+	<Header />
+	<div class="min-h-[calc(100vh-124px)] w-full bg-neutral-50 text-neutral-900 dark:text-white dark:bg-neutral-900 transition-colors font-Sans">
+		{@render children()}
+	</div>
+	<Footer />
 </ParaglideJS>
 

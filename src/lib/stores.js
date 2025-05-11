@@ -1,9 +1,7 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 
-export const isDark = writable(
-	browser ? localStorage.getItem('theme') === 'dark' : false
-);
+export const isDark = writable(true);
 
 isDark.subscribe((value) => {
 	if (browser) {
