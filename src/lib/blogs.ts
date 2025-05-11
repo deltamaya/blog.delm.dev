@@ -9,7 +9,7 @@ export interface BlogMeta {
 	draft: boolean;
 }
 
-const supportedLanguages = ['en', 'zh-cn', 'zh-tw'];
+const supportedLanguages = ['en', 'zh-cn'];
 
 const blogs = new Map<string, BlogMeta[]>();
 const tagToBlogs = new Map<string, Map<string, BlogMeta[]>>();
@@ -17,7 +17,6 @@ export const slugs: string[] = [];
 
 const blogsRaw = new Map([
   ['zh-cn', import.meta.glob('/content/zh-cn/*.md', { eager: true, query: 'raw' })],
-  ['zh-tw', import.meta.glob('/content/zh-tw/*.md', { eager: true, query: 'raw' })],
   ['en', import.meta.glob('/content/en/*.md', { eager: true, query: 'raw' })],
 ]);
 

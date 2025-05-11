@@ -22,29 +22,20 @@
 		goto(localisedHome);
 	}
 
-	let showLanguageDropMenu = $state(false);
 
-	function toggleDropdown(event: MouseEvent) {
+	function toggleLanguage(event: MouseEvent) {
 		event.stopPropagation();
-		showLanguageDropMenu = !showLanguageDropMenu;
+		if (languageTag() === 'en') {
+			switchToLanguage('zh-cn');
+			return;
+		}
+		switchToLanguage('en');
 	}
 
-
-	function hideDropMenu() {
-		showLanguageDropMenu = false;
-	}
 
 	function switchTheme() {
 		isDark.update((v) => !v);
 	}
-
-	$effect(() => {
-		window.addEventListener('click', hideDropMenu);
-
-		return () => {
-			window.removeEventListener('click', hideDropMenu);
-		};
-	});
 
 
 </script>
@@ -56,57 +47,27 @@
 		<div class="flex items-center space-x-3">
 			<button class="flex items-center space-x-3" onclick={() => gotoHome()}>
 				<span class="text-lg font-bold md:text-xl lg:text-2xl">
-					DELM.<span class="text-red-600">{languageTag()}</span>
+					DELM.<span class="text-red-600">{languageTag() === 'en' ? languageTag() : 'zh'}</span>
 				</span>
 			</button>
 			<div class="flex items-center space-x-3 text-sm md:text-base lg:text-lg">
 				<div class="relative flex text-left">
 					<button
 						aria-label="languages"
-						class="flex hover:text-red-600 justify-center items-center transition-colors duration-200 "
-						onclick={(event)=>{toggleDropdown(event)}}
+						class="flex hover:text-red-600 justify-center items-center transition-colors duration-200"
+						onclick={(event)=>{toggleLanguage(event)}}
 					>
 						<Icon icon="material-symbols:language" width="24" height="24" />
 					</button>
-					{#if showLanguageDropMenu}
-						<div
-							id="dropdownMenu"
-							class="absolute mt-2 w-28 rounded-md bg-neutral-100 dark:bg-neutral-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-20"
-							aria-orientation="vertical"
-							aria-labelledby="dropdownButton"
-						>
-							<button
-								class="block w-full px-4 py-2 text-sm text-neutral-700 dark:text-neutral-100 hover:text-red-600 dark:hover:text-red-600"
-								class:active={languageTag() === 'en'}
-								onclick={() => switchToLanguage('en')}
-							>
-								English
-							</button>
-							<button
-								class="block w-full px-4 py-2 text-sm text-neutral-700 dark:text-neutral-100 hover:text-red-600 dark:hover:text-red-600"
-								onclick={() => switchToLanguage('zh-cn')}
-								class:active={languageTag() === 'zh-cn'}
-							>
-								简体中文
-							</button>
-							<button
-								class="block w-full px-4 py-2 text-sm text-neutral-700 dark:text-neutral-100 hover:text-red-600 dark:hover:text-red-600"
-								onclick={() => switchToLanguage('zh-tw')}
-								class:active={languageTag() === 'zh-tw'}
-							>
-								繁體中文
-							</button>
-						</div>
-					{/if}
 				</div>
 				<div class="relative flex text-left">
-					<button class="hover:text-red-600 transition-colors duration-200 justify-center items-center" onclick="{()=>switchTheme()}">
+					<button class="hover:text-red-600 transition-colors duration-200 justify-center items-center"
+									onclick="{()=>switchTheme()}">
 						{#if $isDark}
 							<Icon icon="solar:moon-broken" width="24" height="24" />
 						{:else}
 							<Icon icon="ri:sun-fill" width="24" height="24" />
 						{/if}
-
 					</button>
 				</div>
 			</div>
@@ -131,11 +92,10 @@
 				</SlideUnderline>
 			</a>
 
-			<div class="flex">
+			<div role="region" onmouseenter={()=>{drawLogo=true;console.log('aasdf')}} onmouseleave={()=>drawLogo=false} class="flex">
 				<a href="https://delm.dev" class="flex">
-
 					{#if $isDark}
-						<img src="/logo-white.svg" alt="logo-white"
+						<img src="/logo-white.svg" alt="logo"
 								 class="lg:w-[50px] lg:h-[50px] md:w-[45px] md:h-[45px] w-[40px] h-[40px]" />
 					{:else}
 						<img src="/logo.svg" alt="logo"
@@ -148,7 +108,4 @@
 </header>
 
 <style>
-    .active {
-        @apply font-bold text-red-600 underline;
-    }
 </style>
