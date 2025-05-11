@@ -42,7 +42,6 @@
 </script>
 
 <header
-	transition:crossfade
 	class="flex w-full items-center justify-center bg-neutral-50 font-Sans font-bold text-neutral-900 dark:bg-neutral-900 dark:text-white transition-colors border-b-[1px] border-neutral-200 dark:border-neutral-800"
 >
 	<div class="flex w-full max-w-[1440px] flex-wrap items-center justify-between gap-5 px-5 py-1">
