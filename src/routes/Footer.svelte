@@ -1,11 +1,18 @@
+<script>
+	import * as m from '$lib/paraglide/messages.js';
+	import { languageTag } from '$lib/paraglide/runtime.js';
+</script>
 <footer
-	class="font-inter z-40 flex h-10 items-center justify-center bg-neutral-50 py-4 font-Sans text-neutral-500 dark:bg-neutral-900 dark:text-neutral-50 transition-colors"
+	class="font-inter z-40 flex h-10 items-center justify-center bg-neutral-50 py-4 font-Sans text-neutral-600 dark:bg-neutral-900 dark:text-neutral-50 transition-colors"
 >
 	<div class="z-40 flex flex-wrap items-center justify-center text-center text-sm">
 		<span class="inline-block">©&nbsp;</span>
-		<span
-			>{new Date().getFullYear()} <a href="https://www.delm.dev" class="hover:underline">Maya</a>. All works
-			<a href="https://www.gnu.org/copyleft/" class="hover:underline">Copyleft</a>.</span
-		>
+		<span>{new Date().getFullYear()} <a href="https://www.delm.dev" class="hover:underline">deltamaya</a>.
+			{#if languageTag()==='en'}
+				All works licensed under <a href="https://creativecommons.org/licenses/by/4.0/" class="hover:underline">CC BY 4.0</a>.
+			{:else}
+				所有作品均在<a href="https://creativecommons.org/licenses/by/4.0/" class="hover:underline">CC BY 4.0</a>许可下发布.
+			{/if}
+		</span>
 	</div>
 </footer>
