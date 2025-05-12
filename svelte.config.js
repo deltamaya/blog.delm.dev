@@ -4,11 +4,11 @@ import adapter from '@sveltejs/adapter-static';
 const config = {
 	// Consult https://svelte.dev/docs/kit/integrations
 	// for more information about preprocessors
-	preprocess: [],
 	kit: {
 		adapter: adapter({ precompress: true, fallback: '404.html' })
 	},
 
-	extensions: ['.svelte']
+	extensions: ['.svelte','.md'],
+	preprocess:[]
 };
 export default config;
