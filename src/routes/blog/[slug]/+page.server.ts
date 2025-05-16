@@ -7,6 +7,7 @@ import { blockquoteHandler } from '$lib/blockquote.js';
 import { headingHandler } from '$lib/heading.js';
 import { marked } from 'marked';
 import KatexExtension from '$lib/katex_extension';
+import WikiLinkExtension from "$lib/wiki_link_extension"
 
 export async function load({ params }) {
 	const { slug } = params;
@@ -17,6 +18,7 @@ export async function load({ params }) {
 
 	const renderer = new marked.Renderer();
 	marked.use(KatexExtension({}));
+	marked.use(WikiLinkExtension())
 	renderer.code = ({ text, lang }) => {
 		const validLang = lang && hljs.getLanguage(lang);
 		const highlighted = validLang ? hljs.highlight(text, { language: lang }).value : text;

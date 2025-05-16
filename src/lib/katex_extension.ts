@@ -1,6 +1,6 @@
 import katex, { type KatexOptions } from 'katex';
 import 'katex/dist/katex.css';
-import { marked } from 'marked';
+import * as marked from 'marked';
 
 export default function (options: KatexOptions = {}): marked.MarkedExtension {
 	return {
