@@ -41,7 +41,7 @@
 			{/if}
 
 			<div class="flex-grow"></div>
-			{#if data.year > 2023}
+			{#if data.year > 2024}
 				<a href="/archive/{data.year - 1}" class="transition-colors duration-200 flex items-center dark:fill-white dark:hover:fill-red-600 hover:text-red-600 hover:fill-red-600">
 					{m.Next()}
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
