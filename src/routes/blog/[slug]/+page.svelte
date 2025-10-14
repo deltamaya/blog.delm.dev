@@ -118,7 +118,7 @@
 		</article>
 	</div>
 
-	<div class="h-full max-w-[800px] w-full px-2">
+	<div class="h-full max-w-[800px] w-full">
 		<Giscus
 			id="comments"
 			term="what"
