@@ -44,10 +44,10 @@ export default {
 							padding: theme('padding.2')+' !important',
 						},
 						a: {
-							color: theme('colors.red.500'),
+							color: theme('colors.red.600'),
 							textDecoration: theme('textDecoration.underline'),
 							'&:hover': {
-								color: theme('colors.red.600')
+								color: theme('colors.red.700')
 							}
 						},
 						'pre code': {
@@ -63,7 +63,7 @@ export default {
 								backgroundColor: theme('colors.neutral.900') // Slightly lighter in dark mode
 							},
 							borderRadius: '0px !important',
-							color: theme('colors.red.400'),
+							color: theme('colors.red.600'),
 							fontFamily: 'JetBrains Mono, monospace',
 							fontWeight: theme('fontWeight.bold'),
 							whiteSpace: 'pre-wrap',

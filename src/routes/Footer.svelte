@@ -8,9 +8,9 @@
 		<span class="inline-block">©&nbsp;</span>
 		<span>{new Date().getFullYear()} <a href="https://www.delm.dev" class="underline hover:text-red-600">deltamaya</a>.
 			{#if languageTag()==='en'}
-				All works licensed under <a href="https://creativecommons.org/licenses/by/4.0/" class="underline hover:text-red-600">CC BY 4.0</a>.
+				All works licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/" class="underline hover:text-red-600">CC BY-NC 4.0</a>.
 			{:else}
-				所有作品均在<a href="https://creativecommons.org/licenses/by/4.0/" class="underline hover:text-red-600">CC BY 4.0</a>许可下发布.
+				所有作品均在<a href="https://creativecommons.org/licenses/by-nc/4.0/" class="underline hover:text-red-600">CC BY-NC 4.0</a>许可下发布.
 			{/if}
 		</span>
 	</div>
