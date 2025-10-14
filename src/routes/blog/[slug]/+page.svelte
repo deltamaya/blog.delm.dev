@@ -3,12 +3,13 @@
 	import { RegisteredAuthors } from '$lib/authors';
 
 	let { data } = $props();
-
+	import { isDark } from '$lib/stores';
 	import Headings from '../Headings.svelte';
 	import ReturnTopButton from '../ReturnTopButton.svelte';
 	import AINotice from '../AINotice.svelte';
 	import { languageTag } from '$lib/paraglide/runtime';
 	import 'katex/dist/katex.min.css';
+	import Giscus from '@giscus/svelte';
 
 	const ReturnButtonThreshold = 300;
 	let showReturnButton = $state(false);
@@ -45,10 +46,11 @@
 			window.removeEventListener('scroll', handleScroll);
 		};
 	});
+
 </script>
+
 <svelte:head>
 	<title>{data.metadata.title} - DELM</title>
-
 </svelte:head>
 <div
 	class="flex w-full flex-col flex-wrap items-center">
@@ -116,11 +118,27 @@
 		</article>
 	</div>
 
+	<div class="h-full max-w-[800px] w-full px-2">
+		<Giscus
+			id="comments"
+			term="what"
+			repo="deltamaya/blog.delm.dev"
+			repoId="R_kgDONdjf_Q"
+			category="General"
+			categoryId="DIC_kwDONdjf_c4Cwn4l"
+			mapping="pathname"
+			reactionsEnabled="1"
+			emitMetadata="0"
+			inputPosition="top"
+			theme={$isDark?'dark':'light'}
+			lang={languageTag()==='en'?'en':'zh-CN'}
+			loading="lazy"
+		/>
+	</div>
+
 	{#if showReturnButton}
 		<ReturnTopButton />
 	{/if}
 </div>
 
-<style>
 
-</style>
