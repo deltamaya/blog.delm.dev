@@ -28,7 +28,6 @@
 		});
 	}
 
-
 	function handleScroll() {
 		showReturnButton = window.scrollY >= ReturnButtonThreshold;
 	}
@@ -46,22 +45,20 @@
 			window.removeEventListener('scroll', handleScroll);
 		};
 	});
-
 </script>
 
 <svelte:head>
 	<title>{data.metadata.title} - DELM</title>
 </svelte:head>
-<div
-	class="flex w-full flex-col flex-wrap items-center">
-	<div class="flex h-full max-w-[800px] w-full flex-col p-4  dark:text-white">
+<div class="flex w-full flex-col flex-wrap items-center">
+	<div class="flex h-full w-full max-w-[800px] flex-col p-4 dark:text-white">
 		<div class="flex flex-wrap">
 			<h1 class="text-3xl font-bold lg:text-5xl">
 				{data.metadata.title}
 			</h1>
 			<a
 				href="https://github.com/deltamaya/blog.delm.dev/issues/new"
-				class="flex text-xs text-gray-500 hover:text-red-500 hover:underline lg:text-sm dark:text-gray-300"
+				class="flex text-xs text-gray-500 hover:text-red-500 hover:underline dark:text-gray-300 lg:text-sm"
 			>
 				<svg
 					fill="none"
@@ -85,10 +82,13 @@
 		<div class="my-1 flex text-base text-gray-500 dark:text-gray-300">
 			{data.metadata.date.toLocaleDateString(languageTag())}
 			·
-			{ m.AuthoredBy()}&nbsp;
+			{m.AuthoredBy()}&nbsp;
 			<div class="flex space-x-2">
-				{#each data.metadata.authors as author,index}
-					<a href={RegisteredAuthors.get(author)?.url??"#"} class="hover:text-red-500 hover:underline">{author}</a>
+				{#each data.metadata.authors as author, index}
+					<a
+						href={RegisteredAuthors.get(author)?.url ?? '#'}
+						class="hover:text-red-500 hover:underline">{author}</a
+					>
 					{#if index !== data.metadata.authors.length - 1}
 						,
 					{/if}
@@ -106,19 +106,26 @@
 		{/if}
 		<Headings headings={data.headings} />
 
-		<hr class="my-10 h-[1px] dark:border-neutral-800 transition-colors" />
+		<hr class="my-10 h-[1px] transition-colors dark:border-neutral-800" />
 		<article
 			class="
-			max-w-[800px] w-full
-			prose prose-neutral prose-base lg:prose-lg self-center
-			dark:text-white prose-headings:dark:text-white
+			 prose
+			prose-base prose-neutral w-full max-w-[800px] self-center
+			prose-h1:my-5
+			prose-h2:my-4
+			prose-h3:my-4
+			prose-h4:my-4
+			prose-p:my-4
+			dark:text-white
+			prose-headings:dark:text-white
 
-">
+"
+		>
 			{@html data.content}
 		</article>
 	</div>
 
-	<div class="h-full max-w-[800px] w-full">
+	<div class="h-full w-full max-w-[800px]">
 		<Giscus
 			id="comments"
 			term="what"
@@ -130,8 +137,8 @@
 			reactionsEnabled="1"
 			emitMetadata="0"
 			inputPosition="top"
-			theme={$isDark?'dark':'light'}
-			lang={languageTag()==='en'?'en':'zh-CN'}
+			theme={$isDark ? 'dark' : 'light'}
+			lang={languageTag() === 'en' ? 'en' : 'zh-CN'}
 			loading="lazy"
 		/>
 	</div>
@@ -140,5 +147,3 @@
 		<ReturnTopButton />
 	{/if}
 </div>
-
-
