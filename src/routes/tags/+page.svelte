@@ -3,7 +3,6 @@
 	import SlideUnderline from '../SlideUnderline.svelte';
 
 	let { data } = $props();
-
 </script>
 
 <svelte:head>
@@ -15,23 +14,19 @@
 			{m.Tags()}
 		</div>
 
-		<div class="flex flex-wrap gap-3 ">
-
+		<div class="flex flex-wrap gap-3">
 			{#each data.tagCounts as [tag, count]}
-				<a href="/tags/{tag.toLowerCase()}"
+				<a
+					href="/tags/{tag.toLowerCase()}"
+					class="flex justify-between px-2 py-1 text-xl font-bold transition-colors duration-300 dark:text-neutral-100
+				"
+				>
+					<div class="flex transition-colors duration-200 hover:text-red-600">
+						<div class="text-red-600">#</div>
+						{tag.toUpperCase()}
+					</div>
 
-					 class="flex justify-between text-xl font-bold transition-colors px-2 py-1 duration-300 dark:text-neutral-100
-				">
-					<SlideUnderline>
-
-						<div class="flex">
-							<div class="text-red-600">#</div>
-							{tag.toUpperCase()}
-						</div>
-					</SlideUnderline>
-
-					<div class="text-red-600 text-sm">{count}</div>
-
+					<div class="text-sm text-red-600">{count}</div>
 				</a>
 			{/each}
 		</div>
