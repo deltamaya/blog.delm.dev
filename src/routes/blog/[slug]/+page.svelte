@@ -110,18 +110,25 @@
 		<article
 			class="
 			 font-Serif
-			prose prose-neutral w-full max-w-[800px] self-center lg:prose-lg
+			 prose prose-neutral w-full
+			max-w-[800px]
+			self-center
+			lg:prose-lg
 			prose-h1:my-5
-			prose-h1:text-4xl
+			prose-h1:text-2xl
 			prose-h2:my-4
-			prose-h2:text-3xl
+			prose-h2:text-xl
 			prose-h3:my-4
-			prose-h3:text-2xl
+			prose-h3:text-lg
 			prose-h4:my-4
-			prose-h4:text-xl
+			prose-h4:text-base
 			prose-p:my-4
 			dark:text-white
 			prose-headings:dark:text-white
+			lg:prose-h1:text-3xl
+			lg:prose-h2:text-2xl
+			lg:prose-h3:text-xl
+			lg:prose-h4:text-lg
 
 "
 		>
