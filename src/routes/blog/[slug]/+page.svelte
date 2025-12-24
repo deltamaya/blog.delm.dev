@@ -109,12 +109,16 @@
 		<hr class="my-10 h-[1px] transition-colors dark:border-neutral-800" />
 		<article
 			class="
-			 prose
-			prose-base prose-neutral w-full max-w-[800px] self-center
+			 font-Serif
+			prose prose-neutral w-full max-w-[800px] self-center lg:prose-lg
 			prose-h1:my-5
+			prose-h1:text-4xl
 			prose-h2:my-4
+			prose-h2:text-3xl
 			prose-h3:my-4
+			prose-h3:text-2xl
 			prose-h4:my-4
+			prose-h4:text-xl
 			prose-p:my-4
 			dark:text-white
 			prose-headings:dark:text-white

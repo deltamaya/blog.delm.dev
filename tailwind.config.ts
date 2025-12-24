@@ -6,7 +6,8 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				Sans: ['-apple-system', 'Inter', 'Noto Sans SC', 'Noto Sans TC', 'system-ui', 'sans-serif'],
+				Sans: ['-apple-system', 'Noto Sans SC', 'Noto Sans TC', 'system-ui', 'sans-serif'],
+				Serif: ['IBM Plex Serif', 'Noto Sans Serif SC', 'Noto Sans Serif TC', 'serif'],
 				JetBrainsMono: ['JetBrains Mono', 'consolas', 'monospace']
 			},
 			typography: ({ theme }) => ({
@@ -33,7 +34,7 @@ export default {
 							'.dark &': {
 								border: `2px solid ${theme('colors.neutral.800')}`
 							},
-							padding: theme('padding.2')+' !important',
+							padding: theme('padding.2') + ' !important',
 						},
 						'tbody td': {
 							border: `1px solid ${theme('colors.neutral.300')}`,
@@ -41,7 +42,7 @@ export default {
 							'.dark &': {
 								border: `2px solid ${theme('colors.neutral.800')}`
 							},
-							padding: theme('padding.2')+' !important',
+							padding: theme('padding.2') + ' !important',
 						},
 						a: {
 							color: theme('colors.red.600'),
