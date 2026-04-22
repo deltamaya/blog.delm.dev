@@ -1,0 +1,97 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getAllTags, getTaggedBlogsMeta, getTagCounts } from "../../lib/blogs";
+
+export async function getStaticPaths() {
+  return getAllTags().map((tag) => ({ params: { tag } }));
+}
+
+const { tag } = Astro.params;
+const blogs = getTaggedBlogsMeta(tag!);
+const allTagCounts = getTagCounts();
+---
+
+<BaseLayout title={`#${tag?.toUpperCase()}`}>
+  <div class="flex flex-grow flex-col items-center">
+    <div class="w-full max-w-[48rem] px-4 py-10 flex flex-col gap-8">
+      <!-- Page header -->
+      <div
+        class="flex flex-col gap-4 border-b border-neutral-200 dark:border-neutral-800 pb-6"
+      >
+        <div class="flex items-baseline gap-3">
+          <h1 class="text-3xl font-black tracking-tight">
+            <span class="text-red-600">#</span>{tag?.toUpperCase()}
+          </h1>
+          <span
+            class="font-mono text-[11px] text-neutral-400 dark:text-neutral-600"
+          >
+            {blogs.length} posts
+          </span>
+        </div>
+
+        <!-- Other tags -->
+        <div class="flex flex-wrap gap-1.5">
+          {
+            allTagCounts
+              .filter(([t]) => t !== tag)
+              .slice(0, 12)
+              .map(([t, count]) => (
+                <a
+                  href={`/topics/${t}`}
+                  class="font-mono text-[10px] uppercase tracking-wider px-2 py-1 border border-neutral-200 dark:border-neutral-800 text-neutral-400 dark:text-neutral-600 hover:border-red-400 hover:text-red-500 transition-colors duration-150"
+                >
+                  {t} <span class="opacity-60">{count}</span>
+                </a>
+              ))
+          }
+          <a
+            href="/topics"
+            class="font-mono text-[10px] uppercase tracking-wider px-2 py-1 border border-dashed border-neutral-300 dark:border-neutral-700 text-neutral-400 dark:text-neutral-600 hover:border-red-400 hover:text-red-500 transition-colors duration-150"
+          >
+            all →
+          </a>
+        </div>
+      </div>
+
+      <!-- Post list -->
+      <div
+        class="flex flex-col divide-y divide-neutral-100 dark:divide-neutral-800/60"
+      >
+        {
+          blogs.map((blog) => (
+            <a
+              href={`/blog/${blog.slug}`}
+              class="group flex items-center gap-4 py-3 -mx-2 px-2 hover:bg-neutral-50 dark:hover:bg-neutral-800/40 transition-colors duration-150"
+            >
+              <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-600 shrink-0 tabular-nums">
+                {blog.date.toLocaleDateString("en", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })}
+              </span>
+              <span class="flex-1 text-sm group-hover:text-red-600 transition-colors duration-150 leading-snug">
+                {blog.title}
+              </span>
+              <div class="flex items-center gap-1.5 shrink-0">
+                {blog.ai && (
+                  <span class="font-mono text-[9px] tracking-wider uppercase px-1 py-0.5 border border-neutral-300 dark:border-neutral-700 text-neutral-400 dark:text-neutral-600">
+                    AI
+                  </span>
+                )}
+                {blog.tags
+                  .filter((t) => t !== tag)
+                  .slice(0, 2)
+                  .map((t) => (
+                    <span class="font-mono text-[10px] text-neutral-400 dark:text-neutral-600 uppercase hidden sm:inline">
+                      #{t}
+                    </span>
+                  ))}
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</BaseLayout>

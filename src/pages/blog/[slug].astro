@@ -1,0 +1,211 @@
+---
+import fs from "node:fs";
+import path from "node:path";
+import matter from "gray-matter";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getAllSlugs } from "../../lib/blogs";
+import { renderMarkdown } from "../../lib/markdown";
+import type { Heading } from "../../lib/markdown";
+import { authorLinks } from "../../lib/authors";
+
+export async function getStaticPaths() {
+  return getAllSlugs().map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const filePath = path.resolve(`content/en/${slug}.md`);
+const raw = fs.readFileSync(filePath, "utf-8");
+const { data: metadata, content: rawContent } = matter(raw);
+const { html, headings } = renderMarkdown(rawContent);
+const postDate = new Date(metadata.date);
+
+---
+
+<BaseLayout title={metadata.title}>
+  <div class="flex w-full flex-col flex-wrap items-center">
+    <div class="flex h-full w-full max-w-[800px] flex-col p-4 dark:text-white">
+      <div class="flex flex-wrap items-start">
+        <h1 class="font-serif text-3xl font-bold lg:text-5xl leading-tight">{metadata.title}</h1>
+        <a
+          href="https://github.com/deltamaya/blog.delm.dev/issues/new"
+          class="flex items-center gap-1 text-xs text-gray-500 hover:text-red-500 hover:underline dark:text-gray-300 lg:text-sm"
+        >
+          <svg
+            fill="none"
+            shape-rendering="geometricPrecision"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2.5"
+            viewBox="0 0 24 24"
+            height="12"
+            width="12"
+          >
+            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"
+            ></path>
+            <path d="M15 3h6v6"></path>
+            <path d="M10 14L21 3"></path>
+          </svg>
+          Suggest Changes
+        </a>
+      </div>
+
+      <div class="my-1 flex text-base text-gray-500 dark:text-gray-300">
+        {postDate.toLocaleDateString("en")}
+        &nbsp;·&nbsp; Authored by&nbsp;
+        <div class="flex space-x-2">
+          {
+            (metadata.authors ?? []).map((author: string, i: number) => {
+              const href = authorLinks[author.toLowerCase()];
+              return (
+                <span>
+                  {href ? (
+                    <a href={href} target="_blank" rel="noopener noreferrer" class="hover:text-red-500 hover:underline">
+                      {author}
+                    </a>
+                  ) : (
+                    <span>{author}</span>
+                  )}
+                  {i !== (metadata.authors ?? []).length - 1 ? "," : ""}
+                </span>
+              );
+            })
+          }
+        </div>
+      </div>
+
+      <div class="flex flex-wrap text-lg font-bold text-red-500">
+        {
+          (metadata.tags ?? []).map((tag: string) => (
+            <a href={`/topics/${tag.toLowerCase()}`} class="mr-5 hover:underline">
+              #{tag.toUpperCase()}
+            </a>
+          ))
+        }
+      </div>
+
+      {
+        metadata.ai && (
+          <div class="mt-3 flex w-full flex-col flex-wrap bg-neutral-100 px-3 pt-2 pb-3 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 border-[2px] transition-colors">
+            <p class="text-xl font-bold">Notice</p>
+            This article has been translated by AI for your convenience. Please
+            note that there may be inaccuracies or differences from the original
+            text.
+          </div>
+        )
+      }
+
+      {
+        headings.length > 0 && (
+          <nav
+            id="toc"
+            class="my-5 w-full border-l-2 border-neutral-800 px-4 dark:border-neutral-100"
+          >
+            <button
+              class="flex w-full justify-between items-center cursor-pointer"
+              id="toc-toggle"
+              aria-label="Toggle table of contents"
+            >
+              <h2 class="mb-1 text-lg font-bold">Table of Contents</h2>
+              <svg
+                id="toc-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                class="fill-neutral-900 dark:fill-white transition-transform duration-200"
+              >
+                <path d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6l-6-6z" />
+              </svg>
+            </button>
+            <!-- grid 0fr→1fr 过渡动画 -->
+            <div id="toc-list" class="grid transition-[grid-template-rows] duration-300 ease-in-out" style="grid-template-rows: 0fr;">
+              <div class="overflow-hidden">
+                <div class="flex flex-col pt-1">
+                  {headings.map((h: Heading) => (
+                    <div
+                      style={`margin-left: ${(h.depth - 1) * 12}px; font-weight: ${(7 - h.depth) * 100}`}
+                    >
+                      <a
+                        class="inline-flex flex-wrap hover:text-red-500 hover:underline"
+                        href={`#${h.id}`}
+                      >
+                        {h.text}
+                      </a>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </nav>
+        )
+      }
+
+      <hr
+        class="my-10 h-[1px] transition-colors border-neutral-200 dark:border-neutral-800"
+      />
+
+      <article
+        class="font-serif prose prose-lg prose-neutral w-full max-w-[800px] self-center dark:prose-invert prose-h1:my-5 prose-h1:text-3xl prose-h2:my-4 prose-h2:text-2xl prose-h3:my-4 prose-h3:text-xl prose-h4:my-4 prose-h4:text-xl prose-p:my-4"
+        set:html={html}
+      />
+    </div>
+  </div>
+
+  <button
+    id="return-top"
+    aria-label="Return to top"
+    class="fixed bottom-8 right-8 z-50 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 p-2 shadow-lg hover:bg-red-600 dark:hover:bg-red-600 dark:hover:text-white cursor-pointer transition-[transform,opacity] duration-300 ease-in-out opacity-0 translate-y-4 pointer-events-none"
+    onclick="window.scrollTo({top:0,behavior:'smooth'})"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path>
+    </svg>
+  </button>
+
+  <script>
+    document.querySelectorAll(".copy-button").forEach((btn) => {
+      btn.textContent = "Copy";
+      btn.addEventListener("click", () => {
+        const code =
+          (btn as HTMLElement).previousElementSibling?.textContent ?? "";
+        navigator.clipboard.writeText(code).then(() => {
+          btn.textContent = "Copied";
+          (btn as HTMLButtonElement).disabled = true;
+          setTimeout(() => {
+            btn.textContent = "Copy";
+            (btn as HTMLButtonElement).disabled = false;
+          }, 3000);
+        });
+      });
+    });
+    const returnBtn = document.getElementById("return-top");
+    window.addEventListener("scroll", () => {
+      if (!returnBtn) return;
+      if (window.scrollY >= 500) {
+        returnBtn.classList.remove("opacity-0",  "pointer-events-none");
+        returnBtn.classList.add("opacity-100",  "pointer-events-auto");
+      } else {
+        returnBtn.classList.add("opacity-0", "pointer-events-none");
+        returnBtn.classList.remove("opacity-100", "pointer-events-auto");
+      }
+    });
+    const tocToggle = document.getElementById("toc-toggle");
+    const tocList = document.getElementById("toc-list") as HTMLElement | null;
+    const tocIcon = document.getElementById("toc-icon");
+    let tocOpen = false;
+    tocToggle?.addEventListener("click", () => {
+      tocOpen = !tocOpen;
+      if (tocList) {
+        tocList.style.gridTemplateRows = tocOpen ? "1fr" : "0fr";
+      }
+      tocIcon?.classList.toggle("rotate-180");
+    });
+  </script>
+</BaseLayout>

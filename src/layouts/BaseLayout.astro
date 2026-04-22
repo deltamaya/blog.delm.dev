@@ -1,0 +1,292 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+}
+
+const title = Astro.props.title ? `${Astro.props.title} - DELM` : "DELM Blog";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="DELM Blog RSS Feed"
+      href="https://blog.delm.dev/rss.xml"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+    <!-- Dark mode init (must be inline to avoid flash) -->
+    <script is:inline>
+      if (localStorage.getItem("theme") === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+  </head>
+  <body
+    class="bg-neutral-50 text-neutral-900 dark:bg-neutral-900 dark:text-white transition-colors font-sans"
+  >
+    <div class="flex flex-col min-h-screen">
+      <div class="bg-red-600 h-[2px]"></div>
+
+      <!-- Header -->
+      <header
+        class="w-full border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 transition-colors"
+      >
+        <!-- Main bar -->
+        <div
+          class="flex w-full max-w-[1440px] mx-auto items-center justify-between px-4 md:px-6 py-3"
+        >
+          <!-- Logo -->
+          <a
+            href="/"
+            class="group flex items-center gap-2 select-none"
+            aria-label="DELM home"
+          >
+            <div class="relative h-8 w-8 flex-shrink-0">
+              <img
+                src="/logo.svg"
+                alt=""
+                class="absolute inset-0 h-full w-full transition-opacity duration-300 opacity-100 dark:opacity-0"
+              />
+              <img
+                src="/logo-white.svg"
+                alt=""
+                class="absolute inset-0 h-full w-full transition-opacity duration-300 opacity-0 dark:opacity-100"
+              />
+            </div>
+            <span class="text-lg font-black tracking-tight leading-none">
+              <span class="text-red-600">D</span>ELM
+            </span>
+          </a>
+
+          <!-- Desktop nav (md+) -->
+          <div class="hidden md:flex items-center gap-0.5">
+            {
+              [
+                { href: "/", label: "Home" },
+                {
+                  href: `/archive/${new Date().getFullYear()}`,
+                  label: "Archive",
+                },
+                { href: "/search", label: "Search" },
+                { href: "/topics", label: "Topics" },
+              ].map(({ href, label }) => (
+                <a
+                  href={href}
+                  class="px-3 py-1.5 font-mono text-sm tracking-widest uppercase text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors duration-150"
+                >
+                  {label}
+                </a>
+              ))
+            }
+            <span class="mx-2 h-3.5 w-px bg-neutral-300 dark:bg-neutral-700"
+            ></span>
+            <button
+              id="theme-toggle"
+              aria-label="Toggle dark mode"
+              class="flex items-center gap-1 font-mono text-sm tracking-widest uppercase px-2.5 py-1.5 border border-neutral-300 dark:border-neutral-700 text-neutral-500 dark:text-neutral-400 hover:border-red-500 hover:text-red-500 transition-colors duration-150 select-none"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="block dark:hidden flex-shrink-0"
+                ><path
+                  d="M12 18a6 6 0 1 1 0-12a6 6 0 0 1 0 12M11 1h2v3h-2zm0 19h2v3h-2zM3.515 4.929l1.414-1.414L7.05 5.636L5.636 7.05zM16.95 18.364l1.414-1.414l2.121 2.121l-1.414 1.414zm2.121-14.85l1.414 1.415l-2.121 2.121l-1.414-1.414zM5.636 16.95l1.414 1.414l-2.121 2.121l-1.414-1.414zM23 11v2h-3v-2zM4 11v2H1v-2z"
+                ></path></svg
+              >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="hidden dark:block flex-shrink-0"
+                ><path
+                  d="m21.067 11.857l-.642-.388zm-8.924-8.924l-.388-.642zm-4.767 17.08a.75.75 0 1 0-.752 1.298zm-4.687-2.638a.75.75 0 1 0 1.298-.75zM21.25 12A9.25 9.25 0 0 1 12 21.25v1.5c5.937 0 10.75-4.813 10.75-10.75zm-18.5 0A9.25 9.25 0 0 1 12 2.75v-1.5C6.063 1.25 1.25 6.063 1.25 12zm12.75 2.25A5.75 5.75 0 0 1 9.75 8.5h-1.5a7.25 7.25 0 0 0 7.25 7.25zm4.925-2.781A5.75 5.75 0 0 1 15.5 14.25v1.5a7.25 7.25 0 0 0 6.21-3.505zM9.75 8.5a5.75 5.75 0 0 1 2.781-4.925l-.776-1.284A7.25 7.25 0 0 0 8.25 8.5zM12 2.75a.38.38 0 0 1-.268-.118a.3.3 0 0 1-.082-.155c-.004-.031-.002-.121.105-.186l.776 1.284c.503-.304.665-.861.606-1.299c-.062-.455-.42-1.026-1.137-1.026zm9.71 9.495c-.066.107-.156.109-.187.105a.3.3 0 0 1-.155-.082a.38.38 0 0 1-.118-.268h1.5c0-.717-.571-1.075-1.026-1.137c-.438-.059-.995.103-1.299.606zM12 21.25a9.2 9.2 0 0 1-4.624-1.237l-.752 1.298A10.7 10.7 0 0 0 12 22.75zm-8.013-4.625A9.2 9.2 0 0 1 2.75 12h-1.5a10.7 10.7 0 0 0 1.439 5.375z"
+                ></path></svg
+              >
+              <span class="dark:hidden">light</span>
+              <span class="hidden dark:inline">dark</span>
+            </button>
+          </div>
+
+          <!-- Mobile controls (< md) -->
+          <div class="flex md:hidden items-center gap-1">
+            <button
+              id="theme-toggle-mobile"
+              aria-label="Toggle dark mode"
+              class="flex items-center justify-center w-9 h-9 text-neutral-500 dark:text-neutral-400 hover:text-red-500 transition-colors duration-150"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="block dark:hidden"
+                ><path
+                  d="M12 18a6 6 0 1 1 0-12a6 6 0 0 1 0 12M11 1h2v3h-2zm0 19h2v3h-2zM3.515 4.929l1.414-1.414L7.05 5.636L5.636 7.05zM16.95 18.364l1.414-1.414l2.121 2.121l-1.414 1.414zm2.121-14.85l1.414 1.415l-2.121 2.121l-1.414-1.414zM5.636 16.95l1.414 1.414l-2.121 2.121l-1.414-1.414zM23 11v2h-3v-2zM4 11v2H1v-2z"
+                ></path></svg
+              >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="hidden dark:block"
+                ><path
+                  d="m21.067 11.857l-.642-.388zm-8.924-8.924l-.388-.642zm-4.767 17.08a.75.75 0 1 0-.752 1.298zm-4.687-2.638a.75.75 0 1 0 1.298-.75zM21.25 12A9.25 9.25 0 0 1 12 21.25v1.5c5.937 0 10.75-4.813 10.75-10.75zm-18.5 0A9.25 9.25 0 0 1 12 2.75v-1.5C6.063 1.25 1.25 6.063 1.25 12zm12.75 2.25A5.75 5.75 0 0 1 9.75 8.5h-1.5a7.25 7.25 0 0 0 7.25 7.25zm4.925-2.781A5.75 5.75 0 0 1 15.5 14.25v1.5a7.25 7.25 0 0 0 6.21-3.505zM9.75 8.5a5.75 5.75 0 0 1 2.781-4.925l-.776-1.284A7.25 7.25 0 0 0 8.25 8.5zM12 2.75a.38.38 0 0 1-.268-.118a.3.3 0 0 1-.082-.155c-.004-.031-.002-.121.105-.186l.776 1.284c.503-.304.665-.861.606-1.299c-.062-.455-.42-1.026-1.137-1.026zm9.71 9.495c-.066.107-.156.109-.187.105a.3.3 0 0 1-.155-.082a.38.38 0 0 1-.118-.268h1.5c0-.717-.571-1.075-1.026-1.137c-.438-.059-.995.103-1.299.606zM12 21.25a9.2 9.2 0 0 1-4.624-1.237l-.752 1.298A10.7 10.7 0 0 0 12 22.75zm-8.013-4.625A9.2 9.2 0 0 1 2.75 12h-1.5a10.7 10.7 0 0 0 1.439 5.375z"
+                ></path></svg
+              >
+            </button>
+            <button
+              id="mobile-menu-btn"
+              aria-label="Open menu"
+              class="flex items-center justify-center w-9 h-9 text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors duration-150"
+            >
+              <svg
+                id="icon-menu"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="4" y1="6" x2="20" y2="6"></line><line
+                  x1="4"
+                  y1="12"
+                  x2="20"
+                  y2="12"></line><line x1="4" y1="18" x2="20" y2="18"></line>
+              </svg>
+              <svg
+                id="icon-close"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="hidden"
+              >
+                <line x1="18" y1="6" x2="6" y2="18"></line><line
+                  x1="6"
+                  y1="6"
+                  x2="18"
+                  y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile dropdown menu -->
+        <div
+          id="mobile-menu"
+          class="hidden md:hidden border-t border-neutral-200 dark:border-neutral-800"
+        >
+          <nav class="flex flex-col max-w-[1440px] mx-auto px-4">
+            {
+              [
+                { href: "/", label: "Home" },
+                {
+                  href: `/archive/${new Date().getFullYear()}`,
+                  label: "Archive",
+                },
+                { href: "/search", label: "Search" },
+                { href: "/topics", label: "Topics" },
+              ].map(({ href, label }) => (
+                <a
+                  href={href}
+                  class="font-mono text-sm tracking-widest uppercase py-3.5 text-neutral-600 dark:text-neutral-400 hover:text-red-600 dark:hover:text-red-500 border-b border-neutral-100 dark:border-neutral-800 last:border-0 transition-colors duration-150"
+                >
+                  {label}
+                </a>
+              ))
+            }
+          </nav>
+        </div>
+      </header>
+
+      <!-- Main content -->
+      <main class="flex flex-col flex-grow w-full">
+        <slot />
+      </main>
+
+      <!-- Footer -->
+      <footer
+        class="z-40 flex h-10 items-center justify-center bg-neutral-50 py-4 font-sans text-neutral-600 dark:bg-neutral-900 dark:text-neutral-50 transition-colors"
+      >
+        <div
+          class="flex flex-wrap items-center justify-center text-center sm:text-sm text-xs"
+        >
+          <span class="inline-block">©&nbsp;</span>
+          <span>
+            {new Date().getFullYear()}
+            <a href="https://www.delm.dev" class="underline hover:text-red-600"
+              >deltamaya</a
+            >. All works licensed under
+            <a
+              href="https://creativecommons.org/licenses/by-nc/4.0/"
+              class="underline hover:text-red-600">CC BY-NC 4.0</a
+            >.
+          </span>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Header scripts -->
+    <script>
+      // Theme toggle (desktop + mobile)
+      function applyTheme(isDark: boolean) {
+        document.documentElement.classList.toggle("dark", isDark);
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+      }
+      document.getElementById("theme-toggle")?.addEventListener("click", () => {
+        applyTheme(!document.documentElement.classList.contains("dark"));
+      });
+      document
+        .getElementById("theme-toggle-mobile")
+        ?.addEventListener("click", () => {
+          applyTheme(!document.documentElement.classList.contains("dark"));
+        });
+
+      // Mobile menu toggle
+      const menuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const iconMenu = document.getElementById("icon-menu");
+      const iconClose = document.getElementById("icon-close");
+      menuBtn?.addEventListener("click", () => {
+        const isOpen = !mobileMenu?.classList.contains("hidden");
+        mobileMenu?.classList.toggle("hidden", isOpen);
+        iconMenu?.classList.toggle("hidden", !isOpen);
+        iconClose?.classList.toggle("hidden", isOpen);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+# Cookies & Cookies
+/node_modules
+
+# Build output
+/dist
+
+# Astro generated files
+/.astro
+
+# Next.js (if ever migrated)
+/.next
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/settings.json
+.idea/

@@ -1,0 +1,130 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getBlogsByYear, getAllYears } from "../../lib/blogs";
+
+export async function getStaticPaths() {
+  const startYear = 2024;
+  const endYear = new Date().getFullYear();
+  const years: number[] = [];
+  for (let y = startYear; y <= endYear; y++) years.push(y);
+  return years.map((year) => ({ params: { year: String(year) } }));
+}
+
+const yearParam = Number(Astro.params.year);
+const months = getBlogsByYear(yearParam);
+const allYears = getAllYears();
+const totalPosts = [...months.values()].reduce((s, b) => s + b.length, 0);
+const minYear = 2024;
+const maxYear = new Date().getFullYear();
+---
+
+<BaseLayout title={`Archive ${yearParam}`}>
+  <div class="flex flex-grow flex-col items-center">
+    <div class="w-full max-w-[48rem] px-4 py-10 flex flex-col gap-8">
+
+      <!-- Page header -->
+      <div class="flex flex-col gap-4 border-b border-neutral-200 dark:border-neutral-800 pb-6">
+        <h1 class="text-3xl font-black tracking-tight"><span class="text-red-600">A</span>rchive</h1>
+
+        <!-- Year tabs -->
+        <div class="flex items-center gap-1 flex-wrap">
+          {allYears.map((y) => (
+            <a
+              href={`/archive/${y}`}
+              class={`font-mono text-xs tracking-widest uppercase px-3 py-1.5 border transition-colors duration-150 ${
+                y === yearParam
+                  ? "border-neutral-900 dark:border-neutral-100 bg-neutral-900 dark:bg-neutral-100 text-neutral-50 dark:text-neutral-900"
+                  : "border-neutral-300 dark:border-neutral-700 text-neutral-500 dark:text-neutral-400 hover:border-red-500 hover:text-red-500"
+              }`}
+            >
+              {y}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Post list -->
+      {months.size > 0 ? (
+        <div class="flex flex-col gap-8">
+          {[...months.entries()].map(([month, blogs]) => (
+            <div class="flex flex-col gap-1">
+
+              <!-- Month heading -->
+              <div class="flex items-center gap-3 mb-2">
+                <span class="text-sm font-bold">{month}</span>
+                <div class="flex-1 h-px bg-neutral-200 dark:bg-neutral-800"></div>
+                <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-600">{blogs.length}</span>
+              </div>
+
+              <!-- Posts -->
+              <div class="flex flex-col divide-y divide-neutral-100 dark:divide-neutral-800/60">
+                {blogs.map((blog) => (
+                  <a
+                    href={`/blog/${blog.slug}`}
+                    class="group flex items-center gap-4 py-2.5 -mx-2 px-2 hover:bg-neutral-50 dark:hover:bg-neutral-800/40 transition-colors duration-150"
+                  >
+                    <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-600 shrink-0 w-12 tabular-nums">
+                      {blog.date.toLocaleDateString("en", { month: "2-digit", day: "2-digit" })}
+                    </span>
+                    <span class="flex-1 text-sm group-hover:text-red-600 transition-colors duration-150 leading-snug">
+                      {blog.title}
+                    </span>
+                    <div class="flex items-center gap-1.5 shrink-0">
+                      {blog.ai && (
+                        <span class="font-mono text-[9px] tracking-wider uppercase px-1 py-0.5 border border-neutral-300 dark:border-neutral-700 text-neutral-400 dark:text-neutral-600">
+                          AI
+                        </span>
+                      )}
+                      {blog.tags.slice(0, 2).map((tag) => (
+                        <span class="font-mono text-[10px] text-neutral-400 dark:text-neutral-600 uppercase hidden sm:inline">
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  </a>
+                ))}
+              </div>
+
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="py-12 text-center text-neutral-400 dark:text-neutral-600 font-mono text-sm tracking-wider uppercase">
+          No posts in {yearParam}
+        </div>
+      )}
+
+      <!-- Year navigation -->
+      <div class="flex items-center justify-between pt-4 border-t border-neutral-200 dark:border-neutral-800">
+        {yearParam > minYear ? (
+          <a
+            href={`/archive/${yearParam - 1}`}
+            class="flex items-center gap-1.5 font-mono text-xs tracking-widest uppercase text-neutral-500 dark:text-neutral-400 hover:text-red-500 transition-colors duration-150"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+            {yearParam - 1}
+          </a>
+        ) : <span />}
+
+        <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-600">
+          {totalPosts} posts
+        </span>
+
+        {yearParam < maxYear ? (
+          <a
+            href={`/archive/${yearParam + 1}`}
+            class="flex items-center gap-1.5 font-mono text-xs tracking-widest uppercase text-neutral-500 dark:text-neutral-400 hover:text-red-500 transition-colors duration-150"
+          >
+            {yearParam + 1}
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </a>
+        ) : <span />}
+      </div>
+
+    </div>
+  </div>
+</BaseLayout>

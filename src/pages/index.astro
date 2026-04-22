@@ -1,0 +1,133 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getAllBlogsMeta, getTagCounts } from "../lib/blogs";
+
+const latest = getAllBlogsMeta().slice(0, 8);
+const tags = getTagCounts().slice(0, 16);
+const total = getAllBlogsMeta().length;
+---
+
+<BaseLayout title="DELM Blog">
+  <div class="flex flex-col items-center w-full">
+
+    <!-- ── Hero ───────────────────────────────────────────────── -->
+    <section class="w-full border-b border-neutral-200 dark:border-neutral-800 transition-colors">
+      <div class="max-w-[48rem] mx-auto px-4 py-12 flex flex-col gap-4">
+        <h1 class="font-sans text-4xl lg:text-5xl font-black tracking-tight leading-tight">
+          Writing about<br />
+          <span class="text-red-600">technology</span>, systems<br />
+          &amp; ideas.
+        </h1>
+        <p class="text-neutral-500 dark:text-neutral-400 text-sm max-w-sm leading-relaxed">
+          Personal notes and long-form articles by
+          <a href="https://delm.dev" target="_blank" rel="noopener noreferrer"
+            class="text-neutral-700 dark:text-neutral-300 underline underline-offset-2 hover:text-red-600 transition-colors">
+            deltamaya
+          </a>.
+          Can make mistakes, for reference only.
+        </p>
+        <div class="flex flex-wrap items-center gap-3 pt-1">
+          <a href={`/archive/${new Date().getFullYear()}`}
+            class="font-mono text-xs tracking-widest uppercase px-4 py-2 border border-neutral-900 dark:border-neutral-100 hover:bg-neutral-900 hover:text-neutral-50 dark:hover:bg-neutral-100 dark:hover:text-neutral-900 transition-colors duration-200">
+            Full Archive
+          </a>
+          <a href="/rss.xml"
+            class="flex items-center gap-1.5 font-mono text-xs tracking-widest uppercase px-4 py-2 border border-neutral-300 dark:border-neutral-700 text-neutral-500 dark:text-neutral-400 hover:border-red-500 hover:text-red-500 transition-colors duration-200">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"></path>
+            </svg>
+            RSS
+          </a>
+          <a href="https://delm.dev" target="_blank" rel="noopener noreferrer"
+            class="flex items-center gap-1.5 font-mono text-xs tracking-widest uppercase px-4 py-2 border border-neutral-300 dark:border-neutral-700 text-neutral-500 dark:text-neutral-400 hover:border-red-500 hover:text-red-500 transition-colors duration-200">
+            <div class="relative h-4 w-4 flex-shrink-0">
+              <img src="/logo.svg" alt="" class="absolute inset-0 h-full w-full transition-opacity duration-300 opacity-100 dark:opacity-0" />
+              <img src="/logo-white.svg" alt="" class="absolute inset-0 h-full w-full transition-opacity duration-300 opacity-0 dark:opacity-100" />
+            </div>
+            delm.dev
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="w-full max-w-[48rem] mx-auto px-4 py-10 flex flex-col gap-12">
+
+      <!-- ── Latest Posts ──────────────────────────────────────── -->
+      <section class="flex flex-col gap-4">
+        <div class="flex items-center gap-4">
+          <span class="text-sm font-bold tracking-wide">Latest</span>
+          <div class="flex-1 h-px bg-neutral-200 dark:bg-neutral-800 transition-colors"></div>
+          <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-600">{total} articles</span>
+        </div>
+
+        <div class="flex flex-col divide-y divide-neutral-200 dark:divide-neutral-800 transition-colors">
+          {latest.map((blog) => (
+            <a
+              href={`/blog/${blog.slug}`}
+              class="group flex items-start justify-between gap-4 py-4 hover:bg-neutral-50 dark:hover:bg-neutral-800/50 -mx-3 px-3 transition-colors duration-150"
+            >
+              <div class="flex flex-col gap-1 min-w-0">
+                <span class="font-sans font-semibold text-base leading-snug group-hover:text-red-600 transition-colors duration-150 truncate">
+                  {blog.title}
+                </span>
+                <div class="flex flex-wrap items-center gap-x-2 gap-y-1">
+                  <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-600">
+                    {blog.date.toLocaleDateString("en", { year: "numeric", month: "short", day: "numeric" })}
+                  </span>
+                  {blog.ai && (
+                    <span class="font-mono text-[10px] tracking-wider uppercase px-1.5 py-0.5 border border-neutral-300 dark:border-neutral-700 text-neutral-400 dark:text-neutral-600">
+                      AI
+                    </span>
+                  )}
+                </div>
+                <div class="flex flex-wrap gap-x-2 gap-y-1">
+                  {blog.tags.map((tag) => (
+                    <span class="font-mono text-[10px] tracking-wider text-red-500 uppercase">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <!-- Arrow indicator -->
+              <svg class="flex-shrink-0 mt-1 text-neutral-300 dark:text-neutral-700 group-hover:text-red-500 group-hover:translate-x-1 transition-all duration-150" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          ))}
+        </div>
+
+        <a href={`/archive/${new Date().getFullYear()}`}
+          class="self-start font-mono text-[10px] tracking-[0.3em] uppercase text-neutral-400 dark:text-neutral-600 hover:text-red-500 transition-colors">
+          View all →
+        </a>
+      </section>
+
+      <!-- ── Tags ──────────────────────────────────────────────── -->
+      <section class="flex flex-col gap-4">
+        <div class="flex items-center gap-4">
+          <span class="text-sm font-bold tracking-wide">Topics</span>
+          <div class="flex-1 h-px bg-neutral-200 dark:bg-neutral-800 transition-colors"></div>
+        </div>
+
+        <div class="flex flex-wrap gap-2">
+          {tags.map(([tag, count]) => (
+            <a
+              href={`/topics/${tag}`}
+              class="group flex items-center gap-1.5 px-3 py-1.5 border border-neutral-200 dark:border-neutral-800 hover:border-red-500 hover:text-red-600 transition-colors duration-150"
+            >
+              <span class="font-mono text-xs uppercase tracking-wider">{tag}</span>
+              <span class="font-mono text-[10px] text-neutral-400 dark:text-neutral-600 group-hover:text-red-400 transition-colors">
+                {count}
+              </span>
+            </a>
+          ))}
+          <a href="/topics"
+            class="flex items-center px-3 py-1.5 border border-dashed border-neutral-300 dark:border-neutral-700 text-neutral-400 dark:text-neutral-600 hover:border-red-400 hover:text-red-500 transition-colors duration-150">
+            <span class="font-mono text-xs tracking-wider">all →</span>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</BaseLayout>
