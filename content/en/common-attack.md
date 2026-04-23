@@ -3,7 +3,8 @@ title: Common Methods in Network Attacks
 date: 2024-09-05
 tags: ['cybersecurity', 'networking']
 authors: ['Maya']
-ai: true
+disclaimer: []
+ai: assisted
 ---
 
 # DoS & DDoS
