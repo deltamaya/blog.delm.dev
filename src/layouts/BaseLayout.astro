@@ -58,6 +58,9 @@ const title = Astro.props.title ? `${Astro.props.title} - DELM` : "DELM Blog";
             class="group flex items-center gap-2 select-none"
             aria-label="DELM home"
           >
+            <span class="text-lg font-black tracking-tight leading-none">
+              <span class="text-red-600">D</span>ELM
+            </span>
             <div class="relative h-8 w-8 flex-shrink-0">
               <img
                 src="/logo.svg"
@@ -70,9 +73,6 @@ const title = Astro.props.title ? `${Astro.props.title} - DELM` : "DELM Blog";
                 class="absolute inset-0 h-full w-full transition-opacity duration-300 opacity-0 dark:opacity-100"
               />
             </div>
-            <span class="text-lg font-black tracking-tight leading-none">
-              <span class="text-red-600">D</span>ELM
-            </span>
           </a>
 
           <!-- Desktop nav (md+) -->
