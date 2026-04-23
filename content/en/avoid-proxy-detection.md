@@ -2,7 +2,7 @@
 title: "How to avoid proxy detection"
 date: 2024-12-27
 authors: ['Maya']
-ai: True
+ai: assisted
 draft: false
 tags: ['cybersecurity', 'networking']
 ---

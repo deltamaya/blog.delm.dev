@@ -55,7 +55,7 @@ const total = getAllBlogsMeta().length;
       <!-- ── Latest Posts ──────────────────────────────────────── -->
       <section class="flex flex-col gap-4">
         <div class="flex items-center gap-4">
-          <span class="text-sm font-bold tracking-wide">Latest</span>
+          <span class="text-xl font-bold tracking-wide">Latest</span>
           <div class="flex-1 h-px bg-neutral-200 dark:bg-neutral-800 transition-colors"></div>
           <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-600">{total} articles</span>
         </div>
@@ -74,15 +74,10 @@ const total = getAllBlogsMeta().length;
                   <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-600">
                     {blog.date.toLocaleDateString("en", { year: "numeric", month: "short", day: "numeric" })}
                   </span>
-                  {blog.ai && (
-                    <span class="font-mono text-[10px] tracking-wider uppercase px-1.5 py-0.5 border border-neutral-300 dark:border-neutral-700 text-neutral-400 dark:text-neutral-600">
-                      AI
-                    </span>
-                  )}
                 </div>
                 <div class="flex flex-wrap gap-x-2 gap-y-1">
                   {blog.tags.map((tag) => (
-                    <span class="font-mono text-[10px] tracking-wider text-red-500 uppercase">
+                    <span class="font-mono text-xs tracking-wider text-red-500 uppercase">
                       #{tag}
                     </span>
                   ))}
@@ -105,7 +100,7 @@ const total = getAllBlogsMeta().length;
       <!-- ── Tags ──────────────────────────────────────────────── -->
       <section class="flex flex-col gap-4">
         <div class="flex items-center gap-4">
-          <span class="text-sm font-bold tracking-wide">Topics</span>
+          <span class="text-xl font-bold tracking-wide">Topics</span>
           <div class="flex-1 h-px bg-neutral-200 dark:bg-neutral-800 transition-colors"></div>
         </div>
 

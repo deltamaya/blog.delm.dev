@@ -24,7 +24,7 @@ const maxYear = new Date().getFullYear();
 
       <!-- Page header -->
       <div class="flex flex-col gap-4 border-b border-neutral-200 dark:border-neutral-800 pb-6">
-        <h1 class="text-3xl font-black tracking-tight"><span class="text-red-600">A</span>rchive</h1>
+        <h1 class="text-4xl font-black tracking-tight"><span class="text-red-600">A</span>rchive</h1>
 
         <!-- Year tabs -->
         <div class="flex items-center gap-1 flex-wrap">
@@ -70,13 +70,8 @@ const maxYear = new Date().getFullYear();
                       {blog.title}
                     </span>
                     <div class="flex items-center gap-1.5 shrink-0">
-                      {blog.ai && (
-                        <span class="font-mono text-[9px] tracking-wider uppercase px-1 py-0.5 border border-neutral-300 dark:border-neutral-700 text-neutral-400 dark:text-neutral-600">
-                          AI
-                        </span>
-                      )}
                       {blog.tags.slice(0, 2).map((tag) => (
-                        <span class="font-mono text-[10px] text-neutral-400 dark:text-neutral-600 uppercase hidden sm:inline">
+                        <span class="font-mono text-xs text-neutral-400 dark:text-neutral-600 uppercase hidden sm:inline">
                           #{tag}
                         </span>
                       ))}

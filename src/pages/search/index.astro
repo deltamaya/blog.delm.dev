@@ -20,7 +20,7 @@ const allBlogs = getAllBlogsMeta().map((b) => ({
     <div class="w-full max-w-[48rem] px-4 py-10 flex flex-col gap-8">
       <!-- Page header -->
       <div class="border-b border-neutral-200 dark:border-neutral-800 pb-6">
-        <h1 class="text-3xl font-black tracking-tight">
+        <h1 class="text-4xl font-black tracking-tight">
           <span class="text-red-600">S</span>earch
         </h1>
       </div>
@@ -131,20 +131,18 @@ const allBlogs = getAllBlogsMeta().map((b) => ({
       const tagsHtml = blog.tags
         .map(
           (t) =>
-            `<span class="font-mono text-[10px] text-neutral-400 dark:text-neutral-600 uppercase">#${t}</span>`,
+            `<span class="font-mono text-xs text-neutral-400 dark:text-neutral-600 uppercase">#${t}</span>`,
         )
         .join("");
 
-      const aiHtml = blog.ai
-        ? `<span class="font-mono text-[9px] tracking-wider uppercase px-1 py-0.5 border border-neutral-300 dark:border-neutral-700 text-neutral-400 dark:text-neutral-600">AI</span>`
-        : "";
+      const aiHtml = "";
 
       return `
         <a href="/blog/${blog.slug}"
           class="group flex items-center gap-4 py-3 -mx-2 px-2 hover:bg-neutral-50 dark:hover:bg-neutral-800/40 transition-colors duration-150">
           <span class="font-mono text-[11px] text-neutral-400 dark:text-neutral-600 shrink-0 tabular-nums">${blog.date}</span>
           <span class="flex-1 text-sm group-hover:text-red-600 transition-colors duration-150 leading-snug">${titleHtml}</span>
-          <div class="flex items-center gap-1.5 shrink-0 hidden sm:flex">${aiHtml}${tagsHtml}</div>
+          <div class="flex items-center gap-1.5 shrink-0 hidden sm:flex">${tagsHtml}</div>
         </a>`;
     }
 
