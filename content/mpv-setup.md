@@ -4,14 +4,15 @@ date: 2024-11-18
 tags: ['media-processing', 'anime', 'setup']
 authors: ['Maya']
 ai: false
+disclaimer: []
 ---
 
-## Why Use MPV?
+# Why Use MPV?
 
-`MPV Player` is a player based on the project `libmpv`, it wraps this library and utilizes it to decode and play videoes and audioes. Just like **libvlc** and the **VLC Player**.
+`MPV Player` is a player based on the project `libmpv`, it wraps this library and utilizes it to decode and play videos and audios. Just like **libvlc** and the **VLC Player**.
 But MPV is more light-weight and configurable, which could achieve a better watching experience.
 
-## Download And Install
+# Download And Install
 
 You could get the newest version of MPV player on Windows via this link: [mpv.net](https://github.com/mpvnet-player/mpv.net/releases)
 
@@ -74,7 +75,7 @@ You could copy-and-paste, or search the Internet and customize your own `mpv.con
 
 Oh, by the way you could customize shortcuts using the `input.conf` in the same path.
 
-## Shaders
+# Shaders
 
 MPV supports third party shaders, which could prettify your video experience.
 
@@ -96,7 +97,7 @@ If this doesn't fit for you, go check whether those filenames match your shader 
 
 After that, you could toggle shader while playing video!
 
-## VapourSynth
+# VapourSynth
 
 VS is an open source non-linear processing video frame service plug-in that uses Python as the scripting language.
 MPV supports VS being inserted into the video playback process in the form of filters.
@@ -114,7 +115,7 @@ Then you should download python as the plugin uses python to execute: [Python](h
 > If your computer already has Python and you don't want to install another version of it, you could use the embedded version,
 > download and decompress it into the MPV installation folder.
 
-### pip
+## pip
 
 If you're using an embedded version of python and the latest version of VapourSynth, please follow these operations.
 
@@ -130,7 +131,7 @@ You could get `pip` with the following operations:
 
 When you finish these steps, you could use `./Scripts/pip install VapourSynth` to install the package.
 
-### mvtools
+## mvtools
 
 After you installed VapourSynth, you could frame video with mvtools.
 Acquire mvtools via this link: [mvtools](https://github.com/dubhater/vapoursynth-mvtools/releases),
@@ -141,7 +142,7 @@ The last step is to get the python script which calls the mvtools:
 
 Download the file and put it to the config path(`portable_config`).
 
-## Modify Input
+# Modify Input
 
 You have already set up all plugins; all you need to do is to call it.
 Add this line to your `input.conf`:
@@ -152,7 +153,7 @@ CTRL+v vf toggle vapoursynth="~~/{filename}.vpy"
 
 Then just press `Ctrl+v` to enjoy a 60-fps and hyper-resolution anime experience!
 
-## References
+# References
 
 [mpv 播放器的使用【入门】](https://hooke007.github.io/mpv-lazy/mpv.html)
 
