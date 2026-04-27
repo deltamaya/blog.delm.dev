@@ -19,8 +19,11 @@ const { data: metadata, content: rawContent } = matter(raw);
 const { html, headings } = renderMarkdown(rawContent);
 const postDate = new Date(metadata.date);
 const now = new Date();
-const sixMonthsMs = 12 * 30 * 24 * 60 * 60 * 1000;
-const isOutdated = now.getTime() - postDate.getTime() > sixMonthsMs;
+const ageMs = now.getTime() - postDate.getTime();
+const sixMonthsMs = 6 * 30 * 24 * 60 * 60 * 1000;
+const twelveMonthsMs = 12 * 30 * 24 * 60 * 60 * 1000;
+const isOutdated = ageMs > twelveMonthsMs;
+const isMaybeStale = !isOutdated && ageMs > sixMonthsMs;
 
 type AILevel = {
   level: 1 | 2 | 3;
@@ -217,6 +220,32 @@ const disclaimers = disclaimerKeys
       }
 
       {
+        isMaybeStale && (
+          <div class="mt-3 flex gap-3 w-full border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900/20 px-4 py-3 transition-colors">
+            <svg
+              class="flex-shrink-0 mt-0.5 text-neutral-400 dark:text-neutral-500"
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z" />
+            </svg>
+            <div class="flex flex-col gap-0.5">
+              <span class="font-mono text-xs tracking-widest uppercase text-neutral-500 dark:text-neutral-400 font-semibold">
+                Potentially Stale
+              </span>
+              <p class="text-sm text-neutral-500 dark:text-neutral-500 leading-relaxed">
+                This article is over 6 months old. Some details may have changed
+                since it was written.
+              </p>
+            </div>
+          </div>
+        )
+      }
+
+      {
         isOutdated && (
           <div class="mt-3 flex gap-3 w-full border border-yellow-300 dark:border-yellow-700 bg-yellow-50 dark:bg-yellow-950/30 px-4 py-3 transition-colors">
             <svg
@@ -234,9 +263,11 @@ const disclaimers = disclaimerKeys
                 Outdated Content
               </span>
               <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                This article was published 12 months ago and may contain
-                outdated information. Technologies, tools, or practices
-                described here might have changed significantly since then.
+                This article was published more than 12 months ago. Some
+                information, data, opinions or references may be outdated,
+                inaccurate or no longer applicable due to time changes. Please
+                double-check the latest relevant information before reference or
+                use.
               </p>
             </div>
           </div>
