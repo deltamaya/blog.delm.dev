@@ -19,7 +19,7 @@ let tagCache: Map<string, BlogMeta[]> | null = null;
 function loadBlogs(): BlogMeta[] {
     if (blogsCache) return blogsCache;
 
-    const dir = path.resolve('content/en');
+    const dir = path.resolve('content');
     if (!fs.existsSync(dir)) return [];
 
     const files = fs.readdirSync(dir).filter((f) => f.endsWith('.md'));
