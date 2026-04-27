@@ -1,7 +1,7 @@
 ---
 title: MPV Player Setup
 date: 2024-11-18
-tags: ['media-processing', 'anime', 'setup']
+tags: ['multimedia', 'anime', 'setup','mpv']
 authors: ['Maya']
 ai: false
 disclaimer: []
@@ -9,39 +9,39 @@ disclaimer: []
 
 # Why Use MPV?
 
-`MPV Player` is a player based on the project `libmpv`, it wraps this library and utilizes it to decode and play videos and audios. Just like **libvlc** and the **VLC Player**.
-But MPV is more light-weight and configurable, which could achieve a better watching experience.
+`MPV Player` is a player based on the project `libmpv`, it wraps this library and utilizes it to decode and play videos and audio. Just like `libvlc` and the `VLC Player`.
+But MPV is more **lightweight** and **configurable**, which can achieve a better watching experience.
 
 # Download And Install
 
-You could get the newest version of MPV player on Windows via this link: [mpv.net](https://github.com/mpvnet-player/mpv.net/releases)
+You can get the newest version of MPV player on Windows via this link: [mpv.net](https://github.com/mpvnet-player/mpv.net/releases)
 
 Or you can use the cross-platform version: [mpv.io](https://mpv.io/installation/)
 
-When your installation is done, you could play almost any kind of video, as libmpv is based on
-FFmpeg, which provides a wide support for video codec and container format.
+When your installation is done, you can play almost any kind of video, as libmpv is based on
+FFmpeg, which provides wide support for video codecs and container formats.
 
 ## Shortcuts
 
-It's useful to remember a few shortcuts, which provide faster access than GUI.
+It's useful to remember a few shortcuts, which provide faster access than a GUI.
 
 - `s` to save screenshot
 - `t` or `i` to show stats
-- `[`and`]` to adjust playback speed
+- `[` and `]` to adjust playback speed
 
 Here is a quick reference to MPV shortcuts: [link](https://mpv.io/manual/master/#interactive-control)
 
 ## Configuration
 
-Here is the most important part, you could fully control MPV player's behavior using a config file.
-Go to the installation folder of MPV and create a folder called `portable_config`, and then create a `mpv.conf` inside.
+Here is the most important part: you can fully control MPV player's behavior using a config file.
+Go to the installation folder of MPV and create a folder called `portable_config`, then create a `mpv.conf` inside it.
 
 > [!TIP]
-> If you didn't specify the installation path, it should locate at `C:/Users/{username}/AppData/Roaming/mpv/` or `C:/Program Files/mpv.net`.
+> If you didn't specify the installation path, it should be located at `C:/Users/{username}/AppData/Roaming/mpv/` or `C:/Program Files/mpv.net`.
 >
 > If your installation path is in the system folder (like the latter one),
-> you'll need to make sure that you enabled access from
-> certain user and software:
+> you'll need to make sure that you have enabled access for
+> certain users and software:
 > Right Click Folder → Properties → Security → Edit → Apply
 
 Here are some basic configuration settings:
@@ -71,18 +71,18 @@ screenshot-format=png
 sub-auto=fuzzy
 ```
 
-You could copy-and-paste, or search the Internet and customize your own `mpv.conf` based your own computer setup.
+You can copy-and-paste these settings, or search the Internet and customize your own `mpv.conf` based on your own computer setup.
 
-Oh, by the way you could customize shortcuts using the `input.conf` in the same path.
+Oh, by the way, you can customize shortcuts using the `input.conf` in the same path.
 
 # Shaders
 
-MPV supports third party shaders, which could prettify your video experience.
+MPV supports third-party shaders, which can enhance your video viewing experience.
 
-In my circumstance, I'm going to use [Anime4K](https://github.com/bloc97/Anime4K), download it the latest release
-and move those `something.glsl` or `something.hook` into your config folder.
+In my case, I'm going to use [Anime4K](https://github.com/bloc97/Anime4K); download the latest release
+and move those `something.glsl` or `something.hook` files into your config folder.
 
-And if you are using Anime4K, add those into `input.conf` will enable the keyboard control of shaders:
+And if you are using Anime4K, adding these lines into `input.conf` will enable keyboard control of the shaders:
 
 ```
 # Optimized shaders for higher-end GPU
@@ -93,65 +93,65 @@ CTRL+3 no-osd change-list glsl-shaders set "~~/shaders/Anime4K_Deblur_DoG.glsl;~
 CTRL+0 no-osd change-list glsl-shaders clr ""; show-text "GLSL shaders cleared"
 ```
 
-If this doesn't fit for you, go check whether those filenames match your shader files in the config folder.
+If this doesn't work for you, check whether those filenames match your shader files in the config folder.
 
-After that, you could toggle shader while playing video!
+After that, you can toggle the shader while playing a video!
 
 # VapourSynth
 
-VS is an open source non-linear processing video frame service plug-in that uses Python as the scripting language.
-MPV supports VS being inserted into the video playback process in the form of filters.
+VS is an open-source non-linear video frame processing plugin that uses Python as its scripting language.
+MPV supports inserting VS into the video playback process in the form of filters.
 
 To use VapourSynth, you need to install it first:
 
-After you download the latest zip file from this link: [VapourSynth](https://github.com/vapoursynth/vapoursynth/releases),
-you should extract it to the MPV installation folder.
+Download the latest zip file from this link: [VapourSynth](https://github.com/vapoursynth/vapoursynth/releases),
+then extract it to the MPV installation folder.
 
-Then you should download python as the plugin uses python to execute: [Python](https://www.python.org/downloads/)
+Next, download Python, as the plugin uses Python to execute scripts: [Python](https://www.python.org/downloads/)
 
 > [!TIP]
-> Based on your VapourSynth version, you may need `Python 3.12.x` or `Python 3.8.x`, pick a version that matches your need.
+> Based on your VapourSynth version, you may need `Python 3.12.x` or `Python 3.8.x`; pick a version that matches your needs.
 >
-> If your computer already has Python and you don't want to install another version of it, you could use the embedded version,
+> If your computer already has Python and you don't want to install another version, you can use the embedded version:
 > download and decompress it into the MPV installation folder.
 
 ## pip
 
-If you're using an embedded version of python and the latest version of VapourSynth, please follow these operations.
+If you're using an embedded version of Python and the latest version of VapourSynth, follow these steps.
 
-The latest version of VapourSynth needs you to download the package from `pip`, but the
-embedded version of Python does not contain `pip`, which means you cannot use `pip install`.
+The latest version of VapourSynth requires you to download the package from `pip`, but the
+embedded version of Python does not include `pip`, which means you cannot use `pip install` directly.
 
-You could get `pip` with the following operations:
+You can get `pip` with the following steps:
 
-1. Go to the embedded python installation folder
+1. Go to the embedded Python installation folder
 2. Edit the `python312.__pth` file, uncomment the line `import site`.
 3. Download `get-pip.py` via this link: [get-pip](https://bootstrap.pypa.io/get-pip.py) to this folder.
 4. Run `python get-pip.py`
 
-When you finish these steps, you could use `./Scripts/pip install VapourSynth` to install the package.
+When you finish these steps, you can use `./Scripts/pip install VapourSynth` to install the package.
 
 ## mvtools
 
-After you installed VapourSynth, you could frame video with mvtools.
+After installing VapourSynth, you can use mvtools to frame-interpolate video.
 Acquire mvtools via this link: [mvtools](https://github.com/dubhater/vapoursynth-mvtools/releases),
-then extract the `libmvtools.dll` into the `{installation path}/vs-plugins`.
+then extract `libmvtools.dll` into `{installation path}/vs-plugins`.
 
-The last step is to get the python script which calls the mvtools:
+The last step is to get the Python script that calls mvtools:
 [link](https://gist.github.com/KCCat/1b3a7b7f085a066af3719859f88ded02)
 
-Download the file and put it to the config path(`portable_config`).
+Download the file and put it in the config path (`portable_config`).
 
 # Modify Input
 
-You have already set up all plugins; all you need to do is to call it.
+You have now set up all plugins; all you need to do is call them.
 Add this line to your `input.conf`:
 
 ```
 CTRL+v vf toggle vapoursynth="~~/{filename}.vpy"
 ```
 
-Then just press `Ctrl+v` to enjoy a 60-fps and hyper-resolution anime experience!
+Then just press `Ctrl+v` to enjoy a 60-fps and high-resolution anime viewing experience!
 
 # References
 
