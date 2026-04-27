@@ -8,7 +8,7 @@ ai: false
 
 ## Why Use MPV?
 
-MPV is not a player, it's video player's library, just like **libvlc** and **VLC Player**.
+`MPV Player` is a player based on the project `libmpv`, it wraps this library and utilizes it to decode and play videoes and audioes. Just like **libvlc** and the **VLC Player**.
 But MPV is more light-weight and configurable, which could achieve a better watching experience.
 
 ## Download And Install
