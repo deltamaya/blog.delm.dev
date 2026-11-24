@@ -1,0 +1,12 @@
+---
+interface Props { topics: [string, number][] }
+const { topics } = Astro.props;
+---
+<ul class="topic-list">
+  {topics.map(([tag, count]) => (
+    <li><a href={`/topics/${tag}`}>
+      <span><span class="topic-hash">#</span>{tag}</span>
+      <span class="metadata">{count} {count === 1 ? "post" : "posts"}</span>
+    </a></li>
+  ))}
+</ul>

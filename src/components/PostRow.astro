@@ -1,0 +1,10 @@
+---
+import type { BlogMeta } from "../lib/blogs";
+interface Props { post: BlogMeta }
+const { post } = Astro.props;
+---
+<a class="post-row" href={`/blog/${post.slug}`}>
+  <time class="metadata" datetime={post.date.toISOString()}>{post.date.toLocaleDateString("en", { month: "short", day: "numeric", year: "numeric" })}</time>
+  <span class="row-title">{post.title}</span>
+  <span class="row-tags metadata">{post.tags.slice(0, 2).join(" / ")}</span>
+</a>

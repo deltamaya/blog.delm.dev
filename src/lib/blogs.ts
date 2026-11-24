@@ -5,6 +5,8 @@ import matter from 'gray-matter';
 export interface BlogMeta {
     slug: string;
     title: string;
+    description?: string;
+    cover?: string;
     date: Date;
     tags: string[];
     draft: boolean;
@@ -39,6 +41,8 @@ function loadBlogs(): BlogMeta[] {
             results.push({
                 slug,
                 title: data.title || 'Untitled',
+                description: data.description,
+                cover: data.cover,
                 date,
                 tags: (data.tags ?? []).map((t: string) => t.toLowerCase()),
                 draft: data.draft ?? false,

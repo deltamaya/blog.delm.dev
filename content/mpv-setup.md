@@ -1,5 +1,7 @@
 ---
 title: MPV Player Setup
+description: Installing and configuring mpv for anime playback, from keyboard shortcuts to shaders and frame interpolation.
+cover: /background.jpg
 date: 2024-11-18
 tags: ['multimedia', 'anime', 'setup','mpv']
 authors: ['Maya']
