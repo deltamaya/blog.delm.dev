@@ -1,0 +1,78 @@
+name: Build and deploy blog
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          package-manager-cache: false
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build
+        env:
+          ASTRO_TELEMETRY_DISABLED: '1'
+      - name: Package the static site
+        run: |
+          test -s dist/index.html
+          tar -C dist -czf "$RUNNER_TEMP/blog.tar.gz" .
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: blog
+          path: ${{ runner.temp }}/blog.tar.gz
+          retention-days: 3
+          if-no-files-found: error
+
+  deploy:
+    if: github.ref == 'refs/heads/master'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    concurrency:
+      group: delmca-blog-production
+      cancel-in-progress: false
+    environment:
+      name: delmca-production
+      url: https://ca.deltafx.cc/
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: blog
+      - name: Publish and check the live homepage
+        shell: bash
+        env:
+          DEPLOY_KEY: ${{ secrets.DELMCA_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          umask 077
+          work=$(mktemp -d)
+          trap 'rm -rf -- "$work"' EXIT
+          printf '%s\n' "$DEPLOY_KEY" > "$work/key"
+          unset DEPLOY_KEY
+          printf '%s\n' '[ca.deltafx.cc]:55369 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA0kzeRtokd9S99w6AaGMunj8xlwx6OshC1D+dhUVN1P' > "$work/known_hosts"
+          receipt=$(ssh -T -p 55369 -i "$work/key" \
+            -o BatchMode=yes -o IdentitiesOnly=yes -o ConnectTimeout=15 \
+            -o StrictHostKeyChecking=yes -o UserKnownHostsFile="$work/known_hosts" \
+            blogdeploy@ca.deltafx.cc "publish $GITHUB_RUN_NUMBER $GITHUB_RUN_ATTEMPT $GITHUB_SHA" < blog.tar.gz)
+          if [[ "$receipt" == superseded ]]; then
+            echo "A newer build is already live."
+            exit 0
+          fi
+          [[ "$receipt" == published ]]
+          tar -xzOf blog.tar.gz ./index.html > "$work/expected.html"
+          curl --fail --silent --show-error --retry 3 --max-time 15 \
+            "https://ca.deltafx.cc/?release=$GITHUB_SHA" -o "$work/live.html"
+          cmp "$work/expected.html" "$work/live.html"
