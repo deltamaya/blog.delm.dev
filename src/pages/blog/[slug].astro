@@ -62,7 +62,6 @@ const disclaimers = disclaimerKeys
         {metadata.authors?.length > 0 && <span>By {metadata.authors.map((author: string, i: number) => (
           <>{i > 0 && ", "}{authorLinks[author.toLowerCase()] ? <a href={authorLinks[author.toLowerCase()]}>{author}</a> : author}</>
         ))}</span>}
-        {isHumanWritten(metadata) && <span>Human-written</span>}
       </div>
       <div class="tags">{(metadata.tags ?? []).map((tag: string) => <a href={`/topics/${tag.toLowerCase()}`}>#{tag}</a>)}</div>
     </header>
@@ -79,6 +78,19 @@ const disclaimers = disclaimerKeys
         <a class="text-link suggest" href="https://github.com/deltamaya/blog.delm.dev/issues/new">Suggest changes</a>
       </aside>
       <div class="reading-copy">
+        {isHumanWritten(metadata) && (
+          <div class="mt-3 flex gap-3 w-full border border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/30 px-4 py-3 transition-colors">
+            <svg aria-hidden="true" class="shrink-0 mt-0.5 text-[var(--red)]" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m15 5 4 4M4 20l4.5-1L20 7.5a2.8 2.8 0 0 0-4-4L4.5 15z" />
+            </svg>
+            <div class="flex flex-col gap-0.5">
+              <span class="font-mono text-xs tracking-widest uppercase text-[var(--red)] font-semibold">Human-written</span>
+              <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                {metadata.authors?.length ? `Written by ${metadata.authors.join(", ")}.` : "This article was written by a human."}
+              </p>
+            </div>
+          </div>
+        )}
       {
         disclaimers.map((d) => (
           <div class="mt-3 flex gap-3 w-full border border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/30 px-4 py-3 transition-colors">
