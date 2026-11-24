@@ -11,7 +11,13 @@ export interface BlogMeta {
     tags: string[];
     draft: boolean;
     authors: string[];
-    ai?: boolean;
+    humanWritten: boolean;
+}
+
+export function isHumanWritten(metadata: { [key: string]: unknown }): boolean {
+    const legacyHuman = metadata.ai === false || metadata.ai === 'false';
+    if (metadata.human === undefined) return legacyHuman;
+    return metadata.human === true && (metadata.ai === undefined || legacyHuman);
 }
 
 // Cache
@@ -47,7 +53,7 @@ function loadBlogs(): BlogMeta[] {
                 tags: (data.tags ?? []).map((t: string) => t.toLowerCase()),
                 draft: data.draft ?? false,
                 authors: data.authors ?? [],
-                ai: data.ai ?? false,
+                humanWritten: isHumanWritten(data),
             });
         } catch {
             // skip malformed files

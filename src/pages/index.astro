@@ -27,6 +27,7 @@ const archiveYear = lead?.date.getFullYear() ?? new Date().getFullYear();
             <div class="lead-meta metadata">
               <time datetime={lead.date.toISOString()}>{lead.date.toLocaleDateString("en", { year: "numeric", month: "short", day: "numeric" })}</time>
               {lead.authors.length > 0 && <span>By {lead.authors.join(", ")}</span>}
+              {lead.humanWritten && <span>Human-written</span>}
             </div>
             <h3><a href={`/blog/${lead.slug}`}>{lead.title}</a></h3>
             {lead.description && <p class="lead-summary">{lead.description}</p>}

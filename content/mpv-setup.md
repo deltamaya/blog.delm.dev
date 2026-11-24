@@ -5,7 +5,7 @@ cover: /background.jpg
 date: 2024-11-18
 tags: ['multimedia', 'anime', 'setup','mpv']
 authors: ['Maya']
-ai: false
+human: true
 disclaimer: []
 ---
 
